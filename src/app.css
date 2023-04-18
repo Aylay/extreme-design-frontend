@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+	@font-face {
+		font-family: 'NespressoLucas';
+		src: url('/fonts/nespressolucas-regular-webfont.woff2') format('woff2'),
+			url('/fonts/nespressolucas-regular-webfont.woff') format('woff');
+		font-weight: normal;
+		font-style: normal;
+	}
+	@font-face {
+		font-family: 'NespressoLucas';
+		src: url('/fonts/nespressolucas-semibd-webfont.woff2') format('woff2'),
+			url('/fonts/nespressolucas-semibd-webfont.woff') format('woff');
+		font-weight: 600;
+		font-style: normal;
+	}
+	@font-face {
+		font-family: 'NespressoLucas';
+		src: url('/fonts/nespressolucas-xtrabd-webfont.woff2') format('woff2'),
+			url('/fonts/nespressolucas-xtrabd-webfont.woff') format('woff');
+		font-weight: 800;
+		font-style: normal;
+	}
+
+	html {
+		@apply bg-parchment font-base text-black max-lg:text-[10px] lg:text-[8px] 2xl:text-[10px];
+	}
+}
