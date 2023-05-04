@@ -12,6 +12,31 @@ module.exports = {
 		fontFamily: {
 			base: 'basis_grotesque_arabic_pro, Arial, sans-serif'
 		},
+		fontSize: {
+			big: [
+				'13rem',
+				{
+					lineHeight: '12.4rem',
+					letterSpacing: '-0.03em'
+				}
+			],
+			medium: ['5.2rem', '5.5rem'],
+			m1: [
+				'3.2rem',
+				{
+					lineHeight: '3.2rem',
+					letterSpacing: '-0.03em',
+					fontWeight: '500',
+				}
+			],
+			m2: [
+				'1.8rem',
+				{
+					lineHeight: '2.4rem',
+					letterSpacing: '-0.03em'
+				}
+			],
+		},
 		extend: {
 			animation: {
 				unfade: 'unfade 1s both'

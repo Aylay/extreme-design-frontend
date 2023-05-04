@@ -46,12 +46,33 @@
 	];
 </script>
 
-<div class="fixed inset-x-0 top-0 w-full px-[4.8rem] z-30">
-	<div class="relative flex items-center">
+<div
+	class="{$page.data.imageHeader
+		? 'fixed'
+		: 'sticky bg-white'} inset-x-0 top-0 z-30 w-full px-[1.6rem] lg:px-[4.8rem]"
+>
+	<div class="relative flex items-center max-lg:justify-between">
 		<a class="inline-block" href="/" title="extreme design">
-			<Logo newClass="max-w-[20.5rem] w-full h-auto" color={$page.data.imageHeader ? '#FFFFFF' : '#222728'} />
+			<Logo
+				newClass="max-w-[15rem] lg:max-w-[20.5rem] w-full h-auto"
+				color={$page.data.imageHeader ? '#FFFFFF' : '#222728'}
+			/>
 		</a>
-		<div class="flex-1">
+		<div class="py-9 lg:hidden">
+			<div class="relative h-10 w-10">
+				<span
+					class="absolute inset-x-0 top-[6px] h-[3px] w-full {$page.data.imageHeader
+						? 'bg-white'
+						: 'bg-shark'}"
+				/>
+				<span
+					class="absolute inset-x-0 bottom-[6px] h-[3px] w-full {$page.data.imageHeader
+						? 'bg-white'
+						: 'bg-shark'}"
+				/>
+			</div>
+		</div>
+		<div class="flex-1 max-lg:hidden">
 			<Hoverable let:hovering={active}>
 				<div
 					class="flex w-full cursor-pointer justify-end py-9 {active
@@ -59,8 +80,16 @@
 						: 'animate-fade'}"
 				>
 					<div class="relative h-10 w-10">
-						<span class="absolute inset-x-0 top-[6px] h-[3px] w-full {$page.data.imageHeader ? 'bg-white' : 'bg-shark'}" />
-						<span class="absolute inset-x-0 bottom-[6px] h-[3px] w-full {$page.data.imageHeader ? 'bg-white' : 'bg-shark'}" />
+						<span
+							class="absolute inset-x-0 top-[6px] h-[3px] w-full {$page.data.imageHeader
+								? 'bg-white'
+								: 'bg-shark'}"
+						/>
+						<span
+							class="absolute inset-x-0 bottom-[6px] h-[3px] w-full {$page.data.imageHeader
+								? 'bg-white'
+								: 'bg-shark'}"
+						/>
 					</div>
 				</div>
 				<div class="absolute inset-0 h-full w-full {active ? 'z-10' : '-z-10'}">
@@ -74,7 +103,10 @@
 								{#each nav as item}
 									<li>
 										<a
-											class="text-[1.8rem] font-medium uppercase leading-none {$page.data.imageHeader ? 'text-white' : 'text-shark'}"
+											class="text-[1.8rem] font-medium uppercase leading-none {$page.data
+												.imageHeader
+												? 'text-white'
+												: 'text-shark'}"
 											title={item.title ? item.title : item.label}
 											href={item.slug}
 										>
@@ -88,25 +120,25 @@
 							{#each langs as lang}
 								<li>
 									{#if $page.data.imageHeader}
-									<a
-										class="text-[1.8rem] font-medium uppercase leading-none text-white {lang.actual
-											? 'underline text-opacity-100'
-											: 'text-opacity-50'}"
-										title={lang.title ? lang.title : lang.label}
-										href={lang.locale}
-									>
-										{lang.label}
-									</a>
+										<a
+											class="text-[1.8rem] font-medium uppercase leading-none text-white {lang.actual
+												? 'text-opacity-100 underline'
+												: 'text-opacity-50'}"
+											title={lang.title ? lang.title : lang.label}
+											href={lang.locale}
+										>
+											{lang.label}
+										</a>
 									{:else}
-									<a
-										class="text-[1.8rem] font-medium uppercase leading-none {lang.actual
-											? 'text-shark underline'
-											: 'text-silver'}"
-										title={lang.title ? lang.title : lang.label}
-										href={lang.locale}
-									>
-										{lang.label}
-									</a>
+										<a
+											class="text-[1.8rem] font-medium uppercase leading-none {lang.actual
+												? 'text-shark underline'
+												: 'text-silver'}"
+											title={lang.title ? lang.title : lang.label}
+											href={lang.locale}
+										>
+											{lang.label}
+										</a>
 									{/if}
 								</li>
 							{/each}

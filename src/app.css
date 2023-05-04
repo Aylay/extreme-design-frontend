@@ -17,6 +17,13 @@
 		font-weight: 500;
 		font-style: normal;
 	}
+	@font-face {
+		font-family: 'basis_grotesque_arabic_pro';
+		src: url('/fonts/basisgrotesquearabicpro-bold-webfont.woff2') format('woff2'),
+			url('/fonts/basisgrotesquearabicpro-bold-webfont.woff') format('woff');
+		font-weight: 700;
+		font-style: normal;
+	}
 
 	html {
 		@apply bg-white font-base text-[10px] text-shark;

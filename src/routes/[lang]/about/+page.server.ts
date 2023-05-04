@@ -1,7 +1,7 @@
 import type { PageServerData } from '../$types';
 
 export const load = (async () => {
-	const imageHeader = false
+	const imageHeader = false;
 
 	return {
 		imageHeader
