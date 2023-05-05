@@ -264,12 +264,12 @@
 
 <Intro text="Agilité, écoute, fraîcheur, poil à gratter, simplicité, exigence" />
 
-<div use:inview={options} on:inview_change={handleChange}>
+<div class="max-lg:h-[360px] mb-[56px] lg:mb-[96px]" use:inview={options} on:inview_change={handleChange}>
 	{#if isInView}
 		<img
 			src="/img/cas.jpg"
 			alt="A REMPLIR"
-			class="mb-[56px] h-auto w-full lg:mb-[96px] {isInView ? 'animate-fade' : 'opacity-0'}"
+			class=" max-lg:h-full max-lg:object-cover lg:h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
 </div>

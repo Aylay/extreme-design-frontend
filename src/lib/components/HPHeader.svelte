@@ -31,7 +31,7 @@
 </script>
 
 {#if actualProject}
-	<div class="relative mb-[56px] flex h-screen w-full items-center pl-[48px] lg:mb-[96px]">
+	<div class="relative mb-[56px] flex h-screen w-full items-center lg:pl-[48px] lg:mb-[96px] max-lg:hidden">
 		<a href={actualProject.slug} title={actualProject.title} class="absolute inset-0 h-full w-full">
 			<div class="absolute inset-y-0 left-0 h-full w-2/5 bg-gradient-to-r from-black opacity-5" />
 			{#if actualProject.mediaDesktopMime.includes('image')}
