@@ -4,18 +4,20 @@
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	export let cta: Link;
-	const lang = 'es'
+	const lang = 'es';
 </script>
 
 <Hoverable let:hovering={active}>
 	<a
-		href={cta.href.includes('http') ? cta.href : '/' + lang + cta.href }
+		href={cta.href.includes('http') ? cta.href : '/' + lang + cta.href}
 		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
 		title={cta.title ? cta.title : cta.label}
 		target={cta.href.includes('http') ? '_blank' : ''}
 	>
 		<div class="flex items-center gap-[24px] lg:gap-[32px]">
-			<span class="flex-1 text-[14px] lg:text-[18px] font-bold uppercase leading-none -tracking-[0.03em] py-[2px]">
+			<span
+				class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+			>
 				{cta.label}
 			</span>
 			<ArrowCta />

@@ -269,7 +269,7 @@
 		<img
 			src="/img/cas.jpg"
 			alt="A REMPLIR"
-			class="h-auto w-full mb-20 lg:mb-[96px] {isInView ? 'animate-fade' : 'opacity-0'}"
+			class="mb-20 h-auto w-full lg:mb-[96px] {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
 </div>
@@ -288,7 +288,11 @@
 
 <SliderImg images={sliderImages} />
 
-<h3 class="max-lg:text-m1 lg:font-medium mb-[16px] lg:mb-[48px] px-[16px] lg:px-[48px] lg:text-medium">La team</h3>
+<h3
+	class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
+>
+	La team
+</h3>
 
 <AboutTeam {team} />
 

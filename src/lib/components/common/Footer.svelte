@@ -32,12 +32,14 @@
 </script>
 
 <div
-	class="flex lg:items-center justify-between max-lg:px-[16px] max-lg:gap-[16px] px-[4.8rem] py-8"
+	class="flex justify-between px-[4.8rem] py-8 max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
-	<div class="max-lg:flex-1 max-lg:flex-col flex lg:items-center max-lg:gap-[8px] gap-4">
-		<p class="lg:pt-2 text-[1.8rem] uppercase leading-none max-lg:leading-[24px] max-lg:-tracking-[0.03em]">
+	<div class="flex gap-4 max-lg:flex-1 max-lg:flex-col max-lg:gap-[8px] lg:items-center">
+		<p
+			class="text-[1.8rem] uppercase leading-none max-lg:leading-[24px] max-lg:-tracking-[0.03em] lg:pt-2"
+		>
 			Extreme Design est une société du groupe
 		</p>
 		{#if isInView}
@@ -50,7 +52,7 @@
 			</a>
 		{/if}
 	</div>
-	<ul class="max-lg:flex-1 max-lg:flex-col flex lg:gap-6">
+	<ul class="flex max-lg:flex-1 max-lg:flex-col lg:gap-6">
 		{#each nav as item}
 			<li>
 				<a

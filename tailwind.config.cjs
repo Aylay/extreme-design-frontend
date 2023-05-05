@@ -26,7 +26,7 @@ module.exports = {
 				{
 					lineHeight: '3.2rem',
 					letterSpacing: '-0.03em',
-					fontWeight: '500',
+					fontWeight: '500'
 				}
 			],
 			m2: [
@@ -35,7 +35,7 @@ module.exports = {
 					lineHeight: '2.4rem',
 					letterSpacing: '-0.03em'
 				}
-			],
+			]
 		},
 		extend: {
 			animation: {
@@ -53,10 +53,6 @@ module.exports = {
 			}
 		}
 	},
-  safelist: [
-    'grid-cols-2',
-    'grid-cols-3',
-    'grid-cols-4',
-  ],
+	safelist: ['grid-cols-2', 'grid-cols-3', 'grid-cols-4'],
 	plugins: [require('tailwindcss-animated')]
 };

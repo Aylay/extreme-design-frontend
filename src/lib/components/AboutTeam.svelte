@@ -11,9 +11,9 @@
 		rootMargin: '50px'
 	};
 
-const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
-	isInView = detail.inView;
-};
+	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
+		isInView = detail.inView;
+	};
 
 	export let team: Array<any> = [];
 	let actualTeam: Array<any> = [];
@@ -22,50 +22,54 @@ const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 </script>
 
 <div class="pb-[56px] lg:pb-[96px]">
-
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-[32px] lg:gap-[48px] px-[16px] lg:px-[48px]" use:inview={options} on:inview_change={handleChange}>
-	{#each actualTeam as member}
-		<div>
-			{#if isInView}
-			<img
-				src={member.img.data.attributes.url}
-				alt={member.img.data.attributes.alternativeText
-					? member.img.data.attributes.alternativeText
-					: member.name}
-				class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-			/>
-			{/if}
-			<h4 class="mt-[16px] text-[20px] leading-none">
-				{member.name}
-			</h4>
-			<h5 class="mt-[4px] text-[20px] leading-none text-silver">
-				{member.job}
-			</h5>
-		</div>
-	{/each}
-</div>
-
-{#if memberPerPage < team.length}
-	<div class="flex lg:justify-center px-[16px] mt-[56px] lg:mt-[72px]">
-		<Hoverable let:hovering={active}>
-			<div
-				class="relative inline-block cursor-pointer pb-[16px]"
-				on:click|preventDefault={() => (memberPerPage += 6)}
-			>
-				<div class="flex items-center gap-[32px]">
-					<span class="flex-1 text-[14px] lg:text-[18px] font-bold uppercase leading-none -tracking-[0.03em] py-[2px]">
-						Afficher plus
-					</span>
-					<CtaMore />
-				</div>
-				<div
-					class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-						? 'w-[1px]'
-						: 'w-full'}"
-				/>
+	<div
+		class="grid grid-cols-1 gap-[32px] px-[16px] lg:grid-cols-3 lg:gap-[48px] lg:px-[48px]"
+		use:inview={options}
+		on:inview_change={handleChange}
+	>
+		{#each actualTeam as member}
+			<div>
+				{#if isInView}
+					<img
+						src={member.img.data.attributes.url}
+						alt={member.img.data.attributes.alternativeText
+							? member.img.data.attributes.alternativeText
+							: member.name}
+						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+					/>
+				{/if}
+				<h4 class="mt-[16px] text-[20px] leading-none">
+					{member.name}
+				</h4>
+				<h5 class="mt-[4px] text-[20px] leading-none text-silver">
+					{member.job}
+				</h5>
 			</div>
-		</Hoverable>
+		{/each}
 	</div>
-{/if}
-	
+
+	{#if memberPerPage < team.length}
+		<div class="mt-[56px] flex px-[16px] lg:mt-[72px] lg:justify-center">
+			<Hoverable let:hovering={active}>
+				<div
+					class="relative inline-block cursor-pointer pb-[16px]"
+					on:click|preventDefault={() => (memberPerPage += 6)}
+				>
+					<div class="flex items-center gap-[32px]">
+						<span
+							class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+						>
+							Afficher plus
+						</span>
+						<CtaMore />
+					</div>
+					<div
+						class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+							? 'w-[1px]'
+							: 'w-full'}"
+					/>
+				</div>
+			</Hoverable>
+		</div>
+	{/if}
 </div>

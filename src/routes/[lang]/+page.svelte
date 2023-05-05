@@ -1,6 +1,7 @@
 <script lang="ts">
 	import HpHeader from '$lib/components/HPHeader.svelte';
 	import HpProjects from '$lib/components/HPProjects.svelte';
+	import ContactUs from '$lib/components/common/ContactUs.svelte';
 	import TitleText from '$lib/components/common/TitleText.svelte';
 
 	const projects = [
@@ -129,13 +130,88 @@
 				slug: '/coucou'
 			}
 		]
-	]
+	];
 
-const ctaUniqueness = {
-	href: '#',
-	label: 'uniqueness',
-	title: 'uniqueness'
-};
+	const projectsList2: Array<any> = [
+		[
+			{
+				title: 'Paris',
+				img: {
+					data: {
+						attributes: {
+							url: '/img/cas.jpg',
+							alternativeText: 'coucou'
+						}
+					}
+				},
+				slug: '/coucou'
+			}
+		],
+		[
+			{
+				title: 'Paris',
+				img: {
+					data: {
+						attributes: {
+							url: '/img/cas.jpg',
+							alternativeText: 'coucou'
+						}
+					}
+				},
+				slug: '/coucou'
+			}
+		],
+		[
+			{
+				title: 'Paris',
+				img: {
+					data: {
+						attributes: {
+							url: '/img/cas.jpg',
+							alternativeText: 'coucou'
+						}
+					}
+				},
+				slug: '/coucou'
+			},
+			{
+				title: 'Paris',
+				img: {
+					data: {
+						attributes: {
+							url: '/img/cas.jpg',
+							alternativeText: 'coucou'
+						}
+					}
+				},
+				slug: '/coucou'
+			},
+			{
+				title: 'Paris',
+				img: {
+					data: {
+						attributes: {
+							url: '/img/cas.jpg',
+							alternativeText: 'coucou'
+						}
+					}
+				},
+				slug: '/coucou'
+			}
+		]
+	];
+
+	const ctaUniqueness = {
+		href: '#',
+		label: 'uniqueness',
+		title: 'uniqueness'
+	};
+
+	const ctaAbout = {
+		href: '/about',
+		label: 'about',
+		title: 'about'
+	};
 </script>
 
 <HpHeader {projects} />
@@ -148,3 +224,13 @@ const ctaUniqueness = {
 />
 
 <HpProjects projectsList={projectsList1} />
+
+<TitleText
+	title="Expertises"
+	text="Consumer Insight / User Lab / Innovation / Stratégie / Brand Platform / Tendance / Naming / Brand Design / Identité / Packaging / Production"
+	cta={ctaAbout}
+/>
+
+<HpProjects projectsList={projectsList2} />
+
+<ContactUs />

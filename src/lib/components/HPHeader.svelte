@@ -31,7 +31,7 @@
 </script>
 
 {#if actualProject}
-	<div class="relative flex h-screen w-full items-center pl-[48px] mb-[56px] lg:mb-[96px]">
+	<div class="relative mb-[56px] flex h-screen w-full items-center pl-[48px] lg:mb-[96px]">
 		<a href={actualProject.slug} title={actualProject.title} class="absolute inset-0 h-full w-full">
 			<div class="absolute inset-y-0 left-0 h-full w-2/5 bg-gradient-to-r from-black opacity-5" />
 			{#if actualProject.mediaDesktopMime.includes('image')}
@@ -80,7 +80,7 @@
 			{#each projects as project, i}
 				<li>
 					<p
-						class="cursor-pointer lg:text-[7.2rem] lg:font-medium leading-none -tracking-[0.03em] text-white transition-colors hover:opacity-100 {project.title ===
+						class="cursor-pointer leading-none -tracking-[0.03em] text-white transition-colors hover:opacity-100 lg:text-[7.2rem] lg:font-medium {project.title ===
 						actualProject.title
 							? 'opacity-100'
 							: 'opacity-40'}"

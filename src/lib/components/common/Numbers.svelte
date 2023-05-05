@@ -6,11 +6,15 @@
 	export let numbers: Array<aboutNumber> = [];
 </script>
 
-<div class="max-lg:grid max-lg:grid-cols-2 lg:flex justify-between gap-y-[72px] gap-x-[16px] lg:gap-[48px] px-[16px] lg:px-[48px] pb-20 lg:pb-[96px]">
+<div
+	class="justify-between gap-x-[16px] gap-y-[72px] px-[16px] pb-20 max-lg:grid max-lg:grid-cols-2 lg:flex lg:gap-[48px] lg:px-[48px] lg:pb-[96px]"
+>
 	{#each numbers as number}
 		<div class="flex flex-1 flex-col gap-[12px]">
-			<p class="font-medium text-medium">{number.text1}</p>
-			<p class="max-lg:text-m2 lg:text-[2rem] lg:leading-[32px] -tracking-[0.03em]">{number.text2}</p>
+			<p class="text-medium font-medium">{number.text1}</p>
+			<p class="-tracking-[0.03em] max-lg:text-m2 lg:text-[2rem] lg:leading-[32px]">
+				{number.text2}
+			</p>
 		</div>
 	{/each}
 </div>

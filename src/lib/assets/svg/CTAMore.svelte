@@ -2,8 +2,7 @@
 	export let newClass = 'w-[12px] h-[12px] lg:w-[16px] lg:h-[16px]';
 </script>
 
-<svg
-	class={newClass} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg class={newClass} viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
 	<g clip-path="url(#clip0_373_1536)">
 		<path
 			fill-rule="evenodd"
