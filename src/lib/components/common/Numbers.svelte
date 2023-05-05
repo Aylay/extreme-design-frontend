@@ -7,7 +7,7 @@
 </script>
 
 <div
-	class="justify-between gap-x-[16px] gap-y-[72px] px-[16px] pb-20 max-lg:grid max-lg:grid-cols-2 lg:flex lg:gap-[48px] lg:px-[48px] lg:pb-[96px]"
+	class="justify-between gap-x-[16px] gap-y-[72px] px-[16px] pb-[56px] max-lg:grid max-lg:grid-cols-2 lg:flex lg:gap-[48px] lg:px-[48px] lg:pb-[96px]"
 >
 	{#each numbers as number}
 		<div class="flex flex-1 flex-col gap-[12px]">

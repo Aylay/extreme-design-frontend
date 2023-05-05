@@ -269,7 +269,7 @@
 		<img
 			src="/img/cas.jpg"
 			alt="A REMPLIR"
-			class="mb-20 h-auto w-full lg:mb-[96px] {isInView ? 'animate-fade' : 'opacity-0'}"
+			class="mb-[56px] h-auto w-full lg:mb-[96px] {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
 </div>
