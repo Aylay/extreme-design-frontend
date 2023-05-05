@@ -32,7 +32,7 @@
 </script>
 
 <div
-	class="flex lg:items-center justify-between max-lg:px-[16px] max-lg:gap-[16px] px-[4.8rem] py-8 max-lg:mt-[108px]"
+	class="flex lg:items-center justify-between max-lg:px-[16px] max-lg:gap-[16px] px-[4.8rem] py-8"
 	use:inview={options}
 	on:inview_change={handleChange}
 >

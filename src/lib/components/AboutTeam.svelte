@@ -2,7 +2,7 @@
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 
-	import CtaMore from './svg/CTAMore.svelte';
+	import CtaMore from '../assets/svg/CTAMore.svelte';
 	import Hoverable from './utilities/Hoverable.svelte';
 
 	let isInView: boolean;
@@ -20,6 +20,8 @@ const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 	let memberPerPage = 6;
 	$: actualTeam = team.slice(0, memberPerPage);
 </script>
+
+<div class="pb-[56px] lg:pb-[96px]">
 
 <div class="grid grid-cols-1 lg:grid-cols-3 gap-[32px] lg:gap-[48px] px-[16px] lg:px-[48px]" use:inview={options} on:inview_change={handleChange}>
 	{#each actualTeam as member}
@@ -65,3 +67,5 @@ const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		</Hoverable>
 	</div>
 {/if}
+	
+</div>

@@ -9,6 +9,7 @@
 	import TitleText from '$lib/components/common/TitleText.svelte';
 	import SliderImg from '$lib/components/common/SliderImg.svelte';
 	import AboutTeam from '$lib/components/AboutTeam.svelte';
+	import ContactUs from '$lib/components/common/ContactUs.svelte';
 
 	let isInView: boolean;
 	const options: Options = {
@@ -290,3 +291,5 @@
 <h3 class="max-lg:text-m1 lg:font-medium mb-[16px] lg:mb-[48px] px-[16px] lg:px-[48px] lg:text-medium">La team</h3>
 
 <AboutTeam {team} />
+
+<ContactUs />

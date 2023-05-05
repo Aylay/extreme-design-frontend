@@ -1,14 +1,15 @@
 <script lang="ts">
 	import type Link from '$lib/interface/link';
-	import ArrowCta from '../svg/CTAArrow.svelte';
+	import ArrowCta from '../../assets/svg/CTAArrow.svelte';
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	export let cta: Link;
+	const lang = 'es'
 </script>
 
 <Hoverable let:hovering={active}>
 	<a
-		href={cta.href}
+		href={cta.href.includes('http') ? cta.href : '/' + lang + cta.href }
 		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
 		title={cta.title ? cta.title : cta.label}
 		target={cta.href.includes('http') ? '_blank' : ''}

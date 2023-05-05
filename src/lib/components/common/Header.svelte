@@ -1,5 +1,5 @@
 <script lang="ts">
-	import Logo from '../svg/Logo.svelte';
+	import Logo from '../../assets/svg/Logo.svelte';
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	import { page } from '$app/stores';

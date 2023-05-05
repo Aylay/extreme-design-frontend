@@ -53,5 +53,10 @@ module.exports = {
 			}
 		}
 	},
+  safelist: [
+    'grid-cols-2',
+    'grid-cols-3',
+    'grid-cols-4',
+  ],
 	plugins: [require('tailwindcss-animated')]
 };
