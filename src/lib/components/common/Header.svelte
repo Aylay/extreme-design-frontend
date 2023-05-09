@@ -3,8 +3,11 @@
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	import { page } from '$app/stores';
+	import { afterUpdate } from 'svelte';
 
 	let menuOpened = false;
+	let y: number;
+	let isWhite: boolean = $page.data.imageHeader;
 
 	const nav = [
 		{
@@ -44,31 +47,43 @@
 			actual: false
 		}
 	];
+
+	afterUpdate(() => {
+		console.log(isWhite)
+		if ($page.data.imageHeader) {
+			if (y > window.innerHeight) {
+				isWhite = false
+			}
+			if (isWhite === false && (y <= window.innerHeight)) {
+				isWhite = true
+			}
+		}
+	});
 </script>
 
+<svelte:window bind:scrollY={y} />
+
 <div
-	class="{$page.data.imageHeader
-		? 'fixed'
-		: 'sticky bg-white'} inset-x-0 top-0 z-30 w-full px-[1.6rem] lg:px-[4.8rem]"
+	class="{isWhite
+		? 'bg-white lg:bg-transparent'
+		: 'bg-white'} sticky lg:fixed inset-x-0 top-0 z-30 w-full transitions-colors px-[1.6rem] lg:px-[4.8rem]"
 >
 	<div class="relative flex items-center max-lg:justify-between">
 		<a class="inline-block" href="/" title="extreme design">
 			<Logo
-				newClass="max-w-[15rem] lg:max-w-[20.5rem] w-full h-auto"
-				color={$page.data.imageHeader ? '#FFFFFF' : '#222728'}
+				newClass="max-w-[20.5rem] w-full h-auto max-lg:hidden transition-colors {isWhite ? 'fill-white' : 'fill-shark'}"
+			/>
+			<Logo
+				newClass="max-w-[15rem] w-full h-auto lg:hidden fill-shark"
 			/>
 		</a>
 		<div class="py-9 lg:hidden">
-			<div class="relative h-10 w-10">
+			<div class="relative h-10 w-10" on:click={() => menuOpened = !menuOpened}>
 				<span
-					class="absolute inset-x-0 top-[6px] h-[3px] w-full {$page.data.imageHeader
-						? 'bg-white'
-						: 'bg-shark'}"
+					class="absolute inset-x-0 h-[3px] duration-300 w-full bg-shark transition-all {menuOpened ? 'top-1/2 -translate-y-1/2 rotate-45' : 'top-[6px]'}"
 				/>
 				<span
-					class="absolute inset-x-0 bottom-[6px] h-[3px] w-full {$page.data.imageHeader
-						? 'bg-white'
-						: 'bg-shark'}"
+					class="absolute inset-x-0 h-[3px] duration-300 w-full bg-shark {menuOpened ? 'top-1/2 -translate-y-1/2 -rotate-45' : 'bottom-[6px]'}"
 				/>
 			</div>
 		</div>
@@ -81,12 +96,12 @@
 				>
 					<div class="relative h-10 w-10">
 						<span
-							class="absolute inset-x-0 top-[6px] h-[3px] w-full {$page.data.imageHeader
+							class="absolute inset-x-0 top-[6px] h-[3px] w-full transition-colors {isWhite
 								? 'bg-white'
 								: 'bg-shark'}"
 						/>
 						<span
-							class="absolute inset-x-0 bottom-[6px] h-[3px] w-full {$page.data.imageHeader
+							class="absolute inset-x-0 bottom-[6px] h-[3px] w-full transition-colors {isWhite
 								? 'bg-white'
 								: 'bg-shark'}"
 						/>
@@ -103,8 +118,7 @@
 								{#each nav as item}
 									<li>
 										<a
-											class="text-[1.8rem] font-medium uppercase leading-none {$page.data
-												.imageHeader
+											class="text-[1.8rem] font-medium uppercase leading-none transition-colors {isWhite
 												? 'text-white'
 												: 'text-shark'}"
 											title={item.title ? item.title : item.label}
@@ -119,7 +133,7 @@
 						<ul class="flex gap-3">
 							{#each langs as lang}
 								<li>
-									{#if $page.data.imageHeader}
+									{#if isWhite}
 										<a
 											class="text-[1.8rem] font-medium uppercase leading-none text-white {lang.actual
 												? 'text-opacity-100 underline'
@@ -148,4 +162,42 @@
 			</Hoverable>
 		</div>
 	</div>
+	{#if menuOpened}
+		<div class="animate-fade-down absolute w-full top-full bg-white inset-x-0">
+			<div class="px-[16px] pt-[56px] pb-[16px]">
+				<nav>
+					<ul class="flex flex-col gap-[24px]">
+						{#each nav as item}
+							<li>
+								<a
+									class="text-[1.8rem] font-medium uppercase -tracking-[0.03em] leading-none text-shark"
+									title={item.title ? item.title : item.label}
+									href={item.slug}
+								>
+									{item.label}
+								</a>
+							</li>
+						{/each}
+					</ul>
+				</nav>
+				<ul class="mt-[56px] flex gap-[24px]">
+					{#each langs as lang}
+						<li>
+							<a
+								class="text-[1.8rem] font-medium uppercase leading-none {lang.actual
+									? 'text-shark underline'
+									: 'text-silver'}"
+								title={lang.title ? lang.title : lang.label}
+								href={lang.locale}
+							>
+								{lang.label}
+							</a>
+						</li>
+					{/each}
+				</ul>
+			</div>
+		</div>
+	{/if}
 </div>
+
+

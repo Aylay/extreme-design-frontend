@@ -3,11 +3,19 @@
 
 	const cta = {
 		href: '/contact-us',
-		title: 'Contactez nous',
-		label: 'Contactez nous'
+		title: 'Contactez-nous',
+		label: 'Contactez-nous'
 	};
+
+	export let right: boolean = false;
 </script>
 
-<div class="px-[16px] pb-[56px] lg:px-[48px] lg:pb-[96px]">
-	<Cta {cta} />
+<div class="px-[16px] pb-[56px] lg:px-[48px] lg:pb-[96px] {right ? 'flex justify-end' : ''}">
+	{#if right}
+	<div class="w-[calc(50%-16px)] lg:w-[calc(50%-24px)] lg:pr-[calc(100%/12+48px)]">
+		<Cta {cta} />
+	</div>
+	{:else}
+		<Cta {cta} />
+		{/if}
 </div>

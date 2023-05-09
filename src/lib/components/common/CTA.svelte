@@ -4,12 +4,11 @@
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	export let cta: Link;
-	const lang = 'es';
 </script>
 
 <Hoverable let:hovering={active}>
 	<a
-		href={cta.href.includes('http') ? cta.href : '/' + lang + cta.href}
+		href={cta.href.includes('http') ? cta.href : cta.href}
 		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
 		title={cta.title ? cta.title : cta.label}
 		target={cta.href.includes('http') ? '_blank' : ''}
