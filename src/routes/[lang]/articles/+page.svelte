@@ -1,10 +1,10 @@
 <script lang="ts">
-	import OneProject from '$lib/components/OneProject.svelte';
+	import OneArticle from '$lib/components/OneArticle.svelte';
 	import ContactUs from '$lib/components/common/ContactUs.svelte';
 
-	const projectsList: Array<any> = [
+	const newsList: Array<any> = [
 		{
-			title: 'Paris',
+			title: 'Sophie Grenier de Warrens dirige le pôle conseil d’Extreme !',
 			img: {
 				data: {
 					attributes: {
@@ -69,8 +69,8 @@
 <div
 	class="mt-[96px] grid grid-cols-1 gap-[56px] px-[16px] pb-[56px] lg:mt-[112px] lg:grid-cols-2 lg:gap-x-[48px] lg:gap-y-[96px] lg:px-[48px] lg:pb-[96px]"
 >
-	{#each projectsList as project}
-		<OneProject {project} />
+	{#each newsList as article}
+		<OneArticle {article} />
 	{/each}
 </div>
 

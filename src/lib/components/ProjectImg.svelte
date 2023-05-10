@@ -14,16 +14,13 @@
 
 	export let img: any = '';
 </script>
-<div
-use:inview={options}
-on:inview_change={handleChange}>
-{#if isInView}
-	<img
-		src={img.data.attributes.url}
-		alt={img.data.attributes.alternativeText
-			? img.data.attributes.alternativeText
-			: ''}
-		class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-	/>
-{/if}
+
+<div use:inview={options} on:inview_change={handleChange}>
+	{#if isInView}
+		<img
+			src={img.data.attributes.url}
+			alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : ''}
+			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+		/>
+	{/if}
 </div>

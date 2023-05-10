@@ -20,9 +20,9 @@
 			mediaMobile: {
 				data: {
 					attributes: {
-						url: '',
+						url: '/img/showreel-desktop.mp4',
 						alternativeText: '',
-						mime: ''
+						mime: 'videoqdsfqs'
 					}
 				}
 			}
@@ -42,9 +42,9 @@
 			mediaMobile: {
 				data: {
 					attributes: {
-						url: '',
+						url: '/img/cas.jpg',
 						alternativeText: '',
-						mime: ''
+						mime: 'imagesdqs'
 					}
 				}
 			}

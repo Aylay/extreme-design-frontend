@@ -12,27 +12,26 @@
 		isInView = detail.inView;
 	};
 
-	export let project: any = '';
+	export let article: any = '';
 </script>
 
 <a
-	href={'/articles' + project.slug}
-	title={project.title}
-	class="flex flex-col gap-[8px]"
-	target={project.slug.includes('http') ? '_blank' : ''}
+	href={'/projets' + article.slug}
+	title={article.title}
+	class="flex flex-col gap-[16px]"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
-	<h3 class="text-[2rem] font-medium -tracking-[0.03em]">
-		{project.title}
-	</h3>
 	{#if isInView}
 		<img
-			src={project.img.data.attributes.url}
-			alt={project.img.data.attributes.alternativeText
-				? project.img.data.attributes.alternativeText
-				: project.title}
+			src={article.img.data.attributes.url}
+			alt={article.img.data.attributes.alternativeText
+				? article.img.data.attributes.alternativeText
+				: article.title}
 			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
+	<h3 class="text-[18px] font-medium leading-[26px] lg:text-[24px] lg:leading-[32px]">
+		{article.title}
+	</h3>
 </a>
