@@ -4,7 +4,7 @@
 	export let imgsList: Array<any> = [];
 </script>
 
-<div class="flex flex-col gap-[16px] px-[16px] pb-[16px] lg:gap-[48px] lg:px-[48px] lg:pb-[48px]">
+<div class="flex flex-col gap-[16px] px-[16px] pb-[56px] lg:gap-[48px] lg:px-[48px] lg:pb-[96px]">
 	{#each imgsList as imgs}
 		<div class="grid grid-cols-1 gap-[16px] lg:gap-[48px] lg:grid-cols-{imgs.length}">
 			{#each imgs as img}

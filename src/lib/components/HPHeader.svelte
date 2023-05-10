@@ -2,6 +2,7 @@
 	import { onMount } from 'svelte';
 
 	import type Project from '$lib/interface/project';
+	import CtaArrow from '$lib/assets/svg/CTAArrow.svelte';
 
 	let actualProject: Project;
 
@@ -87,11 +88,11 @@
 				</video>
 			{/if}
 		</a>
-		<ul class="relative z-20 flex flex-col lg:gap-4 max-lg:px-[16px]  max-lg:py-[32px]">
+		<ul class="relative z-20 flex flex-col lg:gap-4 max-lg:px-[16px] max-lg:py-[32px]">
 			{#each projects as project, i}
-				<li>
+				<li class="max-lg:relative max-lg:pr-[32px]">
 					<p
-						class="cursor-pointer leading-none -tracking-[0.03em] lg:text-white transition-colors hover:opacity-100 text-[4.8rem] font-bold lg:text-[7.2rem] lg:font-medium {project.title ===
+						class="cursor-pointer max-lg:inline-block leading-none -tracking-[0.03em] lg:text-white transition-colors hover:opacity-100 text-[4.8rem] font-bold lg:text-[7.2rem] lg:font-medium {project.title ===
 						actualProject.title
 							? 'text-shark lg:opacity-100'
 							: 'text-silver lg:opacity-40'}"
@@ -99,6 +100,11 @@
 					>
 						{project.title}
 					</p>
+					{#if project.title === actualProject.title }
+					<a class="absolute z-10 h-full w-full inset-0 flex justify-end items-center lg:hidden" href={actualProject.slug} title={actualProject.title}>
+						<CtaArrow newClass="w-[16px] h-[16px]" />
+					</a>
+					{/if}
 				</li>
 			{/each}
 		</ul>

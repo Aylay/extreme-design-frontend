@@ -18,18 +18,23 @@
 	export let name = '';
 </script>
 
-<div class="flex flex-col max-lg:pb-[48px] lg:h-screen">
-	<div class="w-full lg:h-[calc(100%-130px)]" use:inview={options} on:inview_change={handleChange}>
+<div class="flex flex-col h-[calc(100vh-70px)] lg:h-screen">
+	<div class="w-full max-lg:flex-1 h-full lg:h-[calc(100%-130px)]" use:inview={options} on:inview_change={handleChange}>
 		{#if isInView}
 			<img
 				src={img.data.attributes.url}
 				alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : name}
-				class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'}"
+				class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} max-lg:hidden"
+			/>
+			<img
+				src={mobileImg.data.attributes.url}
+				alt={mobileImg.data.attributes.alternativeText ? mobileImg.data.attributes.alternativeText : name}
+				class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} lg:hidden"
 			/>
 		{/if}
 	</div>
 	<div
-		class="flex flex-1 gap-[16px] px-[16px] max-lg:flex-col max-lg:pt-[32px] lg:items-center lg:gap-[48px] lg:px-[48px]"
+		class="flex lg:flex-1 gap-[16px] px-[16px] max-lg:pb-[46px] max-lg:flex-col max-lg:pt-[32px] lg:items-center lg:gap-[48px] lg:px-[48px]"
 	>
 		<h1 class="flex-1 text-[64px] font-medium leading-none -tracking-[0.03em]">
 			{name}

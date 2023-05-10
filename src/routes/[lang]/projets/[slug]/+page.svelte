@@ -90,45 +90,6 @@
 		]
 	];
 
-	const imgList2: Array<any> = [
-		[
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		],
-		[
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		]
-	];
-
 	const projectsList: Array<any> = [
 		{
 			title: 'Paris',
@@ -166,14 +127,12 @@
 
 <ProjectImgs imgsList={imgList1} />
 
-<ProjectImgs imgsList={imgList2} />
-
 <div class="h-[32px] lg:h-[64px]" />
 
 <ContactUs />
 
 <h3
-	class="px-[16px] pb-[40px] text-m1 font-medium leading-none -tracking-[0.03em] lg:px-[48px] lg:text-[40px]"
+	class="px-[16px] pb-[32px] text-m1 font-medium leading-none -tracking-[0.03em] lg:px-[48px] lg:text-[40px]"
 >
 	Other projects
 </h3>

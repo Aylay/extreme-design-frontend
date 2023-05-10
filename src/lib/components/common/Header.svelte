@@ -11,7 +11,7 @@
 
 	const nav = [
 		{
-			slug: '#',
+			slug: '/fr/projets',
 			label: 'work',
 			title: 'the work'
 		},
