@@ -49,7 +49,6 @@
 	];
 
 	afterUpdate(() => {
-		console.log(isWhite);
 		if ($page.data.imageHeader) {
 			if (y > window.innerHeight) {
 				isWhite = false;

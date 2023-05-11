@@ -29,3 +29,22 @@
 		@apply bg-white font-base text-[10px] text-shark;
 	}
 }
+
+@layer components {
+	.content-text h3 {
+		@apply font-medium text-[18px] -tracking-[0.03em];
+	}
+	.content-text h3 + * {
+		@apply mt-[24px];
+	}
+	.content-text * + h3 {
+		@apply mt-[48px];
+	}
+	.content-text p,
+	.content-text li {
+		@apply text-[18px] -tracking-[0.03em];
+	}
+	.content-text a {
+		@apply underline;
+	}
+}
