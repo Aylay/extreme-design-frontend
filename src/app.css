@@ -31,20 +31,27 @@
 }
 
 @layer components {
-	.content-text h3 {
+	.content-legal h3 {
 		@apply text-[18px] font-medium -tracking-[0.03em];
 	}
-	.content-text h3 + * {
+	.content-legal h3 + * {
 		@apply mt-[24px];
 	}
-	.content-text * + h3 {
+	.content-legal * + h3 {
 		@apply mt-[48px];
 	}
-	.content-text p,
-	.content-text li {
+	.content-legal p,
+	.content-legal li {
 		@apply text-[18px] -tracking-[0.03em];
 	}
-	.content-text a {
+	.content-legal a {
 		@apply underline;
+	}
+
+	.content-text p {
+		@apply text-[18px] lg:text-[24px] leading-[24px] lg:leading-[36px] -tracking-[0.03em];
+	}
+	.content-text p strong {
+		@apply font-medium;
 	}
 }

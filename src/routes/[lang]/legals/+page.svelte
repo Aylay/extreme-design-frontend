@@ -119,7 +119,7 @@
 				>
 					{text.title}
 				</h2>
-				<div class="content-text">
+				<div class="content-legal">
 					<SvelteMarkdown source={text.content} options={mdOptions} />
 				</div>
 			</div>
