@@ -94,7 +94,7 @@
 			{#each projects as project, i}
 				<li class="max-lg:relative max-lg:pr-[32px]">
 					<p
-						class="cursor-pointer text-[4.8rem] font-bold leading-none -tracking-[0.03em] transition-colors hover:opacity-100 max-lg:inline-block lg:text-[7.2rem] lg:font-medium lg:text-white {project.title ===
+						class="cursor-pointer text-[4.8rem] font-bold leading-none -tracking-[0.03em] transition-colors hover:opacity-100 lg:inline-block lg:text-[7.2rem] lg:font-medium lg:text-white {project.title ===
 						actualProject.title
 							? 'text-shark lg:opacity-100'
 							: 'text-silver lg:opacity-40'}"
