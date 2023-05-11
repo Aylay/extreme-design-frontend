@@ -73,7 +73,7 @@
 
 	function openForm(city: any) {
 		contactFormCity = city;
-    document.body.classList.add('overflow-hidden')
+		document.body.classList.add('overflow-hidden');
 		formIsOpened = true;
 	}
 </script>

@@ -49,7 +49,7 @@
 	}
 
 	.content-text p {
-		@apply text-[18px] lg:text-[24px] leading-[24px] lg:leading-[36px] -tracking-[0.03em];
+		@apply text-[18px] leading-[24px] -tracking-[0.03em] lg:text-[24px] lg:leading-[36px];
 	}
 	.content-text p strong {
 		@apply font-medium;

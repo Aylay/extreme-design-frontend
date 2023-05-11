@@ -31,10 +31,10 @@
 
 	let formSent = false;
 
-  function closeForm() {
-    document.body.classList.remove('overflow-hidden')
-    isOpened = false
-  }
+	function closeForm() {
+		document.body.classList.remove('overflow-hidden');
+		isOpened = false;
+	}
 
 	function addProspect() {
 		checkFormError();
@@ -80,99 +80,110 @@
 	}
 </script>
 
-<div class="fixed inset-0 flex justify-end h-screen z-50 w-full animate-fade bg-white bg-opacity-75">
-  <div
-    class="flex items-center justify-center lg:border-l border-solid border-shark border-opacity-[0.15] bg-white max-lg:px-[16px] pl-[48px] w-full lg:w-[calc(50%+24px)] lg:pr-[calc(100%/12+48px)]"
-  >
-    <div
-      class="absolute right-[16px] lg:right-[24px] top-[24px] flex cursor-pointer items-center gap-[24px]"
-      on:click|preventDefault={closeForm}
-    >
-      <p class="pt-[3px] text-[14px] font-bold uppercase -tracking-[0.03em]">Fermer</p>
-      <Close />
-    </div>
-    <div class="w-full">
-      {#if !formSent}
-        <h3 class="mb-[56px] lg:mb-[120px] text-m1 font-normal lg:text-medium">Contacter <span class="max-lg:block">{city.name}</span></h3>
-        <form>
-          <div class="flex flex-col gap-[24px] lg:gap-[32px]">
-            <SpecificInput
-              error={subjectError}
-              content="Sujet"
-              bind:value={subject}
-              required={true}
-            />
-            <div class="flex max-lg:flex-col justify-between gap-[24px] lg:gap-[48px]">
-              <SpecificInput content="Entreprise" bind:value={company} />
-              <SpecificInput error={emailError} content="E-mail" bind:value={email} required={true} />
-            </div>
-            <div class="flex max-lg:flex-col justify-between gap-[24px] lg:gap-[48px]">
-              <SpecificInput
-                error={firstNameError}
-                content="Prénom"
-                bind:value={firstName}
-                required={true}
-              />
-              <SpecificInput
-                error={lastNameError}
-                content="Nom"
-                bind:value={lastName}
-                required={true}
-              />
-            </div>
-            <SpecificInput content="Message" bind:value={message} />
-          </div>
-  
-          <div class="mt-[96px] lg:mt-[80px] flex">
-            <Hoverable let:hovering={active}>
-              <button
-                class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
-                on:click|preventDefault={addProspect}
-              >
-                <div class="flex items-center gap-[24px] lg:gap-[32px]">
-                  <span
-                    class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
-                  >
-                    Envoyer
-                  </span>
-                  <ArrowCta />
-                </div>
-                <div
-                  class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-                    ? 'w-[1px]'
-                    : 'w-full'}"
-                />
-              </button>
-            </Hoverable>
-          </div>
-        </form>
-      {:else}
-        <div class="flex flex-col gap-[56px]">
-          <h3 class="text-m1 font-normal lg:text-medium">Message <span class="max-lg:block">envoyé</span></h3>
-          <div class="flex">
-            <Hoverable let:hovering={active}>
-              <div
-                class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
-                on:click|preventDefault={closeForm}
-              >
-                <div class="flex items-center gap-[24px] lg:gap-[32px]">
-                  <span
-                    class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
-                  >
-                    Revenir sur le site
-                  </span>
-                  <ArrowCta />
-                </div>
-                <div
-                  class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-                    ? 'w-[1px]'
-                    : 'w-full'}"
-                />
-              </div>
-            </Hoverable>
-          </div>
-        </div>
-      {/if}
-    </div>
-  </div>
+<div
+	class="fixed inset-0 z-50 flex h-screen w-full animate-fade justify-end bg-white bg-opacity-75"
+>
+	<div
+		class="flex w-full items-center justify-center border-solid border-shark border-opacity-[0.15] bg-white pl-[48px] max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[calc(100%/12+48px)]"
+	>
+		<div
+			class="absolute right-[16px] top-[24px] flex cursor-pointer items-center gap-[24px] lg:right-[24px]"
+			on:click|preventDefault={closeForm}
+		>
+			<p class="pt-[3px] text-[14px] font-bold uppercase -tracking-[0.03em]">Fermer</p>
+			<Close />
+		</div>
+		<div class="w-full">
+			{#if !formSent}
+				<h3 class="mb-[56px] text-m1 font-normal lg:mb-[120px] lg:text-medium">
+					Contacter <span class="max-lg:block">{city.name}</span>
+				</h3>
+				<form>
+					<div class="flex flex-col gap-[24px] lg:gap-[32px]">
+						<SpecificInput
+							error={subjectError}
+							content="Sujet"
+							bind:value={subject}
+							required={true}
+						/>
+						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
+							<SpecificInput content="Entreprise" bind:value={company} />
+							<SpecificInput
+								error={emailError}
+								content="E-mail"
+								bind:value={email}
+								required={true}
+							/>
+						</div>
+						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
+							<SpecificInput
+								error={firstNameError}
+								content="Prénom"
+								bind:value={firstName}
+								required={true}
+							/>
+							<SpecificInput
+								error={lastNameError}
+								content="Nom"
+								bind:value={lastName}
+								required={true}
+							/>
+						</div>
+						<SpecificInput content="Message" bind:value={message} />
+					</div>
+
+					<div class="mt-[96px] flex lg:mt-[80px]">
+						<Hoverable let:hovering={active}>
+							<button
+								class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
+								on:click|preventDefault={addProspect}
+							>
+								<div class="flex items-center gap-[24px] lg:gap-[32px]">
+									<span
+										class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+									>
+										Envoyer
+									</span>
+									<ArrowCta />
+								</div>
+								<div
+									class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+										? 'w-[1px]'
+										: 'w-full'}"
+								/>
+							</button>
+						</Hoverable>
+					</div>
+				</form>
+			{:else}
+				<div class="flex flex-col gap-[56px]">
+					<h3 class="text-m1 font-normal lg:text-medium">
+						Message <span class="max-lg:block">envoyé</span>
+					</h3>
+					<div class="flex">
+						<Hoverable let:hovering={active}>
+							<div
+								class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
+								on:click|preventDefault={closeForm}
+							>
+								<div class="flex items-center gap-[24px] lg:gap-[32px]">
+									<span
+										class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+									>
+										Revenir sur le site
+									</span>
+									<ArrowCta />
+								</div>
+								<div
+									class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+										? 'w-[1px]'
+										: 'w-full'}"
+								/>
+							</div>
+						</Hoverable>
+					</div>
+				</div>
+			{/if}
+		</div>
+	</div>
 </div>
