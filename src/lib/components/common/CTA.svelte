@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type Link from '$lib/interface/link';
-	import ArrowCta from '../../assets/svg/CTAArrow.svelte';
+	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	export let cta: Link;
