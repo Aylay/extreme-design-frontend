@@ -11,10 +11,11 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	export let mobileImg: any = '';
 	export let img: any = '';
-	export let tags: Array<string> = [];
+	export let tags: Array<any> = [];
 	export let name = '';
 </script>
 
@@ -26,12 +27,12 @@
 	>
 		{#if isInView}
 			<img
-				src={img.data.attributes.url}
+				src={strapiURL + img.data.attributes.url}
 				alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : name}
 				class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} max-lg:hidden"
 			/>
 			<img
-				src={mobileImg.data.attributes.url}
+				src={strapiURL + mobileImg.data.attributes.url}
 				alt={mobileImg.data.attributes.alternativeText
 					? mobileImg.data.attributes.alternativeText
 					: name}
@@ -48,7 +49,7 @@
 		<ul class="flex flex-1 gap-[36px]">
 			{#each tags as tag}
 				<li class="text-[16px] font-bold uppercase leading-normal">
-					{tag}
+					{tag.text}
 				</li>
 			{/each}
 		</ul>

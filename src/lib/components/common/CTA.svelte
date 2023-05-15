@@ -1,17 +1,24 @@
 <script lang="ts">
+	import { page } from '$app/stores';
+	
 	import type Link from '$lib/interface/link';
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 	import Hoverable from '../utilities/Hoverable.svelte';
 
 	export let cta: Link;
+	let actualLang: any;
+
+$: {
+	actualLang = $page.data.actualLang;
+}
 </script>
 
 <Hoverable let:hovering={active}>
 	<a
-		href={cta.href.includes('http') ? cta.href : cta.href}
+		href={cta.slug.includes('http') ? cta.slug : actualLang + cta.slug}
 		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
 		title={cta.title ? cta.title : cta.label}
-		target={cta.href.includes('http') ? '_blank' : ''}
+		target={cta.slug.includes('http') ? '_blank' : ''}
 	>
 		<div class="flex items-center gap-[24px] lg:gap-[32px]">
 			<span

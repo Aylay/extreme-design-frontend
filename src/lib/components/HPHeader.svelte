@@ -1,15 +1,23 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
+	import { onMount, afterUpdate } from 'svelte';
+	import { navigating } from '$app/stores';
 
 	import type Project from '$lib/interface/project';
 	import CtaArrow from '$lib/assets/svg/CTAArrow.svelte';
 
 	let actualProject: Project;
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	export let projects: Array<any> = [];
 
 	onMount(() => {
-		setProject(projects[0], 0);
+			setProject(projects[0], 0);
+	});
+
+	afterUpdate(() => {
+		if ($navigating) {
+			setProject(projects[0], 0);
+		}
 	});
 
 	function setProject(project: any, i: number) {
@@ -45,14 +53,14 @@
 			/>
 			{#if actualProject.mediaDesktopMime.includes('image')}
 				<img
-					src={actualProject.mediaDesktopSrc}
+					src={strapiURL + actualProject.mediaDesktopSrc}
 					alt={actualProject.mediaDesktopAlt}
 					class="h-full w-full object-cover max-lg:hidden"
 				/>
 			{/if}
 			{#if actualProject.mediaMobileMime.includes('image')}
 				<img
-					src={actualProject.mediaMobileSrc}
+					src={strapiURL + actualProject.mediaMobileSrc}
 					alt={actualProject.mediaMobileAlt}
 					class="h-full w-full object-cover lg:hidden"
 				/>
@@ -69,7 +77,7 @@
 					controls={false}
 				>
 					<source
-						src={actualProject.mediaDesktopSrc}
+						src={strapiURL + actualProject.mediaDesktopSrc}
 						type="video/mp4"
 						media="(min-width: 1024px)"
 					/>
@@ -86,7 +94,7 @@
 					autoplay
 					controls={false}
 				>
-					<source src={actualProject.mediaMobileSrc} type="video/mp4" media="(max-width: 1023px)" />
+					<source src={strapiURL + actualProject.mediaMobileSrc} type="video/mp4" media="(max-width: 1023px)" />
 				</video>
 			{/if}
 		</a>

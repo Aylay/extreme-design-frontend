@@ -3,234 +3,35 @@
 	import HpProjects from '$lib/components/HPProjects.svelte';
 	import ContactUs from '$lib/components/common/ContactUs.svelte';
 	import TitleText from '$lib/components/common/TitleText.svelte';
+	import { page } from '$app/stores';
 
-	const projects = [
-		{
-			title: 'Schweppes',
-			slug: '#',
-			mediaDesktop: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'ccc',
-						mime: 'imagesdqs'
-					}
-				}
-			},
-			mediaMobile: {
-				data: {
-					attributes: {
-						url: '/img/showreel-desktop.mp4',
-						alternativeText: '',
-						mime: 'videoqdsfqs'
-					}
-				}
-			}
-		},
-		{
-			title: 'Monoprix',
-			slug: '#',
-			mediaDesktop: {
-				data: {
-					attributes: {
-						url: '/img/showreel-desktop.mp4',
-						alternativeText: 'ccc',
-						mime: 'videoqdsfqs'
-					}
-				}
-			},
-			mediaMobile: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: '',
-						mime: 'imagesdqs'
-					}
-				}
-			}
-		}
-	];
+	let content : any;
 
-	const projectsList1: Array<any> = [
-		[
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			},
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			}
-		],
-		[
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			}
-		],
-		[
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			},
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			},
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			}
-		]
-	];
-
-	const projectsList2: Array<any> = [
-		[
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			}
-		],
-		[
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			}
-		],
-		[
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			},
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			},
-			{
-				title: 'Paris',
-				img: {
-					data: {
-						attributes: {
-							url: '/img/cas.jpg',
-							alternativeText: 'coucou'
-						}
-					}
-				},
-				slug: '/coucou'
-			}
-		]
-	];
-
-	const ctaUniqueness = {
-		href: '#',
-		label: 'uniqueness',
-		title: 'uniqueness'
-	};
-
-	const ctaAbout = {
-		href: '/about',
-		label: 'about',
-		title: 'about'
-	};
+	$: {
+		content = $page.data.content
+	}
 </script>
+	
+<HpHeader projects={content.hpHeader} />
 
-<HpHeader {projects} />
-
+{#if content.block1}
 <TitleText
-	title="Nous révélons les<br />marques"
-	text="Nous croyons au design pour révéler ce que les marques ont de meilleur.<br />	Nos équipes sont composées sur-mesure, nos stratégies visent l’avenir.
-	Notre mission est de vous rendre irrésistible !"
-	cta={ctaUniqueness}
+	content={content.block1}
 />
+{/if}
 
-<HpProjects projectsList={projectsList1} />
+{#if content.projectsList1.length > 0}
+<HpProjects projectsList={content.projectsList1} />
+{/if}
 
+{#if content.block2}
 <TitleText
-	title="Expertises"
-	text="Consumer Insight / User Lab / Innovation / Stratégie / Brand Platform / Tendance / Naming / Brand Design / Identité / Packaging / Production"
-	cta={ctaAbout}
+	content={content.block2}
 />
+{/if}
 
-<HpProjects projectsList={projectsList2} />
+{#if content.projectsList2.length > 0}
+<HpProjects projectsList={content.projectsList2} />
+{/if}
 
 <ContactUs />

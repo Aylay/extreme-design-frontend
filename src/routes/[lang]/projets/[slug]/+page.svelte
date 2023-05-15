@@ -4,143 +4,52 @@
 	import ContactUs from '$lib/components/common/ContactUs.svelte';
 	import IntroH2 from '$lib/components/common/IntroH2.svelte';
 	import OneProject from '$lib/components/OneProject.svelte';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
 
-	const img = {
-		data: {
-			attributes: {
-				url: '/img/cas.jpg',
-				alternativeText: 'coucou'
-			}
+let content : any;
+
+$: {
+	content = $page.data.content
+}
+
+	onMount(() => {
+		if ($page.data.projectRedirect) {
+			goto('/' + $page.data.actualLang);
 		}
-	};
-
-	const mobileImg = {
-		data: {
-			attributes: {
-				url: '/img/cas.jpg',
-				alternativeText: 'coucou'
-			}
-		}
-	};
-
-	const tags = ['identite', 'print', 'design'];
-
-	const name = 'Hedone';
-
-	const introCta = {
-		href: '/contact-us',
-		title: 'Contactez-nous',
-		label: 'Contactez-nous'
-	};
-
-	const imgList1: Array<any> = [
-		[
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		],
-		[
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		],
-		[
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			{
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		]
-	];
-
-	const projectsList: Array<any> = [
-		{
-			title: 'Paris',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			slug: '/coucou'
-		},
-		{
-			title: 'Paris',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			slug: '/coucou'
-		}
-	];
+	});
 </script>
 
-<ProjectHeader {img} {tags} {name} {mobileImg} />
+<ProjectHeader img={content.mainImgDesktop} tags={content.tags} name={content.name} mobileImg={content.mainImgMobile} />
 
+{#if content.intro || content.cta1}
 <IntroH2
-	text="Nous avons créé Hédone, le 1er vieux rhum bio français pour révéler la rencontre d’un produit d’origine locale, magnifié par le savoir-faire de Cognac."
-	cta={introCta}
+text={content.intro}
+cta={content.cta1}
 />
+{/if}
 
-<ProjectImgs imgsList={imgList1} />
+{#if content.imgsList.length > 0}
+<ProjectImgs imgsList={content.imgsList} />
+{/if}
 
 <div class="h-[32px] lg:h-[64px]" />
-
 <ContactUs />
 
+
+{#if content.otherProjectsTitle || content.otherProjectsList.length > 0}
 <h3
 	class="px-[16px] pb-[32px] text-m1 font-medium leading-none -tracking-[0.03em] lg:px-[48px] lg:text-[40px]"
 >
-	Other projects
+	{content.otherProjectsTitle}
 </h3>
 
 <div
 	class="grid grid-cols-1 gap-[32px] px-[16px] pb-[56px] lg:grid-cols-2 lg:gap-[48px] lg:px-[48px] lg:pb-[96px]"
 >
-	{#each projectsList as project}
+	{#each content.otherProjectsList as project}
 		<OneProject {project} />
 	{/each}
 </div>
+{/if}

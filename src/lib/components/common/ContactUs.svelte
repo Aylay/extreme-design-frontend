@@ -1,11 +1,13 @@
 <script lang="ts">
-	import Cta from './CTA.svelte';
+	import { page } from '$app/stores';
 
-	const cta = {
-		href: '/contact-us',
-		title: 'Contactez-nous',
-		label: 'Contactez-nous'
-	};
+	import Cta from './CTA.svelte';
+	
+	let cta: any;
+
+$: {
+	cta = $page.data.layoutContent.contactUs;
+}
 
 	export let right = false;
 </script>

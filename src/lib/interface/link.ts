@@ -1,5 +1,5 @@
 export default interface Link {
-	href: string;
+	slug: string;
 	title: string;
 	label: string;
 }

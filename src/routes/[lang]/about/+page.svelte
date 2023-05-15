@@ -282,11 +282,11 @@
 
 <Numbers numbers={aboutNumbers} />
 
-<TitleText
+<!-- <TitleText
 	title="Expertises"
 	text="Consumer Insight/Research/User Lab/Innovation/Stratégie/Brand Platform/Trends/Copy Writing/Story Telling/Naming/Consumer branding/Corporate branding/Brand Design/Identity/Packaging/Film & Motion/Digital/Structural design/Production"
 	cta={theCta}
-/>
+/> -->
 
 <AboutImgLinks {cities} />
 

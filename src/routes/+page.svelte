@@ -10,10 +10,10 @@
 		if (userLang) {
 			const userLangFirstTwo = userLang.substring(0, 2);
 
-			if (userLangFirstTwo === 'fr' || userLangFirstTwo === 'es') {
+			if (userLangFirstTwo === 'en' || userLangFirstTwo === 'pt') {
 				goto('/' + userLangFirstTwo);
 			} else {
-				goto('/en');
+				goto('/fr');
 			}
 		}
 	});

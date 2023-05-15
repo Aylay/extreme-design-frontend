@@ -13,7 +13,6 @@
 	let isActiveLegalsMobile: number;
 
 	afterUpdate(() => {
-		console.log(window.innerWidth);
 		for (const text of texts) {
 			const legalsDiv = document.getElementById(
 				text.id + '-' + text.title.split(' ')[0].toLowerCase()

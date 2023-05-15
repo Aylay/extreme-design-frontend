@@ -1,6 +1,10 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
+
+export let project: any = '';
+export let projectsLength = 0;
 
 	let isInView: boolean;
 	const options: Options = {
@@ -11,13 +15,16 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
+	let actualLang: any;
 
-	export let project: any = '';
-	export let projectsLength = 0;
+$: {
+	actualLang = $page.data.actualLang;
+}
 </script>
 
 <a
-	href={project.slug}
+	href={project.slug.includes('http') ? project.slug : actualLang + project.slug}
 	title={project.title}
 	class="flex flex-col gap-[16px]"
 	use:inview={options}
@@ -25,7 +32,7 @@
 >
 	{#if isInView}
 		<img
-			src={project.img.data.attributes.url}
+			src={strapiURL + project.img.data.attributes.url}
 			alt={project.img.data.attributes.alternativeText
 				? project.img.data.attributes.alternativeText
 				: project.title}
