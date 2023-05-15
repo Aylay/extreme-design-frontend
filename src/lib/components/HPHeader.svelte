@@ -11,7 +11,7 @@
 	export let projects: Array<any> = [];
 
 	onMount(() => {
-			setProject(projects[0], 0);
+		setProject(projects[0], 0);
 	});
 
 	afterUpdate(() => {
@@ -94,7 +94,11 @@
 					autoplay
 					controls={false}
 				>
-					<source src={strapiURL + actualProject.mediaMobileSrc} type="video/mp4" media="(max-width: 1023px)" />
+					<source
+						src={strapiURL + actualProject.mediaMobileSrc}
+						type="video/mp4"
+						media="(max-width: 1023px)"
+					/>
 				</video>
 			{/if}
 		</a>

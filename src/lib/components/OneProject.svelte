@@ -15,16 +15,18 @@
 	};
 	let actualLang: any;
 
-$: {
-	actualLang = $page.data.actualLang;
-}
+	$: {
+		actualLang = $page.data.actualLang;
+	}
 
 	export let project: any = '';
-	console.log(project)
+	export let projectsPage = false;
 </script>
 
 <a
-	href={'/' + actualLang + project.slug}
+	href={projectsPage
+		? '/' + actualLang + '/projets/' + project.slug
+		: '/' + actualLang + project.slug}
 	title={project.name}
 	class="flex flex-col gap-[8px]"
 	target={project.slug.includes('http') ? '_blank' : ''}

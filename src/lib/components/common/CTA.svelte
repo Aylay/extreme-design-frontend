@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	
+
 	import type Link from '$lib/interface/link';
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 	import Hoverable from '../utilities/Hoverable.svelte';
@@ -8,9 +8,9 @@
 	export let cta: Link;
 	let actualLang: any;
 
-$: {
-	actualLang = $page.data.actualLang;
-}
+	$: {
+		actualLang = $page.data.actualLang;
+	}
 </script>
 
 <Hoverable let:hovering={active}>

@@ -19,6 +19,7 @@
 		actualLang = $page.data.actualLang;
 		allLangsContent = $page.data.allLangsContent;
 		restOfUrl = $page.data.restOfUrl;
+		isWhite = $page.data.imageHeader;
 	}
 
 	afterUpdate(() => {

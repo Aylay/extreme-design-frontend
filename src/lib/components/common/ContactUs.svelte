@@ -2,12 +2,12 @@
 	import { page } from '$app/stores';
 
 	import Cta from './CTA.svelte';
-	
+
 	let cta: any;
 
-$: {
-	cta = $page.data.layoutContent.contactUs;
-}
+	$: {
+		cta = $page.data.layoutContent.contactUs;
+	}
 
 	export let right = false;
 </script>

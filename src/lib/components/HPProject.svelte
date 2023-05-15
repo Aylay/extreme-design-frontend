@@ -3,8 +3,8 @@
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 
-export let project: any = '';
-export let projectsLength = 0;
+	export let project: any = '';
+	export let projectsLength = 0;
 
 	let isInView: boolean;
 	const options: Options = {
@@ -18,14 +18,15 @@ export let projectsLength = 0;
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 	let actualLang: any;
 
-$: {
-	actualLang = $page.data.actualLang;
-}
+	$: {
+		actualLang = $page.data.actualLang;
+	}
 </script>
 
 <a
 	href={project.slug.includes('http') ? project.slug : actualLang + project.slug}
 	title={project.title}
+	target={project.slug.includes('http') ? '_blank' : ''}
 	class="flex flex-col gap-[16px]"
 	use:inview={options}
 	on:inview_change={handleChange}

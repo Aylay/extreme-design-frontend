@@ -1,51 +1,47 @@
 <script lang="ts">
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
+	import SvelteMarkdown from 'svelte-markdown';
 
 	import OneArticle from '$lib/components/OneArticle.svelte';
+	import { onMount } from 'svelte';
+	import { goto } from '$app/navigation';
+	import { page } from '$app/stores';
+
+	let content: any;
+
+const mdOptions = {
+	breaks: true,
+	gfm: true,
+	headerIds: false
+};
+
+	$: {
+		content = $page.data.content;
+	}
+
+onMount(() => {
+	if ($page.data.articleRedirect) {
+		goto('/' + $page.data.actualLang);
+	}
+});
 
 	let isInView: boolean;
 	const options: Options = {
 		unobserveOnEnter: true,
 		rootMargin: '50px'
 	};
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
-
-	const newsList: Array<any> = [
-		{
-			title: 'Sophie Grenier de Warrens dirige le pôle conseil d’Extreme !',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			slug: '/coucou'
-		},
-		{
-			title: 'Paris',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			},
-			slug: '/coucou'
-		}
-	];
 </script>
 
 <div class="flex justify-end px-[16px] py-[56px] lg:px-[48px] lg:py-[96px]">
 	<div class="w-[calc(75%-16px)] lg:w-[calc(50%-24px)] lg:pr-[calc(100%/12+48px)]">
 		<h1 class="max-lg:text-m1 lg:text-medium">
-			Miaaam – Une brigade d'expert au service des marques
+			{content.title}
 		</h1>
 	</div>
 </div>
@@ -57,8 +53,10 @@
 >
 	{#if isInView}
 		<img
-			src="/img/cas.jpg"
-			alt="A REMPLIR"
+			src={strapiURL + content.img.data.attributes.url}
+			alt={content.img.data.attributes.alternativeText
+				? content.img.data.attributes.alternativeText
+				: content.title}
 			class=" w-full max-lg:h-full max-lg:object-cover lg:h-auto {isInView
 				? 'animate-fade'
 				: 'opacity-0'}"
@@ -66,22 +64,22 @@
 	{/if}
 </div>
 
-<div class="mb-[56px] px-[16px] lg:mb-[96px] lg:grid lg:grid-cols-2 lg:px-[48px]">
-	<div class="content-text mx-auto lg:col-span-1">
-		<p>coucou</p>
+<div class="mb-[56px] px-[16px] lg:mb-[96px] lg:flex lg:px-[48px]">
+	<div class="content-text mx-auto lg:w-1/2">
+		<SvelteMarkdown source={content.text} options={mdOptions} />
 	</div>
 </div>
 
-{#if newsList}
+{#if content.otherArticlesTitle && content.otherArticlesList.length > 0}
 	<div class="mb-[56px] px-[16px] lg:mb-[96px] lg:px-[48px]">
 		<h3
 			class="mb-[40px] text-[32px] font-medium -tracking-[0.03em] max-lg:leading-[32px] lg:text-[40px]"
 		>
-			Autres articles
+			{content.otherArticlesTitle}
 		</h3>
 
 		<div class="grid grid-cols-1 gap-[56px] lg:grid-cols-2 lg:gap-x-[48px] lg:gap-y-[96px]">
-			{#each newsList as article}
+			{#each content.otherArticlesList as article}
 				<OneArticle {article} />
 			{/each}
 		</div>
