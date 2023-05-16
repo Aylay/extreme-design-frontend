@@ -4,7 +4,7 @@ interface Image {
 }
 
 export default interface City {
-	name: string;
+	city: string;
 	img: Image;
 	id: number;
 }

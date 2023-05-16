@@ -114,35 +114,47 @@
 								</ul>
 							</nav>
 							<ul class="flex gap-3">
-								{#each allLangsContent as lang}
-									<li>
-										{#if isWhite}
-											<a
-												class="text-[1.8rem] font-medium uppercase leading-none text-white {actualLang ===
-												lang.attributes.locale
-													? 'text-opacity-100 underline'
-													: 'text-opacity-50'}"
-												title={lang.attributes.locale}
-												href={restOfUrl !== ''
-													? lang.attributes.locale + '/' + restOfUrl
-													: lang.attributes.locale}
-											>
-												{lang.attributes.locale}
-											</a>
-										{:else}
-											<a
-												class="text-[1.8rem] font-medium uppercase leading-none {actualLang ===
-												lang.attributes.locale
-													? 'text-shark underline'
-													: 'text-silver'}"
-												title={lang.attributes.locale}
-												href={lang.attributes.locale + '/' + restOfUrl}
-											>
-												{lang.attributes.locale}
-											</a>
-										{/if}
+								{#if allLangsContent.length > 0}
+									{#each allLangsContent as lang}
+										<li>
+											{#if isWhite}
+												<a
+													class="text-[1.8rem] font-medium uppercase leading-none text-white {actualLang ===
+													lang.attributes.locale
+														? 'cursor-default text-opacity-100 underline'
+														: 'text-opacity-50'}"
+													title={lang.attributes.locale}
+													href={restOfUrl !== ''
+														? lang.attributes.locale + '/' + restOfUrl
+														: lang.attributes.locale}
+												>
+													{lang.attributes.locale}
+												</a>
+											{:else}
+												<a
+													class="text-[1.8rem] font-medium uppercase leading-none {actualLang ===
+													lang.attributes.locale
+														? 'cursor-default text-shark underline'
+														: 'text-silver'}"
+													title={lang.attributes.locale}
+													href={lang.attributes.locale + '/' + restOfUrl}
+												>
+													{lang.attributes.locale}
+												</a>
+											{/if}
+										</li>
+									{/each}
+								{:else if isWhite}
+									<li
+										class="text-[1.8rem] font-medium uppercase leading-none text-white text-opacity-100 underline"
+									>
+										{allLangsContent.attributes.locale}
 									</li>
-								{/each}
+								{:else}
+									<li class="text-[1.8rem] font-medium uppercase leading-none text-shark underline">
+										{allLangsContent.attributes.locale}
+									</li>
+								{/if}
 							</ul>
 						</div>
 					</div>
@@ -169,22 +181,28 @@
 						</ul>
 					</nav>
 					<ul class="mt-[56px] flex gap-[24px]">
-						{#each allLangsContent as lang}
-							<li>
-								<a
-									class="text-[1.8rem] font-medium uppercase leading-none {actualLang ===
-									lang.attributes.locale
-										? 'text-shark underline'
-										: 'text-silver'}"
-									title={lang.attributes.locale}
-									href={restOfUrl
-										? lang.attributes.locale + '/' + restOfUrl
-										: lang.attributes.locale}
-								>
-									{lang.attributes.locale}
-								</a>
+						{#if allLangsContent.length > 0}
+							{#each allLangsContent as lang}
+								<li>
+									<a
+										class="text-[1.8rem] font-medium uppercase leading-none {actualLang ===
+										lang.attributes.locale
+											? 'text-shark underline'
+											: 'text-silver'}"
+										title={lang.attributes.locale}
+										href={restOfUrl
+											? lang.attributes.locale + '/' + restOfUrl
+											: lang.attributes.locale}
+									>
+										{lang.attributes.locale}
+									</a>
+								</li>
+							{/each}
+						{:else}
+							<li class="text-[1.8rem] font-medium uppercase leading-none text-shark underline">
+								{allLangsContent.attributes.locale}
 							</li>
-						{/each}
+						{/if}
 					</ul>
 				</div>
 			</div>

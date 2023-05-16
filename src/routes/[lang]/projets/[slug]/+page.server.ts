@@ -18,7 +18,14 @@ export const load = (async ({ parent, fetch, params }) => {
 	const content = projectData.data ? projectData.data.attributes : '';
 	const projectRedirect = projectData.data ? false : true;
 
-	const allLangsContent = '';
+	const allLangResponse = await fetch(
+		import.meta.env.VITE_STRAPI_URL + '/api/projets/' + params.slug + '?locale=all',
+		{
+			method: 'GET'
+		}
+	);
+	const allLangDataResponse = await allLangResponse.json();
+	const allLangsContent = allLangDataResponse.data;
 
 	return {
 		imageHeader,

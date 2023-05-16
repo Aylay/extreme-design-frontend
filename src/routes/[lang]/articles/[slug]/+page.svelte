@@ -10,21 +10,21 @@
 
 	let content: any;
 
-const mdOptions = {
-	breaks: true,
-	gfm: true,
-	headerIds: false
-};
+	const mdOptions = {
+		breaks: true,
+		gfm: true,
+		headerIds: false
+	};
 
 	$: {
 		content = $page.data.content;
 	}
 
-onMount(() => {
-	if ($page.data.articleRedirect) {
-		goto('/' + $page.data.actualLang);
-	}
-});
+	onMount(() => {
+		if ($page.data.articleRedirect) {
+			goto('/' + $page.data.actualLang);
+		}
+	});
 
 	let isInView: boolean;
 	const options: Options = {

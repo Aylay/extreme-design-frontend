@@ -6,10 +6,18 @@
 	import AboutImgLinks from '$lib/components/AboutImgLinks.svelte';
 	import Intro from '$lib/components/common/Intro.svelte';
 	import Numbers from '$lib/components/common/Numbers.svelte';
-	import TitleText from '$lib/components/common/TitleText.svelte';
+	import TitleText from '$lib/components/common/TitleText2.svelte';
 	import SliderImg from '$lib/components/common/SliderImg.svelte';
 	import AboutTeam from '$lib/components/AboutTeam.svelte';
 	import ContactUs from '$lib/components/common/ContactUs.svelte';
+	import { page } from '$app/stores';
+
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
+	let content: any;
+
+	$: {
+		content = $page.data.content;
+	}
 
 	let isInView: boolean;
 	const options: Options = {
@@ -19,96 +27,6 @@
 
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
-	};
-
-	const aboutNumbers = [
-		{
-			text1: '22',
-			text2: 'Années d’existence'
-		},
-		{
-			text1: '100%',
-			text2: 'Intégrée & Indépendante'
-		},
-		{
-			text1: '60',
-			text2: 'Collaborateurs'
-		},
-		{
-			text1: '1770',
-			text2: 'Combinaisons d’équipes possibles'
-		}
-	];
-
-	const theCta = {
-		href: '#',
-		label: 'projets',
-		title: 'coucou'
-	};
-
-	const cities = [
-		{
-			name: 'Paris',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Lyon',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'São Polo',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'London',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/cas1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		}
-	];
-
-	const rse = {
-		title: 'Just<br />Inclusive<br />Ethic',
-		subtitle: 'Make it good',
-		cta: {
-			href: '#',
-			title: 'Découvrir notre charte RSE',
-			label: 'Découvrir notre charte RSE'
-		},
-		img: {
-			data: {
-				attributes: {
-					url: '/img/cas.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		}
 	};
 
 	const sliderImages = [
@@ -262,7 +180,7 @@
 	];
 </script>
 
-<Intro text="Agilité, écoute, fraîcheur, poil à gratter, simplicité, exigence" />
+<Intro text={content.title} />
 
 <div
 	class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
@@ -270,36 +188,91 @@
 	on:inview_change={handleChange}
 >
 	{#if isInView}
-		<img
-			src="/img/cas.jpg"
-			alt="A REMPLIR"
-			class=" w-full max-lg:h-full max-lg:object-cover lg:h-auto {isInView
-				? 'animate-fade'
-				: 'opacity-0'}"
-		/>
+		{#if content.media.data.attributes.mime.includes('image')}
+			<img
+				src={strapiURL + content.media.data.attributes.url}
+				alt={content.media.data.attributes.alternativeText
+					? content.media.data.attributes.alternativeText
+					: content.title}
+				class="h-auto w-full max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+			/>
+		{/if}
+		{#if content.mediaMobile.data.attributes.mime.includes('image')}
+			<img
+				src={strapiURL + content.mediaMobile.data.attributes.url}
+				alt={content.mediaMobile.data.attributes.alternativeText
+					? content.mediaMobile.data.attributes.alternativeText
+					: content.title}
+				class=" h-full w-full object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+			/>
+		{/if}
+		{#if content.media.data.attributes.mime.includes('video')}
+			<video
+				class="h-auto w-full max-lg:hidden"
+				loop
+				muted
+				id="video"
+				preload="metadata"
+				playsinline
+				autoplay
+				controls={false}
+			>
+				<source
+					src={strapiURL + content.media.data.attributes.url}
+					type="video/mp4"
+					media="(min-width: 1024px)"
+				/>
+			</video>
+		{/if}
+		{#if content.mediaMobile.data.attributes.mime.includes('video')}
+			<video
+				class="h-full w-full object-cover lg:hidden"
+				loop
+				muted
+				id="video"
+				preload="metadata"
+				playsinline
+				autoplay
+				controls={false}
+			>
+				<source
+					src={strapiURL + content.mediaMobile.data.attributes.url}
+					type="video/mp4"
+					media="(max-width: 1023px)"
+				/>
+			</video>
+		{/if}
 	{/if}
 </div>
 
-<Numbers numbers={aboutNumbers} />
+<Numbers numbers={content.numbers} />
 
-<!-- <TitleText
-	title="Expertises"
-	text="Consumer Insight/Research/User Lab/Innovation/Stratégie/Brand Platform/Trends/Copy Writing/Story Telling/Naming/Consumer branding/Corporate branding/Brand Design/Identity/Packaging/Film & Motion/Digital/Structural design/Production"
-	cta={theCta}
-/> -->
+<TitleText title={content.title2} text={content.text2} cta={content.cta2} />
 
-<AboutImgLinks {cities} />
+<AboutImgLinks cities={content.cities} />
 
-<AboutContentImg content={rse} />
+<AboutContentImg
+	title={content.title3}
+	text={content.text3}
+	img={content.img3}
+	cta={content.cta3}
+/>
 
-<SliderImg images={sliderImages} />
+{#if content.imgsList.data.length > 0}
+<SliderImg images={content.imgsList.data} />
+{/if}
 
+{#if content.title4}
 <h3
 	class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
 >
-	La team
+	{content.title4}
 </h3>
+{/if}
 
-<AboutTeam {team} />
+{#if content.team.length > 0 && content.showMoreLabel}
+<AboutTeam team={content.team} />
+{/if}
+
 
 <ContactUs />

@@ -8,6 +8,7 @@
 
 	export let cities: Array<any> = [];
 
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 	let actualCity: City;
 
 	let isInView: boolean;
@@ -26,14 +27,14 @@
 
 	function setCity(city: any, i: number) {
 		actualCity = {
-			name: city.name,
+			city: city.city,
 			img: {
 				src: city.img.data.attributes.url,
 				alt: city.img.data.attributes.alternativeText
 					? city.img.data.attributes.alternativeText
-					: city.name
+					: city.city
 			},
-			id: i
+			id: city.id
 		};
 	}
 </script>
@@ -47,7 +48,7 @@
 		<div class="flex-1" use:inview={options} on:inview_change={handleChange}>
 			{#if isInView}
 				<img
-					src={actualCity.img.src}
+					src={strapiURL + actualCity.img.src}
 					alt={actualCity.img.alt}
 					class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
 				/>
@@ -60,23 +61,23 @@
 						<Hoverable let:hovering={active}>
 							<h3
 								class="cursor-pointer text-big font-bold text-shark transition-opacity {active ||
-								city.name === actualCity.name
+								city.city === actualCity.city
 									? 'opacity-100'
 									: 'opacity-30'}"
-								on:mouseenter={() => setCity(city, i)}
+								on:mouseenter={() => setCity(city)}
 							>
-								{city.name}
+								{city.city}
 							</h3>
 						</Hoverable>
 					</div>
 					<h3
-						class="cursor-pointer text-[64px] font-bold leading-[60px] -tracking-[0.03em] text-shark transition-opacity lg:hidden {city.name ===
-						actualCity.name
+						class="cursor-pointer text-[64px] font-bold leading-[60px] -tracking-[0.03em] text-shark transition-opacity lg:hidden {city.city ===
+						actualCity.city
 							? 'opacity-100'
 							: 'opacity-30'}"
-						on:click={() => setCity(city, i)}
+						on:click={() => setCity(city)}
 					>
-						{city.name}
+						{city.city}
 					</h3>
 				{/each}
 			</div>

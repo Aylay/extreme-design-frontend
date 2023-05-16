@@ -4,12 +4,19 @@
 
 	import CtaMore from '../assets/svg/CTAMore.svelte';
 	import Hoverable from './utilities/Hoverable.svelte';
+	import { page } from '$app/stores';
+	let content: any;
+
+	$: {
+		content = $page.data.content;
+	}
 
 	let isInView: boolean;
 	const options: Options = {
 		unobserveOnEnter: true,
 		rootMargin: '50px'
 	};
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
@@ -31,19 +38,23 @@
 			<div>
 				{#if isInView}
 					<img
-						src={member.img.data.attributes.url}
+						src={strapiURL + member.img.data.attributes.url}
 						alt={member.img.data.attributes.alternativeText
 							? member.img.data.attributes.alternativeText
 							: member.name}
 						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
 					/>
 				{/if}
+				{#if member.name}
 				<h4 class="mt-[16px] text-[20px] leading-none">
 					{member.name}
 				</h4>
+				{/if}
+				{#if member.job}
 				<h5 class="mt-[4px] text-[20px] leading-none text-silver">
 					{member.job}
 				</h5>
+				{/if}
 			</div>
 		{/each}
 	</div>
@@ -59,7 +70,7 @@
 						<span
 							class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
 						>
-							Afficher plus
+							{content.showMoreLabel}
 						</span>
 						<CtaMore />
 					</div>

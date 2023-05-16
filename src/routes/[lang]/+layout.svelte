@@ -26,19 +26,21 @@
 	});
 
 	afterUpdate(() => {
-		langRemaining = [];
-		for (const langText of $page.data.allLangsContent) {
-			let newLang = {};
-			newLang.locale = langText.attributes.locale;
+		if ($page.data.allLangsContent.length > 0) {
+			langRemaining = [];
+			for (const langText of $page.data.allLangsContent) {
+				let newLang = {};
+				newLang.locale = langText.attributes.locale;
 
-			for (const langTotal of allLangData) {
-				if (newLang.locale === langTotal.attributes.locale) {
-					newLang.text = langTotal.attributes.headerLang;
+				for (const langTotal of allLangData) {
+					if (newLang.locale === langTotal.attributes.locale) {
+						newLang.text = langTotal.attributes.headerLang;
+					}
 				}
+				langRemaining.push(newLang);
 			}
-			langRemaining.push(newLang);
+			langRemaining = langRemaining.filter((elm: any) => elm.locale !== actualLang);
 		}
-		langRemaining = langRemaining.filter((elm: any) => elm.locale !== actualLang);
 	});
 </script>
 
@@ -82,6 +84,6 @@
 	{/if}
 </svelte:head>
 
-<Header {restOfUrl} {langRemaining} {actualLang} />
+<Header />
 <slot />
 <Footer />

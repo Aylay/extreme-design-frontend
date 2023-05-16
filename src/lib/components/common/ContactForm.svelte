@@ -3,13 +3,15 @@
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 	import SpecificInput from '../utilities/SpecificInput.svelte';
 	import Close from '$lib/assets/svg/Close.svelte';
+	import { page } from '$app/stores';
+	let content: any;
+
+	$: {
+		content = $page.data.content;
+	}
 
 	export let isOpened: boolean;
-	export let city: any = {
-		id: 1,
-		name: 'Paris',
-		text: '92-98 Boulevard Victor Hugo - A2<br />92115 Clichy<br />France<br />T – 0140998050'
-	};
+	export let city: any;
 
 	let subject = '';
 	let subjectError = false;
@@ -41,6 +43,23 @@
 		if (onError) {
 			return;
 		}
+
+		const data = {
+			firstName: firstName,
+			lastName: lastName,
+			company: company,
+			email: email,
+			subject: subject,
+			message: message
+		};
+
+		fetch(import.meta.env.VITE_STRAPI_URL + '/api/contacts', {
+			method: 'POST',
+			body: JSON.stringify({ data }),
+			headers: {
+				'Content-Type': 'application/json'
+			}
+		});
 
 		formSent = true;
 	}
@@ -96,21 +115,21 @@
 		<div class="w-full">
 			{#if !formSent}
 				<h3 class="mb-[56px] text-m1 font-normal lg:mb-[120px] lg:text-medium">
-					Contacter <span class="max-lg:block">{city.name}</span>
+					{content.contactLabel} <span class="max-lg:block">{city.city}</span>
 				</h3>
 				<form>
 					<div class="flex flex-col gap-[24px] lg:gap-[32px]">
 						<SpecificInput
 							error={subjectError}
-							content="Sujet"
+							content={content.subjectLabel}
 							bind:value={subject}
 							required={true}
 						/>
 						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
-							<SpecificInput content="Entreprise" bind:value={company} />
+							<SpecificInput content={content.companyLabel} bind:value={company} />
 							<SpecificInput
 								error={emailError}
-								content="E-mail"
+								content={content.emailLabel}
 								bind:value={email}
 								required={true}
 							/>
@@ -118,18 +137,18 @@
 						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
 							<SpecificInput
 								error={firstNameError}
-								content="Prénom"
+								content={content.firstNameLabel}
 								bind:value={firstName}
 								required={true}
 							/>
 							<SpecificInput
 								error={lastNameError}
-								content="Nom"
+								content={content.lastNameLabel}
 								bind:value={lastName}
 								required={true}
 							/>
 						</div>
-						<SpecificInput content="Message" bind:value={message} />
+						<SpecificInput content={content.messageLabel} bind:value={message} />
 					</div>
 
 					<div class="mt-[96px] flex lg:mt-[80px]">
@@ -142,7 +161,7 @@
 									<span
 										class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
 									>
-										Envoyer
+										{content.sendLabel}
 									</span>
 									<ArrowCta />
 								</div>
@@ -158,7 +177,7 @@
 			{:else}
 				<div class="flex flex-col gap-[56px]">
 					<h3 class="text-m1 font-normal lg:text-medium">
-						Message <span class="max-lg:block">envoyé</span>
+						{content.sentMessageLabel}
 					</h3>
 					<div class="flex">
 						<Hoverable let:hovering={active}>
@@ -170,7 +189,7 @@
 									<span
 										class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
 									>
-										Revenir sur le site
+										{content.backOnTheWebsite}
 									</span>
 									<ArrowCta />
 								</div>

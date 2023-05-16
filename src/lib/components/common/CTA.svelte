@@ -15,7 +15,7 @@
 
 <Hoverable let:hovering={active}>
 	<a
-		href={cta.slug.includes('http') ? cta.slug : actualLang + cta.slug}
+		href={cta.slug.includes('http') ? cta.slug : '/' + actualLang + cta.slug}
 		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
 		title={cta.title ? cta.title : cta.label}
 		target={cta.slug.includes('http') ? '_blank' : ''}

@@ -17,7 +17,14 @@ export const load = (async ({ parent, fetch, params }) => {
 	const content = articleData.data ? articleData.data.attributes : '';
 	const articleRedirect = articleData.data ? false : true;
 
-	const allLangsContent = '';
+	const allLangResponse = await fetch(
+		import.meta.env.VITE_STRAPI_URL + '/api/articles/' + params.slug + '?locale=all',
+		{
+			method: 'GET'
+		}
+	);
+	const allLangDataResponse = await allLangResponse.json();
+	const allLangsContent = allLangDataResponse.data;
 
 	return {
 		content,

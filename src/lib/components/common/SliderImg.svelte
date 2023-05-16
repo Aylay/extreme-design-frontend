@@ -19,6 +19,7 @@
 		unobserveOnEnter: true,
 		rootMargin: '50px'
 	};
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
@@ -49,9 +50,9 @@
 			{#each images as img}
 				<swiper-slide>
 					<img
-						src={img.data.attributes.url}
-						alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : ''}
-						class="h-auto w-auto max-lg:ml-[16px]"
+						src={strapiURL + img.attributes.url}
+						alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
+						class="h-auto w-full max-lg:ml-[16px]"
 					/>
 				</swiper-slide>
 			{/each}

@@ -11,10 +11,14 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
+	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	import Cta from './common/CTA.svelte';
 
-	export let content: any = {};
+	export let title: string;
+	export let text: string;
+	export let cta: any = {};
+	export let img: any = {};
 </script>
 
 <div
@@ -22,26 +26,32 @@
 >
 	<div class="flex-1 max-lg:order-2 lg:pl-[48px]">
 		<div class="gap-8px flex flex-col lg:gap-[24px]">
-			<p class="text-[32px] font-medium lg:text-medium">
-				{content.subtitle}
-			</p>
-			<h3 class="text-[64px] font-bold leading-[60px] -tracking-[0.03em] lg:text-big">
-				{@html content.title}
-			</h3>
+			{#if text !== ''}
+				<p class="text-[32px] font-medium lg:text-medium">
+					{text}
+				</p>
+			{/if}
+			{#if title !== ''}
+				<h3 class="text-[64px] font-bold leading-[60px] -tracking-[0.03em] lg:text-big">
+					{@html title}
+				</h3>
+			{/if}
 		</div>
-		<div class="mt-[56px] flex lg:mt-[48px]">
-			<Cta cta={content.cta} />
-		</div>
-	</div>
-	<div class="flex-1 max-lg:order-1" use:inview={options} on:inview_change={handleChange}>
-		{#if isInView}
-			<img
-				src={content.img.data.attributes.url}
-				alt={content.img.data.attributes.alternativeText
-					? content.img.data.attributes.alternativeText
-					: content.title}
-				class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-			/>
+		{#if cta && cta.slug !== ''}
+			<div class="mt-[56px] flex lg:mt-[48px]">
+				<Cta {cta} />
+			</div>
 		{/if}
 	</div>
+	{#if img && img.data}
+		<div class="flex-1 max-lg:order-1" use:inview={options} on:inview_change={handleChange}>
+			{#if isInView}
+				<img
+					src={strapiURL + img.data.attributes.url}
+					alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : title}
+					class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+				/>
+			{/if}
+		</div>
+	{/if}
 </div>
