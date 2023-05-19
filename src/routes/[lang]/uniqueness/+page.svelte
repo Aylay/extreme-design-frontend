@@ -29,11 +29,11 @@ const mdOptions = {
 	};
 </script>
 
-<div class="pt-[232px] pl-[48px] max-lg:pl-[16px] flex flex-nowrap gap-[26px] overflow-hidden pb-[56px] lg:pb-[96px]">
-	<p class="text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
-	<p class="text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
-	<p class="text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
-	<p class="text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
+<div class="pt-[90px] lg:pt-[232px] pl-[48px] max-lg:pl-[16px] flex flex-nowrap gap-[26px] overflow-hidden pb-[56px] lg:pb-[96px]">
+	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
+	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
+	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
+	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
 </div>
 
 {#if content.img}
