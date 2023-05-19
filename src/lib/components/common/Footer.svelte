@@ -24,7 +24,7 @@
 
 {#if content}
 	<div
-		class="flex justify-between px-[4.8rem] py-8 max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
+		class="flex justify-between px-[4.8rem] py-8 max-lg:gap-[16px] max-lg:px-[16px] lg:items-center max-lg:mt-[108px]"
 		use:inview={options}
 		on:inview_change={handleChange}
 	>

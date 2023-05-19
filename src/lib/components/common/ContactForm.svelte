@@ -2,6 +2,7 @@
 	import Hoverable from '../utilities/Hoverable.svelte';
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 	import SpecificInput from '../utilities/SpecificInput.svelte';
+	import SpecificTextarea from '../utilities/SpecificTextarea.svelte';
 	import Close from '$lib/assets/svg/Close.svelte';
 	import { page } from '$app/stores';
 	let content: any;
@@ -100,10 +101,11 @@
 </script>
 
 <div
-	class="fixed inset-0 z-50 flex h-screen w-full animate-fade justify-end bg-white bg-opacity-75"
+	class="fixed inset-0 z-50 flex h-screen w-full justify-end bg-white bg-opacity-75"
+	on:click|self={closeForm}
 >
 	<div
-		class="flex w-full items-center justify-center border-solid border-shark border-opacity-[0.15] bg-white pl-[48px] max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[calc(100%/12+48px)]"
+		class="flex w-full items-center justify-center border-solid animate-fade-left animate-duration-1000 border-shark border-opacity-[0.15] bg-white pl-[48px] max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[48px]"
 	>
 		<div
 			class="absolute right-[16px] top-[24px] flex cursor-pointer items-center gap-[24px] lg:right-[24px]"
@@ -148,7 +150,7 @@
 								required={true}
 							/>
 						</div>
-						<SpecificInput content={content.messageLabel} bind:value={message} />
+						<SpecificTextarea content={content.messageLabel} bind:value={message} />
 					</div>
 
 					<div class="mt-[96px] flex lg:mt-[80px]">
@@ -167,7 +169,7 @@
 								</div>
 								<div
 									class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-										? 'w-[1px]'
+										? 'w-0'
 										: 'w-full'}"
 								/>
 							</button>
@@ -195,7 +197,7 @@
 								</div>
 								<div
 									class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-										? 'w-[1px]'
+										? 'w-0'
 										: 'w-full'}"
 								/>
 							</div>

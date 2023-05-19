@@ -28,156 +28,6 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
-
-	const sliderImages = [
-		{
-			data: {
-				attributes: {
-					url: '/img/cas.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		},
-		{
-			data: {
-				attributes: {
-					url: '/img/cas1.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		},
-		{
-			data: {
-				attributes: {
-					url: '/img/logo-extreme.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		},
-		{
-			data: {
-				attributes: {
-					url: '/img/cas.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		},
-		{
-			data: {
-				attributes: {
-					url: '/img/logo-extreme.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		},
-		{
-			data: {
-				attributes: {
-					url: '/img/cas.jpg',
-					alternativeText: 'coucou'
-				}
-			}
-		}
-	];
-
-	const team = [
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member2.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member2.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member2.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		},
-		{
-			name: 'Anne Hidalgo',
-			job: 'lol',
-			img: {
-				data: {
-					attributes: {
-						url: '/img/member1.jpg',
-						alternativeText: 'coucou'
-					}
-				}
-			}
-		}
-	];
 </script>
 
 <Intro text={content.title} />
@@ -249,7 +99,9 @@
 
 <TitleText title={content.title2} text={content.text2} cta={content.cta2} />
 
+{#if content.cities.length > 0}
 <AboutImgLinks cities={content.cities} />
+{/if}
 
 <AboutContentImg
 	title={content.title3}

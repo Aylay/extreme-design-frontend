@@ -73,7 +73,7 @@
 				<Hoverable let:hovering={active}>
 					<div
 						class="flex w-full cursor-pointer justify-end py-9 {active
-							? 'animate-unfade animate-duration-200'
+							? 'animate-unfade animate-duration-100'
 							: 'animate-fade'}"
 					>
 						<div class="relative h-10 w-10">
@@ -91,8 +91,8 @@
 					</div>
 					<div class="absolute inset-0 h-full w-full {active ? 'z-10' : '-z-10'}">
 						<div
-							class="absolute inset-y-0 right-0 flex h-full w-[calc(50%-24px)] items-center justify-between {active
-								? 'animate-fade animate-delay-200'
+							class="absolute inset-y-0 right-0 flex h-full w-[calc(50%-24px)] items-center animate-duration-100 justify-between {active
+								? 'animate-fade animate-delay-100'
 								: 'animate-unfade'}"
 						>
 							<nav>
@@ -121,7 +121,7 @@
 												<a
 													class="text-[1.8rem] font-medium uppercase leading-none text-white {actualLang ===
 													lang.attributes.locale
-														? 'cursor-default text-opacity-100 underline'
+														? 'cursor-default text-opacity-100 relative before:content-[\'\'] before:w-full before:absolute before:h-[2px] before:inset-x-0 before:bottom-0 before:bg-white'
 														: 'text-opacity-50'}"
 													title={lang.attributes.locale}
 													href={restOfUrl !== ''
@@ -134,7 +134,7 @@
 												<a
 													class="text-[1.8rem] font-medium uppercase leading-none {actualLang ===
 													lang.attributes.locale
-														? 'cursor-default text-shark underline'
+														? 'cursor-default text-shark relative before:content-[\'\'] before:w-full before:absolute before:h-[2px] before:inset-x-0 before:bottom-0 before:bg-shark'
 														: 'text-silver'}"
 													title={lang.attributes.locale}
 													href={lang.attributes.locale + '/' + restOfUrl}
@@ -187,7 +187,7 @@
 									<a
 										class="text-[1.8rem] font-medium uppercase leading-none {actualLang ===
 										lang.attributes.locale
-											? 'text-shark underline'
+											? 'text-shark relative before:content-[] before:w-full before:absolute before:h-[2px] before:inset-x-0 before:bottom-[-8px] before:bg-shark'
 											: 'text-silver'}"
 										title={lang.attributes.locale}
 										href={restOfUrl
@@ -208,4 +208,9 @@
 			</div>
 		{/if}
 	</div>
+	{#if menuOpened}
+	<div
+		class="fixed inset-0 z-20 w-full h-screen animate-fade bg-white bg-opacity-75 lg:hidden"
+	/>
+	{/if}
 {/if}

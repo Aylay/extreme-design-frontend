@@ -26,7 +26,6 @@
 	};
 
 	const swiperParams = {
-		autoplay: true,
 		speed: 1000,
 		grabCursor: true,
 		slidesPerView: 'auto',
@@ -48,7 +47,7 @@
 	<div class="pb-[56px] lg:pb-[96px]" use:inview={options} on:inview_change={handleChange}>
 		<swiper-container class="w-full {isInView ? 'animate-fade' : 'opacity-0'}" init={false}>
 			{#each images as img}
-				<swiper-slide>
+				<swiper-slide class="max-lg:w-3/4">
 					<img
 						src={strapiURL + img.attributes.url}
 						alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}

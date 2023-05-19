@@ -30,7 +30,7 @@
 		</div>
 		<div
 			class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-				? 'w-[1px]'
+				? 'w-0'
 				: 'w-full'}"
 		/>
 	</a>

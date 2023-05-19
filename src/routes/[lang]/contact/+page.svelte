@@ -3,14 +3,17 @@
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import CtaArrow from '$lib/assets/svg/CTAArrow.svelte';
 	import Intro from '$lib/components/common/Intro.svelte';
-	import Cta from '$lib/components/common/CTA.svelte';
 	import ContactForm from '$lib/components/common/ContactForm.svelte';
+	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
+	import Hoverable from '$lib/components/utilities/Hoverable.svelte';
 	import { page } from '$app/stores';
 
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 	let content: any;
+	let actualLang: any;
 
 	$: {
+		actualLang = $page.data.actualLang;
 		content = $page.data.content;
 	}
 
@@ -34,7 +37,7 @@
 	}
 </script>
 
-<div class="h-[56px] lg:h-[96px]" />
+<div class="max-lg:hidden lg:h-[70px]" />
 
 <Intro text={content.title} />
 
@@ -91,14 +94,14 @@
 				<div
 					class="flex justify-between gap-[16px] border-b border-solid border-shark py-[32px] first:border-t lg:items-center lg:gap-[48px]"
 				>
-					<p class="flex-1 text-[24px] -tracking-[0.03em]">
+					<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
 						{job.job}
 					</p>
 					<div class="flex flex-1 justify-between gap-[16px] lg:items-center lg:gap-[48px]">
-						<p class="flex-1 text-[24px] -tracking-[0.03em]">
+						<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
 							{job.contract}
 						</p>
-						<p class="text-[24px] -tracking-[0.03em]">
+						<p class="text-[24px] leading-tight -tracking-[0.03em]">
 							{job.location}
 						</p>
 					</div>
@@ -106,8 +109,29 @@
 			{/each}
 
 			{#if content.joinUsCta}
-				<div class="flex max-lg:py-[56px] lg:pt-[96px]">
-					<Cta cta={content.joinUsCta} />
+				<div class="flex max-lg:pt-[56px] lg:pt-[96px]">
+<Hoverable let:hovering={active}>
+	<a
+		href={content.joinUsCta.slug.includes('http') ? content.joinUsCta.slug : '/' + actualLang + content.joinUsCta.slug}
+		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
+		title={content.joinUsCta.title ? content.joinUsCta.title : content.joinUsCta.label}
+		target={content.joinUsCta.slug.includes('http') ? '_blank' : ''}
+	>
+		<div class="flex items-center gap-[24px] lg:gap-[32px]">
+			<span
+				class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+			>
+				{content.joinUsCta.label}
+			</span>
+			<ArrowCta />
+		</div>
+		<div
+			class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+				? 'w-full'
+				: 'w-0'}"
+		/>
+	</a>
+</Hoverable>
 				</div>
 			{/if}
 		</div>

@@ -10,6 +10,7 @@
 
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 	let actualCity: City;
+	let changeCity: number = 0;
 
 	let isInView: boolean;
 	const options: Options = {
@@ -22,20 +23,26 @@
 	};
 
 	onMount(() => {
-		setCity(cities[0], 0);
+		setCity(cities[0]);
 	});
 
-	function setCity(city: any, i: number) {
-		actualCity = {
-			city: city.city,
-			img: {
-				src: city.img.data.attributes.url,
-				alt: city.img.data.attributes.alternativeText
-					? city.img.data.attributes.alternativeText
-					: city.city
-			},
-			id: city.id
-		};
+	function setCity(city: any) {
+		if (city.id !== changeCity) {
+			changeCity = city.id + 10
+			setTimeout(() => {
+				actualCity = {
+					city: city.city,
+					img: {
+						src: city.img.data.attributes.url,
+						alt: city.img.data.attributes.alternativeText
+							? city.img.data.attributes.alternativeText
+							: city.city
+					},
+					id: city.id
+				};
+				changeCity = city.id
+			}, 150)
+		}
 	}
 </script>
 
@@ -50,7 +57,7 @@
 				<img
 					src={strapiURL + actualCity.img.src}
 					alt={actualCity.img.alt}
-					class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+					class="h-auto w-full {actualCity.id !== changeCity ? 'animate-unfade' : 'animate-fade'}"
 				/>
 			{/if}
 		</div>
@@ -60,7 +67,7 @@
 					<div class="max-lg:hidden">
 						<Hoverable let:hovering={active}>
 							<h3
-								class="cursor-pointer text-big font-bold text-shark transition-opacity {active ||
+								class="cursor-pointer text-big font-bold text-shark  transition-opacity {active ||
 								city.city === actualCity.city
 									? 'opacity-100'
 									: 'opacity-30'}"
