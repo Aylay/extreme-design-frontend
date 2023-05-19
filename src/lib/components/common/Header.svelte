@@ -8,6 +8,7 @@
 	let menuOpened = false;
 	let y: number;
 	let isWhite: boolean = $page.data.imageHeader;
+	let isProject: boolean = $page.params.slug ? true : false;
 
 	let content: any;
 	let actualLang: any;
@@ -20,18 +21,20 @@
 		allLangsContent = $page.data.allLangsContent;
 		restOfUrl = $page.data.restOfUrl;
 		isWhite = $page.data.imageHeader;
+		isProject = $page.params.slug ? true : false;
 	}
 
 	afterUpdate(() => {
+		const yChange = isProject ? window.innerHeight - 130 : window.innerHeight
 		if ($navigating) {
 			menuOpened = false;
 		}
 
 		if ($page.data.imageHeader) {
-			if (y > window.innerHeight) {
+			if (y > yChange) {
 				isWhite = false;
 			}
-			if (isWhite === false && y <= window.innerHeight) {
+			if (isWhite === false && y <= yChange) {
 				isWhite = true;
 			}
 		}

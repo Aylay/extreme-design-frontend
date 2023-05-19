@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { page } from '$app/stores';
 	import { onMount, afterUpdate } from 'svelte';
 	import { navigating } from '$app/stores';
 
@@ -9,18 +10,23 @@
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 
 	export let projects: Array<any> = [];
+	let actualLang: any;
+
+	$: {
+		actualLang = $page.data.actualLang;
+	}
 
 	onMount(() => {
-		setProject(projects[0], 0);
+		setProject(projects[0]);
 	});
 
 	afterUpdate(() => {
 		if ($navigating) {
-			setProject(projects[0], 0);
+			setProject(projects[0]);
 		}
 	});
 
-	function setProject(project: any, i: number) {
+	function setProject(project: any) {
 		actualProject = {
 			mediaDesktopSrc: project.mediaDesktop.data.attributes.url,
 			mediaMobileSrc: project.mediaMobile.data.attributes.url,
@@ -34,7 +40,7 @@
 			mediaMobileMime: project.mediaMobile.data.attributes.mime,
 			title: project.title,
 			slug: project.slug,
-			id: i
+			id: project.id
 		};
 	}
 </script>
@@ -44,7 +50,7 @@
 		class="relative mb-[56px] flex h-[calc(100vh-70px)] w-full max-lg:flex-col lg:mb-[96px] lg:h-screen lg:items-center lg:pl-[48px]"
 	>
 		<a
-			href={actualProject.slug}
+			href={'/' + actualLang + actualProject.slug}
 			title={actualProject.title}
 			class="h-full w-full max-lg:flex-1 lg:absolute lg:inset-0"
 		>
@@ -70,11 +76,10 @@
 					class="h-full w-full object-cover max-lg:hidden"
 					loop
 					muted
-					id="video"
-					preload="metadata"
 					playsinline
 					autoplay
 					controls={false}
+					src={strapiURL + actualProject.mediaDesktopSrc}
 				>
 					<source
 						src={strapiURL + actualProject.mediaDesktopSrc}
@@ -88,11 +93,10 @@
 					class="h-full w-full object-cover lg:hidden"
 					loop
 					muted
-					id="video"
-					preload="metadata"
 					playsinline
 					autoplay
 					controls={false}
+					src={strapiURL + actualProject.mediaMobileSrc}
 				>
 					<source
 						src={strapiURL + actualProject.mediaMobileSrc}
@@ -110,7 +114,7 @@
 						actualProject.title
 							? 'text-shark lg:opacity-100'
 							: 'text-silver lg:opacity-40'}"
-						on:click|preventDefault={() => setProject(project, i)}
+						on:click|preventDefault={() => setProject(project)}
 					>
 						{project.title}
 					</p>

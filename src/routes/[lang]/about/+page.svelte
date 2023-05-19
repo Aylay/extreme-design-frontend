@@ -47,7 +47,7 @@
 				class="h-auto w-full max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 			/>
 		{/if}
-		{#if content.mediaMobile.data.attributes.mime.includes('image')}
+		{#if content.mediaMobile.data && content.mediaMobile.data.attributes.mime.includes('image')}
 			<img
 				src={strapiURL + content.mediaMobile.data.attributes.url}
 				alt={content.mediaMobile.data.attributes.alternativeText
@@ -74,7 +74,7 @@
 				/>
 			</video>
 		{/if}
-		{#if content.mediaMobile.data.attributes.mime.includes('video')}
+		{#if content.mediaMobile.data && content.mediaMobile.data.attributes.mime.includes('video')}
 			<video
 				class="h-full w-full object-cover lg:hidden"
 				loop
