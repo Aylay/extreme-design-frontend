@@ -72,7 +72,7 @@
 					/>
 				</div>
 			</div>
-			<div class="flex-1 max-lg:hidden">
+			<div class="flex-1 max-lg:hidden relative">
 				<Hoverable let:hovering={active}>
 					<div
 						class="flex w-full cursor-pointer justify-end py-9 {active
