@@ -26,11 +26,30 @@
 		on:inview_change={handleChange}
 	>
 		{#if isInView}
+			{#if img.data.attributes.mime.includes('image')}
 			<img
 				src={strapiURL + img.data.attributes.url}
 				alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : name}
 				class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} max-lg:hidden"
 			/>
+			{/if}
+			{#if img.data.attributes.mime.includes('video')}
+			<video
+				class="h-full w-full object-cover max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'} "
+				loop
+				muted
+				playsinline
+				autoplay
+				controls={false}
+			>
+				<source
+					src={strapiURL + img.data.attributes.url}
+					type="video/mp4"
+					media="(min-width: 1024px)"
+				/>
+			</video>
+			{/if}
+			{#if mobileImg.data.attributes.mime.includes('image')}
 			<img
 				src={strapiURL + mobileImg.data.attributes.url}
 				alt={mobileImg.data.attributes.alternativeText
@@ -38,6 +57,23 @@
 					: name}
 				class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} lg:hidden"
 			/>
+			{/if}
+			{#if mobileImg.data.attributes.mime.includes('video')}
+			<video
+				class="h-full w-full object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'} "
+				loop
+				muted
+				playsinline
+				autoplay
+				controls={false}
+			>
+				<source
+					src={strapiURL + mobileImg.data.attributes.url}
+					type="video/mp4"
+					media="(max-width: 1023px)"
+				/>
+			</video>
+			{/if}
 		{/if}
 	</div>
 	<div
