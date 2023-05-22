@@ -28,7 +28,7 @@
 
 	function setCity(city: any) {
 		if (city.id !== changeCity) {
-			changeCity = city.id + 10
+			changeCity = city.id + 10;
 			setTimeout(() => {
 				actualCity = {
 					city: city.city,
@@ -40,8 +40,8 @@
 					},
 					id: city.id
 				};
-				changeCity = city.id
-			}, 150)
+				changeCity = city.id;
+			}, 150);
 		}
 	}
 </script>
@@ -67,7 +67,7 @@
 					<div class="max-lg:hidden">
 						<Hoverable let:hovering={active}>
 							<h3
-								class="cursor-pointer text-big font-bold text-shark  transition-opacity {active ||
+								class="cursor-pointer text-big font-bold text-shark transition-opacity {active ||
 								city.city === actualCity.city
 									? 'opacity-100'
 									: 'opacity-30'}"

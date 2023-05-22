@@ -17,7 +17,9 @@
 	{/if}
 	<div class="flex flex-1 flex-col gap-[56px] lg:gap-[58px]">
 		{#if text}
-			<h3 class="max-lg:text-m2 lg:text-medium break-words [word-break:break-word]">{@html text}</h3>
+			<h3 class="break-words [word-break:break-word] max-lg:text-m2 lg:text-medium">
+				{@html text}
+			</h3>
 		{/if}
 		{#if cta && cta.slug !== ''}
 			<div class="flex">

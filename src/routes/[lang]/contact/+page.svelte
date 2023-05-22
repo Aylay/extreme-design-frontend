@@ -110,28 +110,30 @@
 
 			{#if content.joinUsCta}
 				<div class="flex max-lg:pt-[56px] lg:pt-[96px]">
-<Hoverable let:hovering={active}>
-	<a
-		href={content.joinUsCta.slug.includes('http') ? content.joinUsCta.slug : '/' + actualLang + content.joinUsCta.slug}
-		class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
-		title={content.joinUsCta.title ? content.joinUsCta.title : content.joinUsCta.label}
-		target={content.joinUsCta.slug.includes('http') ? '_blank' : ''}
-	>
-		<div class="flex items-center gap-[24px] lg:gap-[32px]">
-			<span
-				class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
-			>
-				{content.joinUsCta.label}
-			</span>
-			<ArrowCta />
-		</div>
-		<div
-			class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
-				? 'w-full'
-				: 'w-0'}"
-		/>
-	</a>
-</Hoverable>
+					<Hoverable let:hovering={active}>
+						<a
+							href={content.joinUsCta.slug.includes('http')
+								? content.joinUsCta.slug
+								: '/' + actualLang + content.joinUsCta.slug}
+							class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
+							title={content.joinUsCta.title ? content.joinUsCta.title : content.joinUsCta.label}
+							target={content.joinUsCta.slug.includes('http') ? '_blank' : ''}
+						>
+							<div class="flex items-center gap-[24px] lg:gap-[32px]">
+								<span
+									class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+								>
+									{content.joinUsCta.label}
+								</span>
+								<ArrowCta />
+							</div>
+							<div
+								class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+									? 'w-full'
+									: 'w-0'}"
+							/>
+						</a>
+					</Hoverable>
 				</div>
 			{/if}
 		</div>

@@ -46,14 +46,14 @@
 					/>
 				{/if}
 				{#if member.name}
-				<h4 class="mt-[16px] text-[20px] leading-none">
-					{member.name}
-				</h4>
+					<h4 class="mt-[16px] text-[20px] leading-none">
+						{member.name}
+					</h4>
 				{/if}
 				{#if member.job}
-				<h5 class="mt-[4px] text-[20px] leading-none text-silver">
-					{member.job}
-				</h5>
+					<h5 class="mt-[4px] text-[20px] leading-none text-silver">
+						{member.job}
+					</h5>
 				{/if}
 			</div>
 		{/each}

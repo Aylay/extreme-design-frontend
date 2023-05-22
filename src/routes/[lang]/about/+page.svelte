@@ -100,7 +100,7 @@
 <TitleText title={content.title2} text={content.text2} cta={content.cta2} />
 
 {#if content.cities.length > 0}
-<AboutImgLinks cities={content.cities} />
+	<AboutImgLinks cities={content.cities} />
 {/if}
 
 <AboutContentImg
@@ -111,20 +111,19 @@
 />
 
 {#if content.imgsList.data.length > 0}
-<SliderImg images={content.imgsList.data} />
+	<SliderImg images={content.imgsList.data} />
 {/if}
 
 {#if content.title4}
-<h3
-	class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
->
-	{content.title4}
-</h3>
+	<h3
+		class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
+	>
+		{content.title4}
+	</h3>
 {/if}
 
 {#if content.team.length > 0 && content.showMoreLabel}
-<AboutTeam team={content.team} />
+	<AboutTeam team={content.team} />
 {/if}
-
 
 <ContactUs />

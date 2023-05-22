@@ -18,22 +18,24 @@
 		rootMargin: '50px'
 	};
 
-const mdOptions = {
-	breaks: true,
-	gfm: true,
-	headerIds: false
-};
+	const mdOptions = {
+		breaks: true,
+		gfm: true,
+		headerIds: false
+	};
 
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
 </script>
 
-<div class="pt-[90px] lg:pt-[232px] pl-[48px] max-lg:pl-[16px] flex flex-nowrap gap-[26px] overflow-hidden pb-[56px] lg:pb-[96px]">
-	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
-	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
-	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
-	<p class="text-[60px] lg:text-[212px] font-medium -tracking-[0.03em]">{content.title}</p>
+<div
+	class="flex flex-nowrap gap-[26px] overflow-hidden pb-[56px] pl-[48px] pt-[90px] max-lg:pl-[16px] lg:pb-[96px] lg:pt-[232px]"
+>
+	<p class="text-[60px] font-medium -tracking-[0.03em] lg:text-[212px]">{content.title}</p>
+	<p class="text-[60px] font-medium -tracking-[0.03em] lg:text-[212px]">{content.title}</p>
+	<p class="text-[60px] font-medium -tracking-[0.03em] lg:text-[212px]">{content.title}</p>
+	<p class="text-[60px] font-medium -tracking-[0.03em] lg:text-[212px]">{content.title}</p>
 </div>
 
 {#if content.img}
@@ -56,9 +58,11 @@ const mdOptions = {
 	</div>
 {/if}
 
-<div class="px-[48px] max-lg:px-[16px] lg:grid lg:grid-cols-12 gap-[48px] mb-[56px] lg:mb-[96px]">
-	<div class="col-span-3 max-lg:hidden"/>
-	<div class="lg:col-span-5 text-[32px] lg:text-[40px] leading-[36px] lg:leading-[46px] -tracking-[0.03em] flex flex-col gap-[154px] lg:gap-[112px]">
+<div class="mb-[56px] gap-[48px] px-[48px] max-lg:px-[16px] lg:mb-[96px] lg:grid lg:grid-cols-12">
+	<div class="col-span-3 max-lg:hidden" />
+	<div
+		class="flex flex-col gap-[154px] text-[32px] leading-[36px] -tracking-[0.03em] lg:col-span-5 lg:gap-[112px] lg:text-[40px] lg:leading-[46px]"
+	>
 		<SvelteMarkdown source={content.text} options={mdOptions} />
 	</div>
 </div>

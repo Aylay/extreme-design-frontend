@@ -18,27 +18,24 @@
 
 <div use:inview={options} on:inview_change={handleChange}>
 	{#if isInView}
-	{#if img.attributes.mime.includes('image')}
-		<img
-			src={strapiURL + img.attributes.url}
-			alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
-			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-		/>
+		{#if img.attributes.mime.includes('image')}
+			<img
+				src={strapiURL + img.attributes.url}
+				alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
+				class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+			/>
 		{/if}
 		{#if img.attributes.mime.includes('video')}
-		<video
-			class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-			loop
-			muted
-			playsinline
-			autoplay
-			controls={false}
-		>
-			<source
-				src={strapiURL + img.attributes.url}
-				type="video/mp4"
-			/>
-		</video>
+			<video
+				class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+				loop
+				muted
+				playsinline
+				autoplay
+				controls={false}
+			>
+				<source src={strapiURL + img.attributes.url} type="video/mp4" />
+			</video>
 		{/if}
 	{/if}
 </div>

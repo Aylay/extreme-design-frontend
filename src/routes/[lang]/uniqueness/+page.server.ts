@@ -12,9 +12,12 @@ export const load = (async ({ parent, fetch }) => {
 	const uniquenessData = await uniquenessResponse.json();
 	const content = uniquenessData.data ? uniquenessData.data.attributes : '';
 
-	const allLangResponse = await fetch(import.meta.env.VITE_STRAPI_URL + '/api/uniqueness?locale=all', {
-		method: 'GET'
-	});
+	const allLangResponse = await fetch(
+		import.meta.env.VITE_STRAPI_URL + '/api/uniqueness?locale=all',
+		{
+			method: 'GET'
+		}
+	);
 	const allLangDataResponse = await allLangResponse.json();
 	const allLangsContent = allLangDataResponse.data;
 

@@ -108,13 +108,15 @@
 	on:click|self={closeForm}
 >
 	<div
-		class="flex w-full items-center justify-center border-solid animate-fade-left animate-duration-1000 border-shark border-opacity-[0.15] bg-white pl-[48px] max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[48px]"
+		class="flex w-full animate-fade-left items-center justify-center border-solid border-shark border-opacity-[0.15] bg-white pl-[48px] animate-duration-1000 max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[48px]"
 	>
 		<div
 			class="absolute right-[16px] top-[24px] flex cursor-pointer items-center gap-[24px] lg:right-[24px]"
 			on:click|preventDefault={closeForm}
 		>
-			<p class="pt-[3px] text-[14px] font-bold uppercase -tracking-[0.03em]">{$page.data.content.closeLabel}</p>
+			<p class="pt-[3px] text-[14px] font-bold uppercase -tracking-[0.03em]">
+				{$page.data.content.closeLabel}
+			</p>
 			<Close />
 		</div>
 		<div class="w-full">
@@ -146,10 +148,7 @@
 						/>
 						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
 							<SpecificInput content={content.companyLabel} bind:value={company} />
-							<SpecificInput
-								content={content.phoneLabel}
-								bind:value={phone}
-							/>
+							<SpecificInput content={content.phoneLabel} bind:value={phone} />
 						</div>
 						<SpecificInput
 							error={subjectError}

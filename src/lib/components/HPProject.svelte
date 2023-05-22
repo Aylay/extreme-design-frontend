@@ -33,28 +33,25 @@
 >
 	{#if isInView}
 		{#if project.img.data.attributes.mime.includes('image')}
-		<img
-			src={strapiURL + project.img.data.attributes.url}
-			alt={project.img.data.attributes.alternativeText
-				? project.img.data.attributes.alternativeText
-				: project.title}
-			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-		/>
+			<img
+				src={strapiURL + project.img.data.attributes.url}
+				alt={project.img.data.attributes.alternativeText
+					? project.img.data.attributes.alternativeText
+					: project.title}
+				class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+			/>
 		{/if}
 		{#if project.img.data.attributes.mime.includes('video')}
-		<video
-			class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-			loop
-			muted
-			playsinline
-			autoplay
-			controls={false}
-		>
-			<source
-				src={strapiURL + project.img.data.attributes.url}
-				type="video/mp4"
-			/>
-		</video>
+			<video
+				class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+				loop
+				muted
+				playsinline
+				autoplay
+				controls={false}
+			>
+				<source src={strapiURL + project.img.data.attributes.url} type="video/mp4" />
+			</video>
 		{/if}
 	{/if}
 	<h4
