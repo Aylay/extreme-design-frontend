@@ -64,7 +64,7 @@
 	</div>
 {/if}
 
-{#if content.img}
+{#if content.img.data}
 	<div
 		class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
 		use:inview={options}
