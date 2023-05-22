@@ -1,13 +1,14 @@
 <script lang="ts">
-	import type Link from '$lib/interface/link';
+	import { page } from '$app/stores';
 	import Cta from './CTA.svelte';
 
+let cta: any;
+
+$: {
+	cta = $page.data.layoutContent.contactUs;
+}
+
 	export let text = '';
-	export let cta: Link = {
-		slug: '',
-		title: '',
-		label: ''
-	};
 </script>
 
 <div class="flex justify-end px-[16px] py-[56px] lg:px-[48px] lg:py-[96px]">
