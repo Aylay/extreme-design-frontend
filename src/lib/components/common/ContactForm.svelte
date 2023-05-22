@@ -28,6 +28,8 @@
 	let lastName = '';
 	let lastNameError = false;
 
+	let phone = '';
+
 	let message = '';
 
 	let onError = false;
@@ -51,6 +53,7 @@
 			company: company,
 			email: email,
 			subject: subject,
+			phone: phone,
 			message: message
 		};
 
@@ -111,7 +114,7 @@
 			class="absolute right-[16px] top-[24px] flex cursor-pointer items-center gap-[24px] lg:right-[24px]"
 			on:click|preventDefault={closeForm}
 		>
-			<p class="pt-[3px] text-[14px] font-bold uppercase -tracking-[0.03em]">Fermer</p>
+			<p class="pt-[3px] text-[14px] font-bold uppercase -tracking-[0.03em]">{$page.data.content.closeLabel}</p>
 			<Close />
 		</div>
 		<div class="w-full">
@@ -121,21 +124,6 @@
 				</h3>
 				<form>
 					<div class="flex flex-col gap-[24px] lg:gap-[32px]">
-						<SpecificInput
-							error={subjectError}
-							content={content.subjectLabel}
-							bind:value={subject}
-							required={true}
-						/>
-						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
-							<SpecificInput content={content.companyLabel} bind:value={company} />
-							<SpecificInput
-								error={emailError}
-								content={content.emailLabel}
-								bind:value={email}
-								required={true}
-							/>
-						</div>
 						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
 							<SpecificInput
 								error={firstNameError}
@@ -150,6 +138,25 @@
 								required={true}
 							/>
 						</div>
+						<SpecificInput
+							error={emailError}
+							content={content.emailLabel}
+							bind:value={email}
+							required={true}
+						/>
+						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
+							<SpecificInput content={content.companyLabel} bind:value={company} />
+							<SpecificInput
+								content={content.phoneLabel}
+								bind:value={phone}
+							/>
+						</div>
+						<SpecificInput
+							error={subjectError}
+							content={content.subjectLabel}
+							bind:value={subject}
+							required={true}
+						/>
 						<SpecificTextarea content={content.messageLabel} bind:value={message} />
 					</div>
 
