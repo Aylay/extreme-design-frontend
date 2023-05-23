@@ -49,6 +49,7 @@
 				playsinline
 				autoplay
 				controls={false}
+				src={strapiURL + project.img.data.attributes.url}
 			>
 				<source src={strapiURL + project.img.data.attributes.url} type="video/mp4" />
 			</video>

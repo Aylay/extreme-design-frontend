@@ -66,6 +66,7 @@
 				playsinline
 				autoplay
 				controls={false}
+				src={strapiURL + content.media.data.attributes.url}
 			>
 				<source
 					src={strapiURL + content.media.data.attributes.url}
@@ -84,6 +85,7 @@
 				playsinline
 				autoplay
 				controls={false}
+				src={strapiURL + content.mediaMobile.data.attributes.url}
 			>
 				<source
 					src={strapiURL + content.mediaMobile.data.attributes.url}

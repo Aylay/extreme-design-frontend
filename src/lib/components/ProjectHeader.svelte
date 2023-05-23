@@ -43,6 +43,7 @@
 					playsinline
 					autoplay
 					controls={false}
+					src={strapiURL + img.data.attributes.url}
 				>
 					<source
 						src={strapiURL + img.data.attributes.url}
@@ -68,6 +69,7 @@
 					playsinline
 					autoplay
 					controls={false}
+					src={strapiURL + mobileImg.data.attributes.url}
 				>
 					<source
 						src={strapiURL + mobileImg.data.attributes.url}
