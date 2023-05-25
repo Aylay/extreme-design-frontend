@@ -46,6 +46,16 @@
 	}
 </script>
 
+<svelte:head>
+	{#each cities as city}
+		<link
+			rel="preload"
+			as="image"
+			href={strapiURL + city.img.data.attributes.url}
+		/>
+	{/each}
+</svelte:head>
+
 {#if actualCity}
 	<div
 		class="flex justify-between gap-[16px] pb-[56px] max-lg:flex-col max-lg:px-[16px] lg:gap-[48px] lg:pb-[96px]"
@@ -63,7 +73,7 @@
 		</div>
 		<div class="flex-1 lg:pr-[48px]">
 			<div class="flex flex-col">
-				{#each cities as city, i}
+				{#each cities as city}
 					<div class="max-lg:hidden">
 						<Hoverable let:hovering={active}>
 							<h3

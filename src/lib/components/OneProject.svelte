@@ -38,9 +38,9 @@
 	</h3>
 	{#if isInView}
 		<img
-			src={strapiURL + project.img.data.attributes.url}
-			alt={project.img.data.attributes.alternativeText
-				? project.img.data.attributes.alternativeText
+			src={strapiURL + project.imgList.data.attributes.url}
+			alt={project.imgList.data.attributes.alternativeText
+				? project.imgList.data.attributes.alternativeText
 				: project.name}
 			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>

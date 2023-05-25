@@ -29,7 +29,7 @@
 />
 
 {#if content.intro || content.cta1}
-	<IntroH2 text={content.intro} cta={content.cta1} />
+	<IntroH2 text={content.intro} />
 {/if}
 
 {#if content.imgsList.length > 0}

@@ -106,9 +106,9 @@
 				</video>
 			{/if}
 		</a>
-		<ul class="relative z-20 flex flex-col max-lg:px-[16px] max-lg:py-[32px] lg:gap-4">
+		<ul class="relative z-20 flex flex-col max-lg:px-[16px] max-lg:py-[32px]">
 			{#each projects as project, i}
-				<li class="max-lg:relative max-lg:pr-[32px]">
+				<li class="relative max-lg:pr-[32px]">
 					<p
 						class="cursor-pointer text-[4.8rem] font-bold leading-none -tracking-[0.03em] transition-colors hover:opacity-100 lg:inline-block lg:text-[7.2rem] lg:font-medium lg:text-white {project.title ===
 						actualProject.title
@@ -120,11 +120,11 @@
 					</p>
 					{#if project.title === actualProject.title}
 						<a
-							class="absolute inset-0 z-10 flex h-full w-full items-center justify-end lg:hidden"
-							href={actualProject.slug}
+							class="absolute inset-0 z-10 flex h-full w-full items-center justify-end"
+							href={'/' + actualLang + actualProject.slug}
 							title={actualProject.title}
 						>
-							<CtaArrow newClass="w-[16px] h-[16px]" />
+							<CtaArrow newClass="w-[16px] h-[16px] lg:hidden" />
 						</a>
 					{/if}
 				</li>

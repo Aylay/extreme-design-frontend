@@ -24,11 +24,11 @@
 
 {#if content}
 	<div
-		class="flex justify-between px-[4.8rem] py-8 max-lg:mt-[108px] max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
+		class="flex max-lg:flex-col justify-between px-[4.8rem] py-8 max-lg:mt-[108px] max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
 		use:inview={options}
 		on:inview_change={handleChange}
 	>
-		<div class="flex gap-4 max-lg:flex-1 max-lg:flex-col max-lg:gap-[8px] lg:items-center">
+		<div class="flex gap-4 max-lg:flex-col max-lg:gap-[8px] lg:items-center">
 			<p
 				class="text-[1.8rem] uppercase leading-none max-lg:leading-[24px] max-lg:-tracking-[0.03em] lg:pt-2"
 			>
@@ -44,7 +44,7 @@
 				</a>
 			{/if}
 		</div>
-		<ul class="flex max-lg:flex-1 max-lg:flex-col lg:gap-6">
+		<ul class="flex max-lg:flex-col lg:gap-6">
 			{#each content.footerMenu as item}
 				<li>
 					<a

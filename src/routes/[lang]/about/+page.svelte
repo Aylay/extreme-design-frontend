@@ -30,6 +30,8 @@
 	};
 </script>
 
+<div class="max-lg:hidden lg:h-[70px]" />
+
 <Intro text={content.title} />
 
 <div
@@ -112,7 +114,7 @@
 	cta={content.cta3}
 />
 
-{#if content.imgsList.data.length > 0}
+{#if content.imgsList.data && content.imgsList.data.length > 0}
 	<SliderImg images={content.imgsList.data} />
 {/if}
 

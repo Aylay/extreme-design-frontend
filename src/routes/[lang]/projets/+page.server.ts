@@ -19,7 +19,10 @@ export const load = (async ({ parent, fetch }) => {
 		}
 	);
 	const projectsListData = await projectsListResponse.json();
-	const projectsList = projectsListData.data ? projectsListData.data : '';
+	let projectsList = projectsListData.data ? projectsListData.data : '';
+	if (projectsListData.data) {
+		projectsList = projectsList.sort((a: any, b: any) => new Date(b.attributes.publishedAt) - new Date(a.attributes.publishedAt))
+	}
 
 	const allLangResponse = await fetch(
 		import.meta.env.VITE_STRAPI_URL + '/api/projects-list?locale=all',

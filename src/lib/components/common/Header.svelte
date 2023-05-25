@@ -94,7 +94,7 @@
 					</div>
 					<div class="absolute inset-0 h-full w-full {active ? 'z-10' : '-z-10'}">
 						<div
-							class="absolute inset-y-0 right-0 flex h-full w-[calc(50%-24px)] items-center animate-duration-100 justify-between {active
+							class="absolute inset-y-0 right-[48px] flex h-full w-[calc(50%+24px)] items-center animate-duration-100 justify-between {active
 								? 'animate-fade animate-delay-100'
 								: 'animate-unfade'}"
 						>

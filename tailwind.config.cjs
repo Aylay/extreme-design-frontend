@@ -21,7 +21,7 @@ module.exports = {
 					letterSpacing: '-0.03em'
 				}
 			],
-			medium: ['5.2rem', '5.5rem'],
+			medium: ['4.2rem', '4.6rem'],
 			m1: [
 				'3.2rem',
 				{

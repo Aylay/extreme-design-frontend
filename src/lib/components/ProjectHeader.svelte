@@ -83,7 +83,7 @@
 	<div
 		class="flex gap-[16px] px-[16px] max-lg:flex-col max-lg:pb-[46px] max-lg:pt-[32px] lg:flex-1 lg:items-center lg:gap-[48px] lg:px-[48px]"
 	>
-		<h1 class="flex-1 text-[64px] font-medium leading-none -tracking-[0.03em]">
+		<h1 class="flex-1 text-[51px] font-medium leading-none -tracking-[0.03em]">
 			{name}
 		</h1>
 		<ul class="flex flex-1 gap-[36px]">
