@@ -45,6 +45,19 @@
 	}
 </script>
 
+<svelte:head>
+	{#each projects as project}
+		<link
+			rel="preload"
+			href={strapiURL + project.mediaDesktop.data.attributes.url}
+		/>
+		<link
+			rel="preload"
+			href={strapiURL + project.mediaMobile.data.attributes.url}
+		/>
+	{/each}
+</svelte:head>
+
 {#if actualProject}
 	<div
 		class="relative mb-[56px] flex h-[calc(100vh-70px)] w-full max-lg:flex-col lg:mb-[96px] lg:h-screen lg:items-center lg:pl-[48px]"

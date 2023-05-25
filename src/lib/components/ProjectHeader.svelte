@@ -86,7 +86,7 @@
 		<h1 class="flex-1 text-[51px] font-medium leading-none -tracking-[0.03em]">
 			{name}
 		</h1>
-		<ul class="flex flex-1 gap-[36px]">
+		<ul class="flex flex-wrap flex-1 gap-[36px] max-lg:gap-x-[36px] max-lg:gap-y-[9px]">
 			{#each tags as tag}
 				<li class="text-[16px] font-bold uppercase leading-normal">
 					{tag.text}
