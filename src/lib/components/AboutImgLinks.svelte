@@ -49,7 +49,7 @@
 <svelte:head>
 	{#each cities as city}
 		<link
-			rel="preload"
+			rel="prefetch"
 			as="image"
 			href={strapiURL + city.img.data.attributes.url}
 		/>

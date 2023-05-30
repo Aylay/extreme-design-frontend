@@ -48,12 +48,14 @@
 <svelte:head>
 	{#each projects as project}
 		<link
-			rel="preload"
+			rel="prefetch"
 			href={strapiURL + project.mediaDesktop.data.attributes.url}
+			as={project.mediaDesktop.data.attributes.mime.includes('video') ? 'video' : 'image'}
 		/>
 		<link
-			rel="preload"
+			rel="prefetch"
 			href={strapiURL + project.mediaMobile.data.attributes.url}
+			as={project.mediaMobile.data.attributes.mime.includes('video') ? 'video' : 'image'}
 		/>
 	{/each}
 </svelte:head>
