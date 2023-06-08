@@ -34,24 +34,27 @@
 	onMount(() => {
 		const upContent = window.innerHeight / 2 * -1;
 
-		const ctx = gsap.context(() => {
-			const timeline1 = gsap.timeline({
-			scrollTrigger: {
-        trigger: '.title',
-        start: 'top top',
-        end: '+=250%',
-        scrub: true,
-        pin: true,
-        anticipatePin: 1
-			}
-		})
-		timeline1.to('.title p', { duration: 3, x: '-105%' })
-		timeline1.to('.title', { duration: 1, opacity: 0 }, 'end')
-		timeline1.to('.title p', { duration: 1, y: '-300px' }, 'end')
-		timeline1.to('.content', { duration: 1, y: upContent + 'px' }, 'end')
-		}, boxesContainer)
+		setTimeout(() => {
+			const ctx = gsap.context(() => {
+				const timeline1 = gsap.timeline({
+				scrollTrigger: {
+					trigger: '.title',
+					start: 'top top',
+					end: '+=250%',
+					scrub: true,
+					pin: true,
+					anticipatePin: 1
+				}
+			})
+			timeline1.to('.title p', { duration: 3, x: '-105%' })
+			timeline1.to('.title', { duration: 1, opacity: 0 }, 'end')
+			timeline1.to('.title p', { duration: 1, y: '-300px' }, 'end')
+			timeline1.to('.content', { duration: 1, y: upContent + 'px' }, 'end')
+			}, boxesContainer)
+			
+			return () => ctx.revert();
+		}, 500);
 
-		return () => ctx.revert();
 	});
 </script>
 
