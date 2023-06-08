@@ -8,7 +8,6 @@
 	import GTM from '$lib/components/utilities/GTM.svelte';
 	import Header from '$lib/components/common/Header.svelte';
 	import Footer from '$lib/components/common/Footer.svelte';
-	// import GsapSetup from '$lib/components/utilities/GsapSetup.svelte';
 
 	import type { LayoutData } from './$types';
 	export let data: LayoutData;
@@ -46,8 +45,6 @@
 </script>
 
 <GTM gtmId="GTM-WS7WJBQ" />
-
-<!-- <GsapSetup /> -->
 
 <svelte:head>
 	{#if $page.data.content.meta}
