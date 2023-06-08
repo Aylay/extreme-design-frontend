@@ -1,23 +1,16 @@
 <script lang="ts">
-	import { inview } from 'svelte-inview';
-	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import SvelteMarkdown from 'svelte-markdown';
 
 	import gsap from "gsap";
+	import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 	import { page } from '$app/stores';
-	import { onMount } from 'svelte';
+	import { onMount, onDestroy } from 'svelte';
 
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
 	let content: any;
 
 	$: content = $page.data.content;
-
-	let isInView: boolean;
-	const options: Options = {
-		unobserveOnEnter: true,
-		rootMargin: '50px'
-	};
 
 	const mdOptions = {
 		breaks: true,
@@ -25,37 +18,40 @@
 		headerIds: false
 	};
 
-	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
-		isInView = detail.inView;
-	};
-
-	let boxesContainer: any;
-
 	onMount(() => {
-		const upContent = window.innerHeight / 2 * -1;
+		if(typeof window !== "undefined"){
+			gsap.registerPlugin(ScrollTrigger)
+		}
 
-		setTimeout(() => {
-			const ctx = gsap.context(() => {
-				const timeline1 = gsap.timeline({
-				scrollTrigger: {
-					trigger: '.title',
-					start: 'top top',
-					end: '+=250%',
-					scrub: true,
-					pin: true,
-					anticipatePin: 1
-				}
-			})
-			timeline1.to('.title p', { duration: 3, x: '-105%' })
-			timeline1.to('.title', { duration: 1, opacity: 0 }, 'end')
-			timeline1.to('.title p', { duration: 1, y: '-300px' }, 'end')
-			timeline1.to('.content', { duration: 1, y: upContent + 'px' }, 'end')
-			}, boxesContainer)
-			
-			return () => ctx.revert();
-		}, 500);
+		const scroller = document.body;
 
+		ScrollTrigger.defaults({ 
+			scroller: scroller,
+			pinType: 'transform'
+		});
+		
+		const timeline1 = gsap.timeline({
+			scrollTrigger: {
+        trigger: '.title',
+        start: 'top top',
+        end: '+=250%',
+        scrub: true,
+        pin: true,
+        anticipatePin: 1
+			}
+		})
+		timeline1.to('.title p', { duration: 0.75, x: '-105%' })
+		timeline1.to('.title', { duration: 0.1, opacity: 0 }, 'end')
+		timeline1.to('.title p', { duration: 0.25, y: '-300px' }, 'end')
+		timeline1.to('.content', { duration: 0.25, y: '-50%' }, 'end')
 	});
+
+	onDestroy(() => {
+		let triggers = ScrollTrigger.getAll();
+		triggers.forEach( trigger => {			
+			trigger.kill();
+		});
+	})
 </script>
 
 <div class="title h-screen flex justify-center items-center overflow-x-hidden">
@@ -76,17 +72,13 @@
 	</div>
 	
 	{#if content.img && content.img.data}
-		<div class="max-lg:mb-[56px] max-lg:h-[360px]"
-		use:inview={options}
-		on:inview_change={handleChange}>
+		<div class="max-lg:mb-[56px] max-lg:h-[360px] lg:mb-[-60%]">
 			<img
 				src={strapiURL + content.img.data.attributes.url}
 				alt={content.img.data.attributes.alternativeText
 					? content.img.data.attributes.alternativeText
 					: content.title}
-				class="w-full max-lg:h-full max-lg:object-cover lg:h-auto {isInView
-					? 'animate-fade'
-					: 'opacity-0'}"
+				class="w-full max-lg:h-full max-lg:object-cover lg:h-auto"
 			/>
 		</div>
 	{/if}
