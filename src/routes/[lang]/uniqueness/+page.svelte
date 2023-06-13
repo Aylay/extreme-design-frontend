@@ -1,7 +1,7 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
 
-	import gsap from "gsap";
+	import { gsap } from 'gsap/dist/gsap'
 	import ScrollTrigger from "gsap/dist/ScrollTrigger";
 
 	import { page } from '$app/stores';
