@@ -32,6 +32,7 @@
 		
 		const timeline1 = gsap.timeline({
 			scrollTrigger: {
+				id: 'uniqueness',
         trigger: '.title',
         start: 'top top',
         end: '+=250%',
@@ -47,16 +48,7 @@
 	});
 
 	onDestroy(() => {
-		if(typeof window !== "undefined"){
-			gsap.registerPlugin(ScrollTrigger)
-		}
-		
-		if (ScrollTrigger) {
-			let triggers = ScrollTrigger.getAll();
-			triggers.forEach( trigger => {			
-				trigger.kill();
-			});
-		}
+		ScrollTrigger.getById("uniqueness").kill(true);
 	})
 </script>
 
