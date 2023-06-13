@@ -108,7 +108,7 @@
 {/if}
 
 <AboutContentImg
-	title={content.title3}
+	title={content.longText3}
 	text={content.text3}
 	img={content.img3}
 	cta={content.cta3}

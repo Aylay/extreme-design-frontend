@@ -27,12 +27,12 @@
 	<div class="flex-1 max-lg:order-2 lg:pl-[48px]">
 		<div class="gap-8px flex flex-col lg:gap-[24px]">
 			{#if text !== ''}
-				<p class="text-[32px] font-medium lg:text-medium">
+				<p class="text-[32px] font-medium lg:text-[10rem] lg:leading-[9.6rem] -tracking-[0.03em]">
 					{text}
 				</p>
 			{/if}
 			{#if title !== ''}
-				<h3 class="text-[64px] font-bold leading-[60px] -tracking-[0.03em] lg:text-big">
+				<h3 class="max-lg:text-m2 lg:text-medium">
 					{@html title}
 				</h3>
 			{/if}

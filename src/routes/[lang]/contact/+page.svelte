@@ -91,21 +91,42 @@
 		<h2 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">{content.joinUsTitle}</h2>
 		<div class="flex flex-1 flex-col">
 			{#each content.joinUsList as job}
-				<div
-					class="flex justify-between gap-[16px] border-b border-solid border-shark py-[32px] first:border-t lg:items-center lg:gap-[48px]"
-				>
+			{#if job.url !== ''}
+			<a
+				class="flex justify-between gap-[16px] border-b border-solid border-shark py-[32px] first:border-t lg:items-center lg:gap-[48px]"
+				href={job.url}
+				title={job.job}
+				target="_blank"
+			>
+				<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
+					{job.job}
+				</p>
+				<div class="flex flex-1 justify-between gap-[16px] lg:items-center lg:gap-[48px]">
 					<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
-						{job.job}
+						{job.contract}
 					</p>
-					<div class="flex flex-1 justify-between gap-[16px] lg:items-center lg:gap-[48px]">
-						<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
-							{job.contract}
-						</p>
-						<p class="text-[24px] leading-tight -tracking-[0.03em]">
-							{job.location}
-						</p>
-					</div>
+					<p class="text-[24px] leading-tight -tracking-[0.03em]">
+						{job.location}
+					</p>
 				</div>
+			</a>
+			{:else}
+			<div
+				class="flex justify-between gap-[16px] border-b border-solid border-shark py-[32px] first:border-t lg:items-center lg:gap-[48px]"
+			>
+				<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
+					{job.job}
+				</p>
+				<div class="flex flex-1 justify-between gap-[16px] lg:items-center lg:gap-[48px]">
+					<p class="flex-1 text-[24px] leading-tight -tracking-[0.03em]">
+						{job.contract}
+					</p>
+					<p class="text-[24px] leading-tight -tracking-[0.03em]">
+						{job.location}
+					</p>
+				</div>
+			</div>
+			{/if}
 			{/each}
 
 			{#if content.joinUsCta}

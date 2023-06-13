@@ -40,10 +40,10 @@
         anticipatePin: 1
 			}
 		})
-		timeline1.to('.title p', { duration: 0.75, x: '-105%' })
+		timeline1.to('.title p', { duration: 0.5, x: '-105%' })
 		timeline1.to('.title', { duration: 0.1, opacity: 0 }, 'end')
-		timeline1.to('.title p', { duration: 0.25, y: '-300px' }, 'end')
-		timeline1.to('.content', { duration: 0.25, y: '-50%' }, 'end')
+		timeline1.to('.content', { duration: 0.15, y: '-50%' }, 'end')
+		timeline1.to('.title p', { duration: 0.15, y: '-300px' }, 'end')
 	});
 
 	onDestroy(() => {
@@ -61,11 +61,11 @@
 	</div>
 </div>
 
-<div class="content">
-	<div class="mb-[56px] gap-[48px] px-[48px] max-lg:px-[16px] lg:mb-[96px] lg:grid lg:grid-cols-4">
+<div class="content relative -top-2/4">
+	<div class="mb-[56px] gap-[48px] px-[48px] max-lg:px-[16px] lg:mb-[96px] lg:grid lg:grid-cols-5">
 		<div class="col-span-1 max-lg:hidden" />
 		<div
-			class="flex flex-col gap-[154px] text-[32px] leading-[36px] -tracking-[0.03em] lg:col-span-2 lg:gap-[112px] lg:text-[40px] lg:leading-[46px]"
+			class="flex flex-col gap-[154px] text-[32px] leading-[36px] -tracking-[0.03em] lg:col-span-3 lg:gap-[112px] lg:text-[40px] lg:leading-[46px]"
 		>
 			<SvelteMarkdown source={content.text} options={mdOptions} />
 		</div>
