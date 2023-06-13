@@ -1,8 +1,8 @@
 <script lang="ts">
 	import SvelteMarkdown from 'svelte-markdown';
 
-	import gsap from 'gsap'
-	import ScrollTrigger from "gsap/dist/ScrollTrigger";
+	import {gsap}  from "gsap/dist/gsap";        
+	import {ScrollTrigger} from "gsap/dist/ScrollTrigger";    
 
 	import { page } from '$app/stores';
 	import { onMount, onDestroy } from 'svelte';
@@ -48,7 +48,7 @@
 	});
 
 	onDestroy(() => {
-		ScrollTrigger.getById("uniqueness").kill(true);
+		ScrollTrigger.refresh()
 	})
 </script>
 
