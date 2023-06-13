@@ -47,7 +47,16 @@
 	});
 
 	onDestroy(() => {
-		ScrollTrigger.getAll().forEach(st => st.kill())
+		if(typeof window !== "undefined"){
+			gsap.registerPlugin(ScrollTrigger)
+		}
+		
+		if (ScrollTrigger) {
+			let triggers = ScrollTrigger.getAll();
+			triggers.forEach( trigger => {			
+				trigger.kill();
+			});
+		}
 	})
 </script>
 
