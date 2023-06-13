@@ -47,12 +47,7 @@
 	});
 
 	onDestroy(() => {
-		if (ScrollTrigger) {
-			let triggers = ScrollTrigger.getAll();
-			triggers.forEach( trigger => {			
-				trigger.kill();
-			});
-		}
+		ScrollTrigger.getAll().forEach(st => st.kill())
 	})
 </script>
 
