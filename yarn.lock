@@ -2047,6 +2047,11 @@ svelte-hmr@^0.15.1:
   resolved "https://registry.yarnpkg.com/svelte-hmr/-/svelte-hmr-0.15.1.tgz#d11d878a0bbb12ec1cba030f580cd2049f4ec86b"
   integrity sha512-BiKB4RZ8YSwRKCNVdNxK/GfY+r4Kjgp9jCLEy0DuqAKfmQtpL38cQK3afdpjw4sqSs4PLi3jIPJIFp259NkZtA==
 
+svelte-image-comparison@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/svelte-image-comparison/-/svelte-image-comparison-0.0.3.tgz#83ceaac08179c2ec7d72feb96404b1c96cc86f7c"
+  integrity sha512-cNNwwat4/cvL6ZTzvVXrmc1DEyn5uMHOOdqK4z050amniXDM8NGlK48C1uZDHIfURugRziCY7owC11a3JMEQKg==
+
 svelte-inview@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/svelte-inview/-/svelte-inview-4.0.0.tgz#6953ad59380d5b5ed8757c3ca9998a71eed82867"

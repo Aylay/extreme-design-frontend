@@ -139,7 +139,7 @@
 							href={'/' + actualLang + actualProject.slug}
 							title={actualProject.title}
 						>
-							<CtaArrow newClass="w-[16px] h-[16px] lg:hidden" />
+							<CtaArrow newClass="w-[16px] h-[16px] lg:hidden stroke-shark" />
 						</a>
 					{/if}
 				</li>

@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
-	import CtaArrow from '$lib/assets/svg/CTAArrow.svelte';
 	import Intro from '$lib/components/common/Intro.svelte';
 	import ContactForm from '$lib/components/common/ContactForm.svelte';
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
@@ -57,7 +56,7 @@
 					<p class="inline-block text-[14px] font-bold uppercase leading-normal -tracking-[0.03em]">
 						{city.label}
 					</p>
-					<CtaArrow newClass="w-[12px] h-[12px]" />
+					<ArrowCta newClass="w-[12px] h-[12px] stroke-shark" />
 				</div>
 			</div>
 		{/each}
