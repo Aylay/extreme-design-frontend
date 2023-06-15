@@ -58,11 +58,11 @@
 				</swiper-slide>
 			{/each}
 		</swiper-container>
-		<div class="swiper-prev absolute top-1/2 transform -translate-y-1/2 left-[24px] z-20">
+		<div class="swiper-prev absolute top-1/2 transform -translate-y-1/2 max-lg:left-[12px] left-[24px] z-20">
 			<ArrowCta newClass="transform rotate-[-135deg] stroke-white w-[12px] h-[12px] lg:w-[16px] lg:h-[16px]" />
 		</div>
 		
-		<div class="swiper-next absolute top-1/2 transform -translate-y-1/2 right-[24px] z-20">
+		<div class="swiper-next absolute top-1/2 transform -translate-y-1/2 max-lg:right-[12px] right-[24px] z-20">
 			<ArrowCta newClass="transform rotate-45 stroke-white w-[12px] h-[12px] lg:w-[16px] lg:h-[16px]" />
 		</div>
 	</div>
@@ -74,7 +74,7 @@
 		--swiper-pagination-bullet-border-radius: 0;
 		--swiper-pagination-bullet-inactive-opacity: 1;
 		--swiper-navigation-sides-offset: 24px;
-		--swiper-pagination-bottom: 24px;
+		--swiper-pagination-bottom: 12px;
 		--swiper-pagination-bullet-width: 12px;
 		--swiper-pagination-bullet-height: 12px;
 		--swiper-pagination-bullet-horizontal-gap: 6px;
