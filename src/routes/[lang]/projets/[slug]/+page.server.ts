@@ -19,7 +19,7 @@ export const load = (async ({ parent, fetch, params }) => {
 	const projectRedirect = projectData.data ? false : true;
 
 	const allLangResponse = await fetch(
-		import.meta.env.VITE_STRAPI_URL + '/api/projets/' + params.slug + '?locale=all',
+		import.meta.env.VITE_STRAPI_URL + '/api/projets?locale=all&filters[slug][$eq]=' + params.slug,
 		{
 			method: 'GET'
 		}

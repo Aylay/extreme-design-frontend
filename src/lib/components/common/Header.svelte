@@ -128,8 +128,8 @@
 														: 'text-opacity-50'}"
 													title={lang.attributes.locale}
 													href={restOfUrl !== ''
-														? lang.attributes.locale + '/' + restOfUrl
-														: lang.attributes.locale}
+														? '/' + lang.attributes.locale + '/' + restOfUrl
+														: '/' + lang.attributes.locale}
 												>
 													{lang.attributes.locale}
 												</a>
@@ -140,7 +140,9 @@
 														? 'cursor-default text-shark relative before:content-[\'\'] before:w-full before:absolute before:h-[2px] before:inset-x-0 before:bottom-0 before:bg-shark'
 														: 'text-silver'}"
 													title={lang.attributes.locale}
-													href={lang.attributes.locale + '/' + restOfUrl}
+													href={restOfUrl !== ''
+														? '/' + lang.attributes.locale + '/' + restOfUrl
+														: '/' + lang.attributes.locale}
 												>
 													{lang.attributes.locale}
 												</a>
@@ -194,8 +196,8 @@
 											: 'text-silver'}"
 										title={lang.attributes.locale}
 										href={restOfUrl
-											? lang.attributes.locale + '/' + restOfUrl
-											: lang.attributes.locale}
+											? '/' + lang.attributes.locale + '/' + restOfUrl
+											: '/' + lang.attributes.locale}
 									>
 										{lang.attributes.locale}
 									</a>

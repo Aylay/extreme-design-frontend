@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte';
 	import { inview } from 'svelte-inview';
 	import { register } from 'swiper/element/bundle';
-	import { Navigation, Pagination } from 'swiper';
+	import { Navigation } from 'swiper';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import 'swiper/element/css/autoplay';
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
@@ -28,7 +28,7 @@
 	};
 
 	const swiperParams = {
-		modules: [Navigation, Pagination],
+		modules: [Navigation],
 		speed: 1000,
 		grabCursor: true,
 		slidesPerView: 1,
@@ -37,10 +37,6 @@
 			nextEl: '.swiper-next',
     	prevEl: '.swiper-prev',
 		},
-		pagination: {
-			hideOnClick: false,
-			clickable: true
-    },
 		autoplay: true
 	};
 </script>

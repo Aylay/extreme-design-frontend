@@ -18,7 +18,7 @@ export const load = (async ({ parent, fetch, params }) => {
 	const articleRedirect = articleData.data ? false : true;
 
 	const allLangResponse = await fetch(
-		import.meta.env.VITE_STRAPI_URL + '/api/articles/' + params.slug + '?locale=all',
+		import.meta.env.VITE_STRAPI_URL + '/api/articles?locale=all&filters[slug][$eq]=' + params.slug,
 		{
 			method: 'GET'
 		}
