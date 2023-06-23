@@ -38,10 +38,10 @@
 	<p class="text-[60px] font-medium -tracking-[0.03em] lg:text-[212px]">{content.title}</p>
 </div>
 
-<div class="mb-[56px] gap-[48px] px-[48px] max-lg:px-[16px] lg:mb-[96px] lg:grid lg:grid-cols-4">
+<div class="mb-[56px] gap-[48px] px-[48px] max-lg:px-[16px] lg:mb-[96px] lg:grid lg:grid-cols-5">
 	<div class="col-span-1 max-lg:hidden" />
 	<div
-		class="flex flex-col gap-[154px] text-[32px] leading-[36px] -tracking-[0.03em] lg:col-span-2 lg:gap-[112px] lg:text-[40px] lg:leading-[46px]"
+		class="flex flex-col gap-[154px] text-[32px] leading-[36px] -tracking-[0.03em] lg:col-span-3 lg:gap-[112px] lg:text-[40px] lg:leading-[46px]"
 	>
 		<SvelteMarkdown source={content.text} options={mdOptions} />
 	</div>
