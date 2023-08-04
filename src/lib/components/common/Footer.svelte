@@ -22,7 +22,7 @@
 	}
 </script>
 
-{#if content}
+{#if content && $page.route.id !== '/[lang]/uniqueness'}
 	<div
 		class="flex max-lg:flex-col justify-between px-[4.8rem] py-8 max-lg:mt-[108px] max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
 		use:inview={options}
