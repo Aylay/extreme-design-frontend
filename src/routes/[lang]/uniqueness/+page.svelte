@@ -39,28 +39,26 @@
 		const uniquenessTitleContainer = document.getElementById('uniqueness-title');
 		const uniquenessContentContainer = document.getElementById('uniqueness-content');
 
-		['wheel','touchmove'].forEach( evt => 
-			scrollContainer.addEventListener(evt, () => {
-				let yTopTitle: number;
-				let yOpacity: number;
+		scrollContainer.addEventListener('wheel', () => {
+			let yTopTitle: number;
+			let yOpacity: number;
 
-				if (y < 1130) {
-					uniquenessTitleContainer.style.transform = 'translate(' + -y + 'px, 0)'
-					uniquenessContentContainer.style.top = 'calc(100vh + 200px + ' + y + 'px)'
-					uniquenessTitleContainer.style.opacity = '100%'
-				}
-				if (y >= 1130 && y < 1530) {
-					yTopTitle = y - 1130;
-					yOpacity = (1510 - y) / 4
-					uniquenessTitleContainer.style.transform = 'translate(-1130px, ' + -yTopTitle * 0.5 + 'px)'
-					uniquenessTitleContainer.style.opacity = yOpacity + '%'
-				}
-				if (y >= 1530) {
-					uniquenessTitleContainer.style.transform = 'translate(-1130px, -200px)'
-					uniquenessTitleContainer.style.opacity = '0%'
-				}
-			}, false)
-		);
+			if (y < 1130) {
+				uniquenessTitleContainer.style.transform = 'translate(' + -y + 'px, 0)'
+				uniquenessContentContainer.style.top = 'calc(100vh + 200px + ' + y + 'px)'
+				uniquenessTitleContainer.style.opacity = '100%'
+			}
+			if (y >= 1130 && y < 1530) {
+				yTopTitle = y - 1130;
+				yOpacity = (1510 - y) / 4
+				uniquenessTitleContainer.style.transform = 'translate(-1130px, ' + -yTopTitle * 0.5 + 'px)'
+				uniquenessTitleContainer.style.opacity = yOpacity + '%'
+			}
+			if (y >= 1530) {
+				uniquenessTitleContainer.style.transform = 'translate(-1130px, -200px)'
+				uniquenessTitleContainer.style.opacity = '0%'
+			}
+		});
 	})
 </script>
 
