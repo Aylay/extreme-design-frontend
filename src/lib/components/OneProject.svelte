@@ -29,7 +29,7 @@
 		: '/' + actualLang + project.slug}
 	title={project.name}
 	class="flex flex-col gap-[8px]"
-	target={project.slug.includes('http') ? '_blank' : ''}
+	target={project.slug.includes('http') ? '_blank' : '_self'}
 	use:inview={options}
 	on:inview_change={handleChange}
 >

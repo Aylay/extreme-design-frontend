@@ -82,6 +82,9 @@
 			href="{siteUrl}/fr{restOfUrl ? '/' + restOfUrl : ''}"
 		/>
 	{/if}
+	{#if $page.url.host.includes('beavers-agency')}
+		<meta name="robots" content="noindex, nofollow">
+	{/if}
 </svelte:head>
 
 <Header />

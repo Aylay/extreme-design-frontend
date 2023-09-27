@@ -8,11 +8,10 @@
 	let content: any;
 
 	$: {
-		content = $page.data.content;
+		content = $page.data.contentContact;
 	}
 
 	export let isOpened: boolean;
-	export let city: any;
 
 	let subject = '';
 	let subjectError = false;
@@ -122,7 +121,7 @@
 		<div class="w-full">
 			{#if !formSent}
 				<h3 class="mb-[56px] text-m1 font-normal lg:mb-[120px] lg:text-medium">
-					{content.contactLabel} <span class="max-lg:block">{city.city}</span>
+					{content.contactLabel}
 				</h3>
 				<form>
 					<div class="flex flex-col gap-[24px] lg:gap-[32px]">
