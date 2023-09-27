@@ -120,9 +120,6 @@
 		</div>
 		<div class="w-full">
 			{#if !formSent}
-				<h3 class="mb-[56px] text-m1 font-normal lg:mb-[120px] lg:text-medium">
-					{content.contactLabel}
-				</h3>
 				<form>
 					<div class="flex flex-col gap-[24px] lg:gap-[32px]">
 						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
