@@ -36,6 +36,7 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
+
 </script>
 
 <div class="flex justify-end px-[16px] py-[56px] lg:px-[48px] lg:py-[96px]">
@@ -46,11 +47,12 @@
 	</div>
 </div>
 
-<div
-	class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
-	use:inview={options}
-	on:inview_change={handleChange}
->
+{#if content.img && content.img.data}
+	<div
+		class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
+		use:inview={options}
+		on:inview_change={handleChange}
+	>
 	{#if isInView}
 		<img
 			src={strapiURL + content.img.data.attributes.url}
@@ -60,15 +62,18 @@
 			class=" w-full max-lg:h-full max-lg:object-cover lg:h-auto {isInView
 				? 'animate-fade'
 				: 'opacity-0'}"
-		/>
+			/>
 	{/if}
-</div>
+	</div>
+{/if}
 
+{#if content.text}
 <div class="mb-[56px] px-[16px] lg:mb-[96px] lg:flex lg:px-[48px]">
 	<div class="content-text mx-auto lg:w-1/2">
 		<SvelteMarkdown source={content.text} options={mdOptions} />
 	</div>
 </div>
+{/if}
 
 {#if content.otherArticlesTitle && content.otherArticlesList.length > 0}
 	<div class="mb-[56px] px-[16px] lg:mb-[96px] lg:px-[48px]">

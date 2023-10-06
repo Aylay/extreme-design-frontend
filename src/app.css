@@ -54,4 +54,7 @@
 	.content-text p strong {
 		@apply font-medium;
 	}
+	.content-text a {
+		@apply underline;
+	}
 }
