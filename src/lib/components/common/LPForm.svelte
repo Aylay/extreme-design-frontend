@@ -103,11 +103,11 @@
 </script>
 
 <div
-	class="fixed inset-0 z-50 flex h-screen w-full justify-end bg-white bg-opacity-75"
+	class="fixed inset-0 z-50 flex h-screen w-full justify-end bg-white lg:bg-opacity-75 max-lg:overflow-scroll"
 	on:click|self={closeForm}
 >
 	<div
-		class="flex w-full animate-fade-left items-center justify-center border-solid border-shark border-opacity-[0.15] bg-white pl-[48px] animate-duration-1000 max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[48px]"
+		class="flex w-full animate-fade-left lg:items-center lg:justify-center border-solid border-shark border-opacity-[0.15] bg-white pl-[48px] animate-duration-1000 max-lg:px-[16px] lg:w-[calc(50%+24px)] lg:border-l lg:pr-[48px] max-lg:py-16"
 	>
 		<div
 			class="absolute right-[16px] top-[24px] flex cursor-pointer items-center gap-[24px] lg:right-[24px]"
@@ -120,7 +120,7 @@
 		</div>
 		<div class="w-full">
 			{#if !formSent}
-				<form>
+				<form class="max-lg:pb-16">
 					<div class="flex flex-col gap-[24px] lg:gap-[32px]">
 						<div class="flex justify-between gap-[24px] max-lg:flex-col lg:gap-[48px]">
 							<SpecificInput

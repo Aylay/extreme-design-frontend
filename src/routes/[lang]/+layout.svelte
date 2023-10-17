@@ -44,7 +44,9 @@
 	});
 </script>
 
-<GTM gtmId="GTM-WS7WJBQ" />
+{#if $page.url.host.includes('extreme.fr')}
+	<GTM gtmId="GTM-WS7WJBQ" />
+{/if}
 
 <svelte:head>
 	{#if $page.data.content.meta}
