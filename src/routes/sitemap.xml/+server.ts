@@ -4,8 +4,8 @@ export async function GET({ fetch, setHeaders }) {
 	setHeaders({
 		'Content-Type': 'application/xml'
 	});
-	// const langs = ['fr', 'en', 'es'];
-	const langs = ['fr'];
+	const langs = ['fr', 'en', 'pt'];
+	// const langs = ['fr'];
 	const pages = ['', 'about', 'articles', 'contact', 'legals', 'projets', 'uniqueness'];
 	const projectsResponse = await fetch(
 		import.meta.env.VITE_STRAPI_URL + '/api/projets?populate=deep&locale=all',
