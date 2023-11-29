@@ -12,3 +12,5 @@ Disallow:
 
 User-agent: Googlebot-news
 Disallow:
+
+Sitemap: https://design.extreme.fr/sitemap.xml
