@@ -2,18 +2,16 @@
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 
-	import AboutContentImg from '$lib/components/AboutContentImg.svelte';
-	import AboutImgLinks from '$lib/components/AboutImgLinks.svelte';
 	import Intro from '$lib/components/common/Intro.svelte';
-	import Numbers from '$lib/components/common/Numbers.svelte';
-	import TitleText from '$lib/components/common/TitleText2.svelte';
-	import SliderImg from '$lib/components/common/SliderImg.svelte';
-	import AboutTeam from '$lib/components/AboutTeam.svelte';
-	import ContactUs from '$lib/components/common/ContactUs.svelte';
+	import ContentManager from '$lib/components/common/ContentManager.svelte';
+	import LpForm from '$lib/components/common/LPForm.svelte';
+	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
+	import Hoverable from '$lib/components/utilities/Hoverable.svelte';
 	import { page } from '$app/stores';
 
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
-	let content: any;
+	let content: any = $page.data.content;
+	let formIsOpened = false;
 
 	$: {
 		content = $page.data.content;
@@ -28,6 +26,11 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
+
+	function openForm() {
+		document.body.classList.add('overflow-hidden');
+		formIsOpened = true;
+	}
 </script>
 
 <div class="max-lg:hidden lg:h-[70px]" />
@@ -99,45 +102,43 @@
 	{/if}
 </div>
 
-<Numbers numbers={content.numbers} />
-
-<TitleText title={content.title2} text={content.text2} cta={content.cta2} />
-
-{#if content.cities.length > 0}
-	<AboutImgLinks cities={content.cities} />
+{#if content.contentManager.length > 0}
+<div class="flex flex-col gap-[56px] px-[16px] pb-[56px] lg:gap-y-[96px] lg:px-[48px] lg:pb-[96px] {!content.title || content.title === '' ? 'pt-[56px] lg:pt-[96px]' : ''}">
+	{#each content.contentManager as row}
+		<div class="flex max-lg:flex-col gap-[56px] lg:gap-x-[48px] {row.colonnes.length === 1 ? 'justify-center' : ''}">
+			{#each row.colonnes as column}
+			<ContentManager {column} length={row.colonnes.length} />
+			{/each}
+		</div>
+	{/each}
+</div>
 {/if}
 
-<AboutContentImg
-	title={content.longText3}
-	text={content.text3}
-	img={content.img3}
-	cta={content.cta3}
-/>
-
-{#if content.textFormation && content.titleFormation && content.mediaFormation && content.ctaFormation}
-<AboutContentImg
-	title={content.textFormation}
-	text={content.titleFormation}
-	img={content.mediaFormation}
-	cta={content.ctaFormation}
-	reverse={true}
-/>
+{#if content.contact}
+<div class="flex px-[16px] pb-[56px] lg:px-[48px] lg:pb-[96px]">
+	<Hoverable let:hovering={active}>
+		<button
+			class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
+			on:click={() => openForm()}
+		>
+			<div class="flex items-center gap-[24px] lg:gap-[32px]">
+				<span
+				class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+				>
+				{content.contactLabel}
+			</span>
+			<ArrowCta />
+		</div>
+		<div
+		class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+			? 'w-0'
+			: 'w-full'}"
+			/>
+		</button>
+	</Hoverable>
+</div>
 {/if}
 
-{#if content.imgsList.data && content.imgsList.data.length > 0}
-	<SliderImg images={content.imgsList.data} />
+{#if formIsOpened}
+	<LpForm bind:isOpened={formIsOpened} />
 {/if}
-
-{#if content.title4}
-	<h3
-		class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
-	>
-		{content.title4}
-	</h3>
-{/if}
-
-{#if content.team.length > 0 && content.showMoreLabel}
-	<AboutTeam team={content.team} />
-{/if}
-
-<ContactUs />

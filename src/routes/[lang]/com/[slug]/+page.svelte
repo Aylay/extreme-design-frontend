@@ -7,7 +7,7 @@
 	import LpForm from '$lib/components/common/LPForm.svelte';
 	import ContentManager from '$lib/components/common/ContentManager.svelte';
 
-	let content: any;
+	let content: any = $page.data.content;
 	let formIsOpened = false;
 
 	$: {

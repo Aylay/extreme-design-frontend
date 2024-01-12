@@ -74,7 +74,7 @@
 		<div class="flex-1 lg:pr-[48px]">
 			<div class="flex flex-col">
 				{#each cities as city}
-					<div class="max-lg:hidden">
+					<div class="max-lg:hidden overflow-hidden">
 						<Hoverable let:hovering={active}>
 							<h3
 								class="cursor-pointer text-big font-bold text-shark transition-opacity {active ||

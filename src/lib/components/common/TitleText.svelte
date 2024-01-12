@@ -13,7 +13,7 @@
 		</h2>
 		<div class="flex flex-1 flex-col gap-[56px] lg:gap-[58px]">
 			<h3 class="max-lg:text-m2 lg:text-medium">{@html content.text}</h3>
-			{#if content.cta.href !== ''}
+			{#if content.cta && content.cta.href !== ''}
 				<div class="flex">
 					<Cta cta={content.cta} />
 				</div>

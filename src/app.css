@@ -48,8 +48,16 @@
 		@apply underline;
 	}
 
-	.content-text p {
+	.content-text p,
+	.content-text li {
 		@apply text-[18px] leading-[24px] -tracking-[0.03em] lg:text-[24px] lg:leading-[36px];
+	}
+	.content-text ol,
+	.content-text ul {
+		@apply ml-[24px] pl-[24px];
+	}
+	.content-text ol {
+		@apply list-decimal;
 	}
 	.content-text p strong {
 		@apply font-medium;

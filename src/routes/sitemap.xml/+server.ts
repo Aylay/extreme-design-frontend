@@ -6,9 +6,9 @@ export async function GET({ fetch, setHeaders }) {
 	});
 	const langs = ['fr', 'en', 'pt'];
 	// const langs = ['fr'];
-	const pages = ['', 'about', 'articles', 'contact', 'legals', 'projets', 'uniqueness'];
+	const pages = ['', 'about', 'articles', 'contact', 'legals', 'projets', 'uniqueness', 'formation'];
 	const projectsResponse = await fetch(
-		import.meta.env.VITE_STRAPI_URL + '/api/projets?populate=deep&locale=all',
+		import.meta.env.VITE_STRAPI_URL + '/api/projets?populate=deep&locale=all&pagination[pageSize]=200',
 		{
 			method: 'GET'
 		}
@@ -19,7 +19,7 @@ export async function GET({ fetch, setHeaders }) {
 		projectsSlug.push(project.attributes.slug);
 	}
 	const newsResponse = await fetch(
-		import.meta.env.VITE_STRAPI_URL + '/api/articles?populate=deep&locale=all',
+		import.meta.env.VITE_STRAPI_URL + '/api/articles?populate=deep&locale=all&pagination[pageSize]=200',
 		{
 			method: 'GET'
 		}
