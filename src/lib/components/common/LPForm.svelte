@@ -53,7 +53,8 @@
 			email: email,
 			subject: subject,
 			phone: phone,
-			message: message
+			message: message,
+			formation: $page.route.id === '/[lang]/formation' ? true : false
 		};
 
 		fetch(import.meta.env.VITE_STRAPI_URL + '/api/contacts', {

@@ -3,6 +3,9 @@
   import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 	import Cta from './CTA.svelte';
+	import LpForm from '$lib/components/common/LPForm.svelte';
+	import Hoverable from '$lib/components/utilities/Hoverable.svelte';
+	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 
   let isInView: boolean;
   const options: Options = {
@@ -17,8 +20,10 @@
 
   export let column: any;
   export let length: number;
+  export let formation: boolean = false;
   let cta: any;
 	let actualLang: any;
+	let formIsOpened = false;
 
 	$: {
 		actualLang = $page.data.actualLang;
@@ -31,10 +36,15 @@
       label: column.ctaLabel
     }
   }
+
+  function openForm() {
+    document.body.classList.add('overflow-hidden');
+    formIsOpened = true;
+  }
 </script>
 
 <div
-  class="{column.layout === 'texte' && length === 1 ? 'lg:w-2/3' : 'flex-1'}"
+  class="{column.layout === 'texte' && length === 1 && !formation ? 'lg:w-2/3' : 'flex-1'}"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
@@ -82,10 +92,38 @@
       {@html column.contenu}
     </div>
     {/if}
-    {#if column.ctaLink && column.ctaLink !== '' && column.ctaLabel && column.ctaLabel !== ''}
+    {#if column.ctaLink && column.ctaLink !== '' && column.ctaLabel && column.ctaLabel !== '' && !column.ctaContact}
 			<div class="flex mt-[48px]">
 				<Cta {cta} />
 			</div>
 		{/if}
+    {#if column.ctaContact && column.ctaLabel && column.ctaLabel !== ''}
+    <div class="flex mt-[48px]">
+      <Hoverable let:hovering={active}>
+        <button
+          class="relative inline-block cursor-pointer pb-[8px] lg:pb-[16px]"
+          on:click={() => openForm()}
+        >
+          <div class="flex items-center gap-[24px] lg:gap-[32px]">
+            <span
+            class="flex-1 py-[2px] text-[14px] font-bold uppercase leading-none -tracking-[0.03em] lg:text-[18px]"
+            >
+            {column.ctaLabel}
+          </span>
+          <ArrowCta />
+        </div>
+        <div
+        class="absolute bottom-0 left-0 h-[2px] bg-shark transition-all duration-200 {active
+          ? 'w-0'
+          : 'w-full'}"
+          />
+        </button>
+      </Hoverable>
+    </div>
+    {/if}
   {/if}
 </div>
+
+{#if column.ctaContact && formIsOpened}
+	<LpForm bind:isOpened={formIsOpened} />
+{/if}
