@@ -2,6 +2,11 @@
 	import { page } from '$app/stores';
   import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
+	import { onMount } from 'svelte';
+	import { register } from 'swiper/element/bundle';
+	import { Navigation } from 'swiper';
+	import 'swiper/element/css/autoplay';
+
 	import Cta from './CTA.svelte';
 	import LpForm from '$lib/components/common/LPForm.svelte';
 	import Hoverable from '$lib/components/utilities/Hoverable.svelte';
@@ -24,6 +29,7 @@
   let cta: any;
 	let actualLang: any;
 	let formIsOpened = false;
+  let newClass = '';
 
 	$: {
 		actualLang = $page.data.actualLang;
@@ -41,11 +47,38 @@
     document.body.classList.add('overflow-hidden');
     formIsOpened = true;
   }
-  console.log(column)
+
+  if (column.layout === 'texte' && length === 1 && !formation) {
+    newClass = 'lg:w-2/3 lg:mx-auto'
+  } else {
+    newClass = 'grid-span-1'
+  }
+  
+  if (column.layout === 'slider') {
+    const swiperParams = {
+      modules: [Navigation],
+      speed: 1000,
+      grabCursor: true,
+      slidesPerView: 1,
+      loop: true,
+      navigation: {
+        nextEl: '#next-' + column.id,
+        prevEl: '#prev-' + column.id,
+      },
+      autoplay: true
+    };
+
+    onMount(() => {
+      register();
+      const swiperEl = document.querySelector('#swiper-' + column.id + ' swiper-container');
+      Object.assign(swiperEl, swiperParams);
+      swiperEl.initialize();
+    });
+  }
 </script>
 
 <div
-  class="{column.layout === 'texte' && length === 1 && !formation ? 'lg:w-2/3' : 'flex-1'}"
+  class="{newClass}"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
@@ -158,9 +191,43 @@
       </Hoverable>
     </div>
     {/if}
+  {:else if column.layout === 'slider'}
+  <div id="swiper-{column.id}" class="relative" use:inview={options} on:inview_change={handleChange}>
+		<swiper-container class="w-full {isInView ? 'animate-fade' : 'opacity-0'}" init={false}>
+			{#each column.slider.data as img}
+				<swiper-slide>
+					<img
+						src={strapiURL + img.attributes.url}
+						alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
+						class="h-auto w-full"
+					/>
+				</swiper-slide>
+			{/each}
+		</swiper-container>
+		<div id="prev-{column.id}" class="swiper-prev absolute top-1/2 transform -translate-y-1/2 max-lg:left-[12px] left-[24px] z-20">
+			<ArrowCta newClass="transform rotate-[-135deg] stroke-white w-[12px] h-[12px] lg:w-[16px] lg:h-[16px]" />
+		</div>
+		
+		<div id="next-{column.id}" class="swiper-next absolute top-1/2 transform -translate-y-1/2 max-lg:right-[12px] right-[24px] z-20">
+			<ArrowCta newClass="transform rotate-45 stroke-white w-[12px] h-[12px] lg:w-[16px] lg:h-[16px]" />
+		</div>
+	</div>
   {/if}
 </div>
 
 {#if column.ctaContact && formIsOpened}
 	<LpForm bind:isOpened={formIsOpened} />
 {/if}
+
+<style>
+	:root {
+		--swiper-theme-color: #fff;
+		--swiper-pagination-bullet-border-radius: 0;
+		--swiper-pagination-bullet-inactive-opacity: 1;
+		--swiper-navigation-sides-offset: 24px;
+		--swiper-pagination-bottom: 12px;
+		--swiper-pagination-bullet-width: 12px;
+		--swiper-pagination-bullet-height: 12px;
+		--swiper-pagination-bullet-horizontal-gap: 6px;
+	}
+</style>

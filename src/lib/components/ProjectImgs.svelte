@@ -1,6 +1,6 @@
 <script lang="ts">
 	import ProjectComparaison from './ProjectComparaison.svelte';
-import ProjectImg from './ProjectImg.svelte';
+	import ProjectImg from './ProjectImg.svelte';
 	import ProjectSlider from './ProjectSlider.svelte';
 
 	export let imgsList: Array<any> = [];

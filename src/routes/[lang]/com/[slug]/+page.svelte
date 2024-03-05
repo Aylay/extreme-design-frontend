@@ -40,7 +40,10 @@
 {#if content.contentManager.length > 0}
 <div class="flex flex-col gap-[56px] px-[16px] pb-[56px] lg:gap-y-[96px] lg:px-[48px] lg:pb-[96px] {!content.title || content.title === '' ? 'pt-[56px] lg:pt-[96px]' : ''}">
 	{#each content.contentManager as row}
-		<div class="flex max-lg:flex-col gap-[56px] lg:gap-x-[48px] {row.colonnes.length === 1 ? 'justify-center' : ''}">
+		<div
+			class="lg:grid max-lg:flex max-lg:flex-col gap-[56px] lg:gap-x-[48px]{row.colonnes.length === 1 ? ' justify-center' : ''}"
+			style="grid-template-columns: repeat({row.colonnes.length}, minmax(0, 1fr));"
+		>
 			{#each row.colonnes as column}
 			<ContentManager {column} length={row.colonnes.length} />
 			{/each}
