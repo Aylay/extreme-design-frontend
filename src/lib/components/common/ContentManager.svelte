@@ -41,6 +41,7 @@
     document.body.classList.add('overflow-hidden');
     formIsOpened = true;
   }
+  console.log(column)
 </script>
 
 <div
@@ -56,24 +57,60 @@
         target={column.imgLink.includes('http') ? '_blank' : '_self'}
       >
       {#if isInView}
-        <img
-          src={strapiURL + column.image.data.attributes.url}
-          alt={column.image.data.attributes.alternativeText
-            ? column.image.data.attributes.alternativeText
-            : ''}
-          class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-        />
+        {#if column.image.data.attributes.mime.includes('image')}
+					<img
+						src={strapiURL + column.image.data.attributes.url}
+						alt={column.image.data.attributes.alternativeText ? column.image.data.attributes.alternativeText : ''}
+						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+					/>
+				{/if}
+				{#if column.image.data.attributes.mime.includes('video')}
+          <video
+            class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+            loop
+            muted
+            id="video"
+            preload="metadata"
+            playsinline
+            autoplay
+            controls={false}
+            src={strapiURL + column.image.data.attributes.url}
+          >
+            <source
+              src={strapiURL + column.image.data.attributes.url}
+              type="video/mp4"
+            />
+          </video>
+				{/if}
       {/if}
       </a>
     {:else}
       {#if isInView}
-        <img
-          src={strapiURL + column.image.data.attributes.url}
-          alt={column.image.data.attributes.alternativeText
-            ? column.image.data.attributes.alternativeText
-            : ''}
-          class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
-        />
+        {#if column.image.data.attributes.mime.includes('image')}
+					<img
+						src={strapiURL + column.image.data.attributes.url}
+						alt={column.image.data.attributes.alternativeText ? column.image.data.attributes.alternativeText : ''}
+						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+					/>
+				{/if}
+				{#if column.image.data.attributes.mime.includes('video')}
+          <video
+            class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+            loop
+            muted
+            id="video"
+            preload="metadata"
+            playsinline
+            autoplay
+            controls={false}
+            src={strapiURL + column.image.data.attributes.url}
+          >
+            <source
+              src={strapiURL + column.image.data.attributes.url}
+              type="video/mp4"
+            />
+          </video>
+				{/if}
       {/if}
     {/if}
     {#if column.legendImage && column.legendImage !== ''}
@@ -81,7 +118,7 @@
       {column.legendImage}
     </p>
     {/if}
-  {:else}
+  {:else if column.layout === 'texte'}
     {#if column.titre && column.titre !== ''}
       <h2 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
         {@html column.titre}
