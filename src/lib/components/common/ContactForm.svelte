@@ -65,6 +65,8 @@
 			}
 		});
 
+		dataLayer.push({'event': 'contactForm-sent'});
+
 		formSent = true;
 	}
 
