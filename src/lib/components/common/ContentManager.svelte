@@ -194,13 +194,47 @@
   {:else if column.layout === 'slider'}
   <div id="swiper-{column.id}" class="relative" use:inview={options} on:inview_change={handleChange}>
 		<swiper-container class="w-full {isInView ? 'animate-fade' : 'opacity-0'}" init={false}>
-			{#each column.slider.data as img}
+			{#each column.slider.data as img, i}
 				<swiper-slide>
 					<img
 						src={strapiURL + img.attributes.url}
 						alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
 						class="h-auto w-full"
 					/>
+          {#if i === 0}
+            {#if column.titre && column.titre !== ''}
+              <h2 class="mt-[24px] flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
+                {@html column.titre}
+              </h2>
+            {/if}
+            {#if column.contenu}
+            <div class="mt-[24px] content-text">
+              {@html column.contenu}
+            </div>
+            {/if}
+          {:else if i === 1}
+            {#if column.titre2 && column.titre2 !== ''}
+              <h2 class="mt-[24px] flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
+                {@html column.titre2}
+              </h2>
+            {/if}
+            {#if column.contenu2}
+            <div class="mt-[24px] content-text">
+              {@html column.contenu2}
+            </div>
+            {/if}
+          {:else if i === 2}
+            {#if column.titre3 && column.titre3 !== ''}
+              <h2 class="mt-[24px] flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
+                {@html column.titre3}
+              </h2>
+            {/if}
+            {#if column.contenu3}
+            <div class="mt-[24px] content-text">
+              {@html column.contenu3}
+            </div>
+            {/if}
+          {/if}
 				</swiper-slide>
 			{/each}
 		</swiper-container>
