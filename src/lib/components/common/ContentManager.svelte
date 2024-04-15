@@ -9,6 +9,7 @@
 
 	import Cta from './CTA.svelte';
 	import LpForm from '$lib/components/common/LPForm.svelte';
+	import LpFormInside from '$lib/components/common/LPFormInside.svelte';
 	import Hoverable from '$lib/components/utilities/Hoverable.svelte';
 	import ArrowCta from '$lib/assets/svg/CTAArrow.svelte';
 
@@ -48,7 +49,7 @@
     formIsOpened = true;
   }
 
-  if (column.layout === 'texte' && length === 1 && !formation) {
+  if ((column.layout === 'texte' || column.layout === 'formulaire') && length === 1 && !formation) {
     newClass = 'lg:w-2/3 lg:mx-auto'
   } else {
     newClass = 'grid-span-1'
@@ -246,6 +247,19 @@
 			<ArrowCta newClass="transform rotate-45 stroke-white w-[12px] h-[12px] lg:w-[16px] lg:h-[16px]" />
 		</div>
 	</div>
+
+  {:else if column.layout === 'formulaire'}
+    {#if column.titre && column.titre !== ''}
+      <h2 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium mb-[24px]">
+        {@html column.titre}
+      </h2>
+    {/if}
+    {#if column.contenu}
+    <div class="mb-[24px] content-text">
+      {@html column.contenu}
+    </div>
+    {/if}
+    <LpFormInside idForm={column.id} />
   {/if}
 </div>
 
