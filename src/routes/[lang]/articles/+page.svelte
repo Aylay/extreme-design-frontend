@@ -12,6 +12,7 @@
 		content = $page.data.content;
 		newsList = content.list;
 	}
+
 </script>
 
 {#if content.title && content.title !== ''}
