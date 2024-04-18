@@ -15,7 +15,7 @@
 		isInView = detail.inView;
 	};
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
-	let actualLang: $page.data.actualLang;
+	let actualLang: string = $page.data.actualLang;
 	let actualDate: string;
 
 	$: actualLang = $page.data.actualLang;
@@ -23,10 +23,12 @@
 	export let article: any = '';
 	
 	onMount(() => {
-		checkDate(article.slug)
+		if (!article.slug.includes('http')) {
+			checkDate(article.slug)
+		}
 	});
 
-	async function checkDate(slug) {
+	async function checkDate(slug:string) {
 		const articleResponse = await fetch(import.meta.env.VITE_STRAPI_URL + '/api/articles?filters[slug][$eq]=' + slug.replace('/articles/',''), {
 			method: 'GET'
 		})

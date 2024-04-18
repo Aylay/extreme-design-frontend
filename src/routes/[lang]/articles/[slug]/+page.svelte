@@ -13,6 +13,7 @@
 	import Twitter from '$lib/assets/svg/Twitter.svelte'
 	import WhatsApp from '$lib/assets/svg/WhatsApp.svelte'
 	import ContentManager from '$lib/components/common/ContentManager.svelte';
+	import LDTag from '$lib/components/utilities/LDTag.svelte'
 
 	let content: any = $page.data.content;
 
@@ -22,6 +23,7 @@
 		rootMargin: '50px'
 	};
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
+	const siteURL = import.meta.env.VITE_SITE_URL
 
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
@@ -34,23 +36,66 @@
 	};
 
 	let publishedAt = DateTime.fromISO(content.publishedAt).toFormat('dd LLLL yyyy', { locale: "fr" })
+	let publishedISODate = DateTime.fromISO(content.publishedAt).toISO()
+	let updatedISODate = DateTime.fromISO(content.updatedAt).toISO()
+	let schema: any;
+	let url: string = $page.url.href
+	let contentGlobal: string = '';
 
 	$: {
 		content = $page.data.content;
 		publishedAt = DateTime.fromISO(content.publishedAt).toFormat('dd LLLL yyyy', { locale: "fr" })
-	}
+		publishedISODate = DateTime.fromISO(content.publishedAt).toISO()
+		updatedISODate = DateTime.fromISO(content.updatedAt).toISO()
+		url = $page.url.href
+		contentGlobal = ''
 
-	let url = '';
+		if (content.contentManager && content.contentManager.length > 0) {
+			for (const row of content.contentManager) {
+				for (const column of row.colonnes) {
+					if (column.titre && column.titre !== '') {
+						contentGlobal += column.titre
+					}
+					if (column.contenu && column.contenu !== '') {
+						contentGlobal += column.contenu
+					}
+				}
+			}
+		} else {
+			contentGlobal = content.text
+		}
+
+		schema = {
+			"@context": 'https://schema.org',
+			"@type": 'BlogPosting',
+			"@id": url,
+			"url": url,
+			"author": {
+				"@type": "Organisation",
+				"name": 'Extreme Design',
+				"url": siteURL,
+				"@id": siteURL
+			},
+			"datePublished": publishedISODate,
+			"dateModified": updatedISODate,
+			"headline": content.title.replace(/&nbsp;/g, ' '),
+			"image": [
+				strapiURL + content.img.data.attributes.url
+			],
+			"articleBody": contentGlobal,
+			"text": contentGlobal,
+			"inLanguage": $page.data.actualLang,
+		}
+	}
 
 	onMount(() => {
 		if ($page.data.articleRedirect) {
 			goto('/' + $page.data.actualLang);
 		}
-		url = window.location.href
 	});
-
-	console.log(content)
 </script>
+
+<LDTag {schema} />
 
 <div class="flex justify-end px-[16px] py-[56px] lg:px-[48px] lg:py-[96px]">
 	<div class="w-[calc(75%-16px)] lg:w-[calc(50%-24px)] lg:pr-[calc(100%/12+48px)]">
