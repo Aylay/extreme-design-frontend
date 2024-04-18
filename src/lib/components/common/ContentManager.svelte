@@ -158,7 +158,7 @@
       </h2>
     {/if}
     {#if column.contenu}
-    <div class="mt-[24px] content-text">
+    <div class="{column.titre && column.titre !== '' ? 'mt-[24px]' : ''} content-text">
       {@html column.contenu}
     </div>
     {/if}
