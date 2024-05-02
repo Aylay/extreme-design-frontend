@@ -1,6 +1,7 @@
 import type { PageServerData } from '../$types';
 
 export const load = (async ({ parent, fetch }) => {
+	const imageHeader = true;
 	const { actualLang } = await parent();
 
 	const projectsResponse = await fetch(
@@ -23,6 +24,7 @@ export const load = (async ({ parent, fetch }) => {
 
 	return {
 		content,
-		allLangsContent
+		allLangsContent,
+		imageHeader
 	};
 }) satisfies PageServerData;

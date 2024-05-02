@@ -12,9 +12,7 @@
 	export let projects: Array<any> = [];
 	let actualLang: any;
 
-	$: {
-		actualLang = $page.data.actualLang;
-	}
+	$: actualLang = $page.data.actualLang;
 
 	onMount(() => {
 		setProject(projects[0]);
