@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '../../app.css';
 
-	import { afterUpdate, onMount } from 'svelte';
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { page } from '$app/stores';
 
@@ -25,7 +25,7 @@
 		document.documentElement.lang = actualLang;
 	});
 
-	afterUpdate(() => {
+	$: {
 		if ($page.data.allLangsContent.length > 0) {
 			langRemaining = [];
 			for (const langText of $page.data.allLangsContent) {
@@ -39,9 +39,9 @@
 				}
 				langRemaining.push(newLang);
 			}
-			langRemaining = langRemaining.filter((elm: any) => elm.locale !== actualLang);
+			langRemaining = langRemaining.filter((elm: any) => elm.locale !== 'fr');
 		}
-	});
+	}
 </script>
 
 {#if $page.url.host.includes('extreme.fr')}

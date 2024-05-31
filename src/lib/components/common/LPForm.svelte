@@ -5,11 +5,9 @@
 	import SpecificTextarea from '../utilities/SpecificTextarea.svelte';
 	import Close from '$lib/assets/svg/Close.svelte';
 	import { page } from '$app/stores';
-	let content: any;
+	let content: any = $page.data.contentContact;
 
-	$: {
-		content = $page.data.contentContact;
-	}
+	$: content = $page.data.contentContact;
 
 	export let isOpened: boolean;
 

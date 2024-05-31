@@ -2,7 +2,7 @@ import type { PageServerData } from '../$types';
 
 export const load = (async ({ parent, fetch }) => {
 	const { actualLang } = await parent();
-
+	
 	const projectsResponse = await fetch(
 		import.meta.env.VITE_STRAPI_URL + '/api/projects-list?populate=deep&locale=' + actualLang,
 		{
@@ -11,7 +11,9 @@ export const load = (async ({ parent, fetch }) => {
 	);
 	const projectsData = await projectsResponse.json();
 	const content = projectsData.data ? projectsData.data.attributes : '';
-
+	
+	const imageHeader = !!(content.mainMediaDesktop && content.mainMediaDesktop.data && content.mainMediaMobile && content.mainMediaMobile.data);
+	
 	const allLangResponse = await fetch(
 		import.meta.env.VITE_STRAPI_URL + '/api/projects-list?locale=all',
 		{
@@ -23,6 +25,7 @@ export const load = (async ({ parent, fetch }) => {
 
 	return {
 		content,
-		allLangsContent
+		allLangsContent,
+		imageHeader
 	};
 }) satisfies PageServerData;

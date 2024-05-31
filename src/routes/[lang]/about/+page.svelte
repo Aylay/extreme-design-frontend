@@ -3,6 +3,7 @@
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
 
 	import AboutContentImg from '$lib/components/AboutContentImg.svelte';
+	import AboutQAs from '$lib/components/AboutQAs.svelte';
 	import AboutImgLinks from '$lib/components/AboutImgLinks.svelte';
 	import Intro from '$lib/components/common/Intro.svelte';
 	import Numbers from '$lib/components/common/Numbers.svelte';
@@ -138,6 +139,18 @@
 
 {#if content.team.length > 0 && content.showMoreLabel}
 	<AboutTeam team={content.team} />
+{/if}
+
+{#if content.titleQA}
+	<h3
+		class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
+	>
+		{content.titleQA}
+	</h3>
+{/if}
+
+{#if content.QA && content.QA.length > 0}
+	<AboutQAs qas={content.QA} />
 {/if}
 
 <ContactUs />

@@ -10,9 +10,7 @@
 	let content: any = $page.data.content;
 	let formIsOpened = false;
 
-	$: {
-		content = $page.data.content;
-	}
+	$: content = $page.data.content;
 
 	onMount(() => {
 		if ($page.data.lpRedirect) {
