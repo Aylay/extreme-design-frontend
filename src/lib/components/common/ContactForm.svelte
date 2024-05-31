@@ -41,7 +41,7 @@
 		isOpened = false;
 	}
 
-	function addProspect() {
+	async function addProspect() {
 		checkFormError();
 		if (onError) {
 			return;
