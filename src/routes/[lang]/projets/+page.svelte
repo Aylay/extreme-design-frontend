@@ -11,18 +11,21 @@
 </script>
 
 <svelte:head>
+	{#if content.mainMediaDesktop && content.mainMediaDesktop.data && content.mainMediaMobile && content.mainMediaMobile.data}
 	<link
-		rel="prefetch"
-		href={strapiURL + content.mainMediaDesktop.data.attributes.url}
-		as={content.mainMediaDesktop.data.attributes.mime.includes('video') ? 'video' : 'image'}
+	rel="prefetch"
+	href={strapiURL + content.mainMediaDesktop.data.attributes.url}
+	as={content.mainMediaDesktop.data.attributes.mime.includes('video') ? 'video' : 'image'}
 	/>
 	<link
-		rel="prefetch"
-		href={strapiURL + content.mainMediaMobile.data.attributes.url}
-		as={content.mainMediaMobile.data.attributes.mime.includes('video') ? 'video' : 'image'}
+	rel="prefetch"
+	href={strapiURL + content.mainMediaMobile.data.attributes.url}
+	as={content.mainMediaMobile.data.attributes.mime.includes('video') ? 'video' : 'image'}
 	/>
+	{/if}
 </svelte:head>
 
+{#if content.mainMediaDesktop && content.mainMediaDesktop.data && content.mainMediaMobile && content.mainMediaMobile.data}
 <div class="relative mb-[56px] h-[calc(100vh-70px)] w-full lg:mb-[96px] lg:h-screen">
 	<div class="absolute inset-y-0 left-0 h-full w-2/5 bg-gradient-to-r from-black opacity-5 max-lg:hidden" />
 	{#if content.mainMediaDesktop.data.attributes.mime.includes('image')}
@@ -76,9 +79,12 @@
 		</video>
 	{/if}
 </div>
+{:else}
+<div class="max-lg:hidden lg:h-[70px]" />
+{/if}
 
 {#if (content.title && content.title !== '') || (content.bigTitle && content.bigTitle !== '')}
-<div class="flex justify-between gap-[8px] px-[16px] pb-[56px] max-lg:flex-col lg:gap-[48px] lg:px-[48px] lg:pb-[96px]">
+<div class="flex justify-between gap-[8px] px-[16px]  max-lg:flex-col lg:gap-[48px] lg:px-[48px]  {content.mainMediaDesktop && content.mainMediaDesktop.data && content.mainMediaMobile && content.mainMediaMobile.data ? 'pb-[56px] lg:pb-[96px]' : 'py-[56px] lg:py-[96px]'}">
 	<h1 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
 		{@html content.bigTitle}
 	</h1>
