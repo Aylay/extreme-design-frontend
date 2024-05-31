@@ -52,6 +52,8 @@
 			}
 		});
 
+		dataLayer.push({'event': 'lpForm-sent'});
+
 		formSent = true;
 	}
 
