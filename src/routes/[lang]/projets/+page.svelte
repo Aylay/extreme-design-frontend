@@ -93,7 +93,7 @@
 {/if}
 
 {#if content.projectsList.data.length > 0}
-	<div class="grid grid-cols-1 gap-[56px] px-[16px] pb-[56px] lg:grid-cols-2 lg:gap-x-[48px] lg:gap-y-[96px] lg:px-[48px] lg:pb-[96px]">
+	<div class="grid grid-cols-1 gap-[56px] px-[16px] lg:grid-cols-2 lg:gap-x-[48px] lg:gap-y-[96px] lg:px-[48px] {content.mainMediaDesktop && content.mainMediaDesktop.data && content.mainMediaMobile && content.mainMediaMobile.data ? 'pb-[56px] lg:pb-[96px]' : 'py-[56px] lg:py-[96px]'}">
 		{#each content.projectsList.data as project}
 			<OneProject project={project.attributes} projectsPage={true} />
 		{/each}
