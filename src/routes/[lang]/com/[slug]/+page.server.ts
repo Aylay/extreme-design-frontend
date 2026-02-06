@@ -41,7 +41,7 @@ export const load = (async ({ parent, fetch, params }) => {
 		const contactData = await contactResponse.json();
 		contentContact = contactData.data ? contactData.data.attributes : '';
 	} else {
-		throw redirect(307, '/' + actualLang);
+		redirect(307, '/' + actualLang);
 	}
 
 	return {
