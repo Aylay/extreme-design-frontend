@@ -26,7 +26,7 @@
 	class="flex justify-between gap-[16px] pb-[56px] max-lg:flex-col max-lg:px-[16px] lg:gap-[48px] lg:pb-[96px]"
 >
 	<div class="flex-1 max-lg:order-2 {reverse ? 'lg:order-2 lg:pr-[48px]' : 'lg:pl-[48px]'}">
-		<div class="gap-8px flex flex-col lg:gap-[24px]">
+		<div class="gap-[8px] flex flex-col lg:gap-[24px]">
 			{#if text !== ''}
 				<p class="text-[64px] font-bold leading-[60px] -tracking-[0.03em] lg:text-big">
 					{text}
