@@ -19,9 +19,9 @@
 	export let name = '';
 </script>
 
-<div class="flex h-[calc(100vh-70px)] flex-col lg:h-screen">
+<div class="flex flex-col px-[16px] lg:px-[48px]">
 	<div
-		class="h-full w-full max-lg:flex-1 lg:h-[calc(100%-130px)]"
+		class="w-full h-[calc(100dvh-250px)] lg:h-[calc(100dvh-200px)]"
 		use:inview={options}
 		on:inview_change={handleChange}
 	>
@@ -30,12 +30,12 @@
 				<img
 					src={strapiURL + img.data.attributes.url}
 					alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : name}
-					class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} max-lg:hidden"
+					class="h-full rounded-[2.2rem] overflow-hidden w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} max-lg:hidden"
 				/>
 			{/if}
 			{#if img.data.attributes.mime.includes('video')}
 				<video
-					class="h-full w-full object-cover max-lg:hidden {isInView
+					class="h-full rounded-[2.2rem] overflow-hidden w-full object-cover max-lg:hidden {isInView
 						? 'animate-fade'
 						: 'opacity-0'} "
 					loop
@@ -58,12 +58,12 @@
 					alt={mobileImg.data.attributes.alternativeText
 						? mobileImg.data.attributes.alternativeText
 						: name}
-					class="h-full w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} lg:hidden"
+					class="h-full rounded-[2.2rem] overflow-hidden w-full object-cover {isInView ? 'animate-fade' : 'opacity-0'} lg:hidden"
 				/>
 			{/if}
 			{#if mobileImg.data.attributes.mime.includes('video')}
 				<video
-					class="h-full w-full object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'} "
+					class="h-full rounded-[2.2rem] overflow-hidden w-full object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'} "
 					loop
 					muted
 					playsinline
@@ -81,14 +81,14 @@
 		{/if}
 	</div>
 	<div
-		class="flex gap-[16px] px-[16px] max-lg:flex-col max-lg:pb-[46px] max-lg:pt-[32px] lg:flex-1 lg:items-center lg:gap-[48px] lg:px-[48px]"
+		class="flex gap-[16px] px-[16px] max-lg:flex-col max-lg:pb-[46px] max-lg:pt-[32px] lg:flex-1 lg:items-center lg:gap-[48px] lg:px-[48px] lg:min-h-[130px]"
 	>
-		<h1 class="flex-1 text-[51px] font-medium leading-none -tracking-[0.03em]">
+		<h1 class="flex-1 text-[51px] leading-none font-black font-champ tracking-[0.05rem]">
 			{name}
 		</h1>
 		<ul class="flex flex-wrap flex-1 gap-[36px] max-lg:gap-x-[36px] max-lg:gap-y-[9px]">
 			{#each tags as tag}
-				<li class="text-[16px] font-bold uppercase leading-normal">
+				<li class="text-[16px] font-light font-champ tracking-[0.05rem] uppercase leading-normal">
 					{tag.text}
 				</li>
 			{/each}

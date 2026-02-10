@@ -55,7 +55,7 @@
 			alt={article.img.data.attributes.alternativeText
 				? article.img.data.attributes.alternativeText
 				: article.title}
-			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+			class="w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
 	{#if actualDate}

@@ -3,7 +3,7 @@
 
 	import OneArticle from '$lib/components/OneArticle.svelte';
 	import ContactUs from '$lib/components/common/ContactUs.svelte';
-	import Intro from '$lib/components/common/Intro.svelte';
+
 
 	let content: any = $page.data.content;
 	let newsList: any = content.list;

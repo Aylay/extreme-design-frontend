@@ -33,7 +33,7 @@
 <Intro text={content.title} />
 
 <div
-	class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
+	class="mb-[56px] max-lg:h-[360px] lg:mb-[96px] px-[16px] lg:px-[48px]"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
@@ -44,7 +44,7 @@
 				alt={content.media.data.attributes.alternativeText
 					? content.media.data.attributes.alternativeText
 					: content.title}
-				class="h-auto w-full max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+				class="h-auto w-full rounded-[2.2rem] overflow-hidden max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 			/>
 		{/if}
 		{#if content.mediaMobile.data && content.mediaMobile.data.attributes.mime.includes('image')}
@@ -53,12 +53,12 @@
 				alt={content.mediaMobile.data.attributes.alternativeText
 					? content.mediaMobile.data.attributes.alternativeText
 					: content.title}
-				class=" h-full w-full object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+				class=" h-full w-full rounded-[2.2rem] overflow-hidden object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 			/>
 		{/if}
 		{#if content.media.data.attributes.mime.includes('video')}
 			<video
-				class="h-auto w-full max-lg:hidden"
+				class="h-auto w-full rounded-[2.2rem] overflow-hidden max-lg:hidden"
 				loop
 				muted
 				id="video"
@@ -77,7 +77,7 @@
 		{/if}
 		{#if content.mediaMobile.data && content.mediaMobile.data.attributes.mime.includes('video')}
 			<video
-				class="h-full w-full object-cover lg:hidden"
+				class="h-full w-full rounded-[2.2rem] overflow-hidden object-cover lg:hidden"
 				loop
 				muted
 				id="video"
@@ -156,7 +156,7 @@ class="flex justify-between gap-[16px] px-[16px] pb-[56px] max-lg:flex-col lg:ga
 {#if content.downloadTitle || (content.downloads && content.downloads.length > 0)}
 <div class="flex flex-col px-[16px] pb-[56px] lg:px-[48px] lg:pb-[96px]">
 	{#if content.downloadTitle}
-	<p class="max-lg:text-m1 lg:text-medium lg:font-medium mb-[32px]">
+	<p class="max-lg:text-m1 lg:text-medium mb-[32px] font-black font-champ tracking-[0.05rem]">
 		{content.downloadTitle}
 	</p>
 	{/if}

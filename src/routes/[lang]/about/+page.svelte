@@ -31,12 +31,8 @@
 	};
 </script>
 
-<div class="max-lg:hidden lg:h-[70px]" />
-
-<Intro text={content.title} />
-
 <div
-	class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
+	class="mb-[56px] max-lg:h-[360px] lg:mb-[96px] px-[16px] lg:px-[48px]"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
@@ -47,7 +43,7 @@
 				alt={content.media.data.attributes.alternativeText
 					? content.media.data.attributes.alternativeText
 					: content.title}
-				class="h-auto w-full max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+				class="h-auto w-full rounded-[2.2rem] overflow-hidden max-lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 			/>
 		{/if}
 		{#if content.mediaMobile.data && content.mediaMobile.data.attributes.mime.includes('image')}
@@ -56,12 +52,12 @@
 				alt={content.mediaMobile.data.attributes.alternativeText
 					? content.mediaMobile.data.attributes.alternativeText
 					: content.title}
-				class=" h-full w-full object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+				class=" h-full w-full rounded-[2.2rem] overflow-hidden object-cover lg:hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 			/>
 		{/if}
 		{#if content.media.data.attributes.mime.includes('video')}
 			<video
-				class="h-auto w-full max-lg:hidden"
+				class="h-auto w-full rounded-[2.2rem] overflow-hidden max-lg:hidden"
 				loop
 				muted
 				id="video"
@@ -80,7 +76,7 @@
 		{/if}
 		{#if content.mediaMobile.data && content.mediaMobile.data.attributes.mime.includes('video')}
 			<video
-				class="h-full w-full object-cover lg:hidden"
+				class="h-full w-full rounded-[2.2rem] overflow-hidden object-cover lg:hidden"
 				loop
 				muted
 				id="video"
@@ -100,9 +96,11 @@
 	{/if}
 </div>
 
-<Numbers numbers={content.numbers} />
+<TitleText title={content.title} text={content.title2} cta={content.cta2} />
 
-<TitleText title={content.title2} text={content.text2} cta={content.cta2} />
+<Intro text={content.text2} />
+
+<Numbers numbers={content.numbers} />
 
 {#if content.cities.length > 0}
 	<AboutImgLinks cities={content.cities} />
@@ -143,7 +141,7 @@
 
 {#if content.titleQA}
 	<h3
-		class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium lg:font-medium"
+		class="mb-[16px] px-[16px] max-lg:text-m1 lg:mb-[48px] lg:px-[48px] lg:text-medium font-black font-champ tracking-[0.05rem]"
 	>
 		{content.titleQA}
 	</h3>

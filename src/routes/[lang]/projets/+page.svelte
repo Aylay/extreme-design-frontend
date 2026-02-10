@@ -33,7 +33,7 @@
 			src={strapiURL + content.mainMediaDesktop.data.attributes.url}
 			alt={content.mainMediaDesktop.data.attributes.alternativeText
 				? content.mainMediaDesktop.data.attributes.alternativeText : ''}
-			class="h-full w-full object-cover max-lg:hidden"
+			class="h-full w-full rounded-[2.2rem] overflow-hidden object-cover max-lg:hidden"
 		/>
 	{/if}
 	{#if content.mainMediaMobile.data.attributes.mime.includes('image')}
@@ -41,12 +41,12 @@
 			src={strapiURL + content.mainMediaMobile.data.attributes.url}
 			alt={content.mainMediaMobile.data.attributes.alternativeText
 				? content.mainMediaMobile.data.attributes.alternativeText : ''}
-			class="h-full w-full object-cover lg:hidden"
+			class="h-full w-full rounded-[2.2rem] overflow-hidden object-cover lg:hidden"
 		/>
 	{/if}
 	{#if content.mainMediaDesktop.data.attributes.mime.includes('video')}
 		<video
-			class="h-full w-full object-cover max-lg:hidden"
+			class="h-full w-full rounded-[2.2rem] overflow-hidden object-cover max-lg:hidden"
 			loop
 			muted
 			playsinline
@@ -63,7 +63,7 @@
 	{/if}
 	{#if content.mainMediaMobile.data.attributes.mime.includes('video')}
 		<video
-			class="h-full w-full object-cover lg:hidden"
+			class="h-full w-full rounded-[2.2rem] overflow-hidden object-cover lg:hidden"
 			loop
 			muted
 			playsinline
@@ -82,7 +82,7 @@
 
 	{#if (content.title && content.title !== '') || (content.bigTitle && content.bigTitle !== '')}
 	<div class="flex justify-between gap-[8px] px-[16px]  max-lg:flex-col lg:gap-[48px] lg:px-[48px] pb-[56px] lg:pb-[96px]">
-		<h1 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
+		<h1 class="flex-1 max-lg:text-m1 lg:text-medium font-black font-champ tracking-[0.05rem]">
 			{@html content.bigTitle}
 		</h1>
 		<h2 class="flex-1 max-lg:text-m2 lg:text-medium">

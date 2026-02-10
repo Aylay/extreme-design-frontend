@@ -123,7 +123,7 @@
 		</div>
 		<div class="w-full">
 			{#if !formSent}
-				<h3 class="mb-[56px] text-m1 font-normal lg:mb-[120px] lg:text-medium">
+				<h3 class="mb-[56px] text-m1 font-black font-champ tracking-[0.05rem] lg:mb-[120px] lg:text-medium">
 					{content.contactLabel} <span class="max-lg:block">{city.city}</span>
 				</h3>
 				<form class="max-lg:pb-16">

@@ -43,7 +43,7 @@
 
 {#if imgs.length > 0}
 	<div class="w-full relative" use:inview={options} on:inview_change={handleChange}>
-		<swiper-container class="w-full {isInView ? 'animate-fade' : 'opacity-0'}" init={false}>
+		<swiper-container class="w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}" init={false}>
 			{#each imgs as img}
 				<swiper-slide>
 					<img

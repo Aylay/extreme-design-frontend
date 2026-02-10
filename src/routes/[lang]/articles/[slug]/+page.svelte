@@ -99,7 +99,7 @@
 
 <div class="flex justify-end px-[16px] py-[56px] lg:px-[48px] lg:py-[96px]">
 	<div class="w-[calc(75%-16px)] lg:w-[calc(50%-24px)] lg:pr-[calc(100%/12+48px)]">
-		<h1 class="max-lg:text-m1 lg:text-medium">
+		<h1 class="max-lg:text-m1 lg:text-medium font-black font-champ tracking-[0.05rem]">
 			{content.title}
 		</h1>
 		<p class="my-[24px] text-[20px] text-silver">{publishedAt}</p>
@@ -144,7 +144,7 @@
 
 {#if content.img && content.img.data}
 	<div
-		class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
+		class="mb-[56px] max-lg:h-[360px] lg:mb-[96px] px-[16px] lg:px-[48px]"
 		use:inview={options}
 		on:inview_change={handleChange}
 	>
@@ -154,7 +154,7 @@
 			alt={content.img.data.attributes.alternativeText
 				? content.img.data.attributes.alternativeText
 				: content.title}
-			class=" w-full max-lg:h-full max-lg:object-cover lg:h-auto {isInView
+			class=" w-full max-lg:h-full max-lg:object-cover lg:h-auto rounded-[2.2rem] overflow-hidden {isInView
 				? 'animate-fade'
 				: 'opacity-0'}"
 			/>
@@ -189,7 +189,7 @@
 {#if content.otherArticlesTitle && content.otherArticlesList.length > 0}
 	<div class="mb-[56px] px-[16px] lg:mb-[96px] lg:px-[48px]">
 		<h3
-			class="mb-[40px] text-[32px] font-medium -tracking-[0.03em] max-lg:leading-[32px] lg:text-[40px]"
+			class="mb-[40px] text-[32px] font-black font-champ tracking-[0.05rem] max-lg:leading-[32px] lg:text-[40px]"
 		>
 			{content.otherArticlesTitle}
 		</h3>

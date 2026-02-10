@@ -59,13 +59,14 @@
 </svelte:head>
 
 {#if actualProject}
+<div class="px-[16px] lg:px-[48px]">
 	<div
 		class="relative mb-[56px] flex h-[calc(100vh-70px)] w-full max-lg:flex-col lg:mb-[96px] lg:h-screen lg:items-center lg:pl-[48px]"
 	>
 		<a
 			href={'/' + actualLang + actualProject.slug}
 			title={actualProject.title}
-			class="h-full w-full max-lg:flex-1 lg:absolute lg:inset-0"
+			class="h-full w-full max-lg:flex-1 lg:absolute lg:inset-0 rounded-[2.2rem] overflow-hidden"
 		>
 			<div
 				class="absolute inset-y-0 left-0 h-full w-2/5 bg-gradient-to-r from-black opacity-5 max-lg:hidden"
@@ -123,7 +124,7 @@
 			{#each projects as project, i}
 				<li class="relative max-lg:pr-[32px]">
 					<p
-						class="cursor-pointer text-[4.8rem] font-bold leading-none -tracking-[0.03em] transition-colors hover:opacity-100 lg:inline-block lg:text-[7.2rem] lg:font-medium lg:text-white {project.title ===
+						class="cursor-pointer text-[4.8rem] font-champ font-black leading-none tracking-[0.05rem] transition-colors hover:opacity-100 lg:inline-block lg:text-[7.2rem] lg:text-white {project.title ===
 						actualProject.title
 							? 'text-shark lg:opacity-100'
 							: 'text-silver lg:opacity-40'}"
@@ -144,4 +145,5 @@
 			{/each}
 		</ul>
 	</div>
+</div>
 {/if}

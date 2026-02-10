@@ -11,7 +11,7 @@
 	class="flex justify-between gap-[8px] px-[16px] pb-[56px] max-lg:flex-col lg:gap-[48px] lg:px-[48px] lg:pb-[96px]"
 >
 	{#if title}
-		<h2 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
+		<h2 class="flex-1 max-lg:text-m1 lg:text-medium font-black font-champ tracking-[0.05rem]">
 			{@html title}
 		</h2>
 	{/if}

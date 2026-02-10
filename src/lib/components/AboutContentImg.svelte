@@ -23,12 +23,12 @@
 </script>
 
 <div
-	class="flex justify-between gap-[16px] pb-[56px] max-lg:flex-col max-lg:px-[16px] lg:gap-[48px] lg:pb-[96px]"
+	class="flex justify-between gap-[16px] pb-[56px] max-lg:flex-col max-lg:px-[16px] px-[48px] lg:gap-[48px] lg:pb-[96px]"
 >
-	<div class="flex-1 max-lg:order-2 {reverse ? 'lg:order-2 lg:pr-[48px]' : 'lg:pl-[48px]'}">
+	<div class="flex-1 max-lg:order-2 {reverse ? 'lg:order-2' : ''}">
 		<div class="gap-[8px] flex flex-col lg:gap-[24px]">
 			{#if text !== ''}
-				<p class="text-[64px] font-bold leading-[60px] -tracking-[0.03em] lg:text-big">
+				<p class="text-[64px] leading-[60px] lg:text-big font-black font-champ tracking-[0.05rem]">
 					{text}
 				</p>
 			{/if}
@@ -52,12 +52,12 @@
 					<img
 						src={strapiURL + img.data.attributes.url}
 						alt={img.data.attributes.alternativeText ? img.data.attributes.alternativeText : title}
-						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+						class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 					/>
 				{/if}
 				{#if img.data.attributes.mime.includes('video')}
 				<video
-					class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+					class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 					loop
 					muted
 					id="video"

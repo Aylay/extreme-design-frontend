@@ -8,10 +8,12 @@ module.exports = {
 			shark: '#222728',
 			silver: '#C2C1C1',
 			transparent: 'transparent',
-			punch: '#DE4422'
+			punch: '#DE4422',
+			yellow: '#E2F750'
 		},
 		fontFamily: {
-			base: 'basis_grotesque_arabic_pro, Arial, sans-serif'
+			base: 'basis_grotesque_arabic_pro, Arial, sans-serif',
+			champ: 'champ, Arial, sans-serif'
 		},
 		fontSize: {
 			big: [

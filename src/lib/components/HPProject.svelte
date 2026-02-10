@@ -39,12 +39,12 @@
 				alt={project.img.data.attributes.alternativeText
 					? project.img.data.attributes.alternativeText
 					: project.title}
-				class="w-full {isInView ? 'animate-fade' : 'opacity-0'} {projectsLength === 1 ? 'max-lg:h-full max-lg:object-cover' : ''}"
+				class="w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'} {projectsLength === 1 ? 'max-lg:h-full max-lg:object-cover' : ''}"
 			/>
 		{/if}
 		{#if project.img.data.attributes.mime.includes('video')}
 			<video
-				class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'} {projectsLength === 1 ? 'max-lg:h-full max-lg:object-cover' : ''}"
+				class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'} {projectsLength === 1 ? 'max-lg:h-full max-lg:object-cover' : ''}"
 				loop
 				muted
 				playsinline
@@ -58,9 +58,7 @@
 	{/if}
 </div>
 	<h4
-		class="text-[2rem] font-medium -tracking-[0.03em] {projectsLength === 1
-			? 'px-[16px] lg:px-[48px]'
-			: ''}"
+		class="text-[2.4rem] font-black font-champ tracking-[0.05rem]"
 	>
 		{project.title}
 	</h4>

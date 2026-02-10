@@ -1,16 +1,10 @@
 <script lang="ts">
-	import { onMount } from 'svelte';
 	import { inview } from 'svelte-inview';
 	import type { ObserverEventDetails, Options } from 'svelte-inview';
-
-	import type City from '$lib/interface/city';
-	import Hoverable from './utilities/Hoverable.svelte';
 
 	export let cities: Array<any> = [];
 
 	const strapiURL = import.meta.env.VITE_STRAPI_URL;
-	let actualCity: City;
-	let changeCity: number = 0;
 
 	let isInView: boolean;
 	const options: Options = {
@@ -21,83 +15,25 @@
 	const handleChange = ({ detail }: CustomEvent<ObserverEventDetails>) => {
 		isInView = detail.inView;
 	};
-
-	onMount(() => {
-		setCity(cities[0]);
-	});
-
-	function setCity(city: any) {
-		if (city.id !== changeCity) {
-			changeCity = city.id + 10;
-			setTimeout(() => {
-				actualCity = {
-					city: city.city,
-					img: {
-						src: city.img.data.attributes.url,
-						alt: city.img.data.attributes.alternativeText
-							? city.img.data.attributes.alternativeText
-							: city.city
-					},
-					id: city.id
-				};
-				changeCity = city.id;
-			}, 150);
-		}
-	}
 </script>
 
-<svelte:head>
+<div class="lg:flex gap-[16px] lg:gap-[48px] max-lg:grid max-lg:grid-cols-2 px-[16px] lg:px-[48px] pb-[56px] lg:pb-[96px]">
 	{#each cities as city}
-		<link
-			rel="prefetch"
-			as="image"
-			href={strapiURL + city.img.data.attributes.url}
-		/>
-	{/each}
-</svelte:head>
-
-{#if actualCity}
-	<div
-		class="flex justify-between gap-[16px] pb-[56px] max-lg:flex-col max-lg:px-[16px] lg:gap-[48px] lg:pb-[96px]"
-		use:inview={options}
-		on:inview_change={handleChange}
-	>
-		<div class="flex-1" use:inview={options} on:inview_change={handleChange}>
+	<div class="lg:flex-1 max-lg:col-span-1 h-[60rem] relative flex items-center justify-center p-[16px]" use:inview={options} on:inview_change={handleChange}>
+		<div class="absolute w-full h-full inset-0">
 			{#if isInView}
 				<img
-					src={strapiURL + actualCity.img.src}
-					alt={actualCity.img.alt}
-					class="h-auto w-full {actualCity.id !== changeCity ? 'animate-unfade' : 'animate-fade'}"
+					src={strapiURL + city.img.data.attributes.url}
+					alt={city.img.data.attributes.alternativeText}
+					class="h-full w-full animate-fade object-cover rounded-[2.2rem] overflow-hidden"
 				/>
 			{/if}
 		</div>
-		<div class="flex-1 lg:pr-[48px]">
-			<div class="flex flex-col">
-				{#each cities as city}
-					<div class="max-lg:hidden overflow-hidden">
-						<Hoverable let:hovering={active}>
-							<h3
-								class="cursor-pointer text-big font-bold text-shark transition-opacity {active ||
-								city.city === actualCity.city
-									? 'opacity-100'
-									: 'opacity-30'}"
-								on:mouseenter={() => setCity(city)}
-							>
-								{city.city}
-							</h3>
-						</Hoverable>
-					</div>
-					<h3
-						class="cursor-pointer text-[64px] font-bold leading-[60px] -tracking-[0.03em] text-shark transition-opacity lg:hidden {city.city ===
-						actualCity.city
-							? 'opacity-100'
-							: 'opacity-30'}"
-						on:click={() => setCity(city)}
-					>
-						{city.city}
-					</h3>
-				{/each}
-			</div>
-		</div>
+		<h3
+			class="text-[10rem] text-center leading-[60px] font-black font-champ tracking-[0.05rem] relative z-10 text-white"
+		>
+			{city.city}
+		</h3>
 	</div>
-{/if}
+	{/each}
+</div>

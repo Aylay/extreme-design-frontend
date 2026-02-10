@@ -13,18 +13,31 @@
 		isInView = detail.inView;
 	};
 
-	let content: any;
+	let layoutContent: any;
 	let actualLang: any;
+	let content: any;
+	let bgColor: string;
+
+	function cleanString(str: string) {
+		return str.replace(/[\s#]/g, '');
+	}
 
 	$: {
-		content = $page.data.layoutContent;
+		layoutContent = $page.data.layoutContent;
 		actualLang = $page.data.actualLang;
+		content = $page.data.content;
 	}
+
+  $: bgColor =
+    content?.bgColor && content.bgColor.trim().length > 0
+      ? `#${cleanString(content.bgColor)}`
+      : 'white';
 </script>
 
-{#if content && $page.route.id !== '/[lang]/uniqueness'}
-	<div
-		class="flex max-lg:flex-col justify-between px-[4.8rem] py-8 max-lg:mt-[108px] max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
+{#if layoutContent}
+	<footer
+		class="flex max-lg:flex-col justify-between px-[4.8rem] py-8 max-lg:pt-[108px] max-lg:gap-[16px] max-lg:px-[16px] lg:items-center"
+		style="background-color: {bgColor};"
 		use:inview={options}
 		on:inview_change={handleChange}
 	>
@@ -32,7 +45,7 @@
 			<p
 				class="text-[1.8rem] uppercase leading-none max-lg:leading-[24px] max-lg:-tracking-[0.03em] lg:pt-2"
 			>
-				{content.legalText}
+				{layoutContent.legalText}
 			</p>
 			{#if isInView}
 				<a href="https://extreme.fr/" target="_blank">
@@ -45,7 +58,7 @@
 			{/if}
 		</div>
 		<ul class="flex max-lg:flex-col lg:gap-6">
-			{#each content.footerMenu as item}
+			{#each layoutContent.footerMenu as item}
 				<li>
 					<a
 						href={item.slug.includes('http') ? item.slug : '/' + actualLang + item.slug}
@@ -58,5 +71,5 @@
 				</li>
 			{/each}
 		</ul>
-	</div>
+	</footer>
 {/if}

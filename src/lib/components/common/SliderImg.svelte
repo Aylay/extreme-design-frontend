@@ -44,14 +44,14 @@
 </script>
 
 {#if images.length > 0}
-	<div class="pb-[56px] lg:pb-[96px]" use:inview={options} on:inview_change={handleChange}>
+	<div class="px-[16px] lg:px-[48px] pb-[56px] lg:pb-[96px]" use:inview={options} on:inview_change={handleChange}>
 		<swiper-container class="w-full {isInView ? 'animate-fade' : 'opacity-0'}" init={false}>
 			{#each images as img}
 				<swiper-slide class="max-lg:w-3/4">
 					<img
 						src={strapiURL + img.attributes.url}
 						alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
-						class="h-auto w-full max-lg:ml-[16px]"
+						class="h-auto w-full rounded-[2.2rem] overflow-hidden"
 					/>
 				</swiper-slide>
 			{/each}

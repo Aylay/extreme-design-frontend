@@ -33,7 +33,7 @@
 	use:inview={options}
 	on:inview_change={handleChange}
 >
-	<h3 class="text-[2rem] font-medium -tracking-[0.03em]">
+	<h3 class="text-[2rem] font-light font-champ tracking-[0.05rem]">
 		{project.name}
 	</h3>
 	{#if isInView}
@@ -42,7 +42,7 @@
 			alt={project.imgList.data.attributes.alternativeText
 				? project.imgList.data.attributes.alternativeText
 				: project.name}
-			class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+			class="w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
 </a>

@@ -46,7 +46,7 @@
 	>
 		{#each content.location as city}
 			<div class="flex-1">
-				<h3 class="text-[20px] font-medium leading-[24px] -tracking-[0.03em]">
+				<h3 class="text-[20px] leading-[24px] font-champ tracking-[0.05rem]">
 					{city.city}
 				</h3>
 				<p class="mb-[16px] text-[20px] leading-[24px] -tracking-[0.03em] text-silver lg:mb-16">
@@ -65,7 +65,7 @@
 
 {#if content.img.data}
 	<div
-		class="mb-[56px] max-lg:h-[360px] lg:mb-[96px]"
+		class="mb-[56px] max-lg:h-[360px] lg:mb-[96px] px-[16px] lg:px-[48px]"
 		use:inview={options}
 		on:inview_change={handleChange}
 	>
@@ -75,7 +75,7 @@
 				alt={content.img.data.attributes.alternativeText
 					? content.img.data.attributes.alternativeText
 					: content.title}
-				class="w-full max-lg:h-full max-lg:object-cover lg:h-auto {isInView
+				class="w-full rounded-[2.2rem] overflow-hidden max-lg:h-full max-lg:object-cover lg:h-auto {isInView
 					? 'animate-fade'
 					: 'opacity-0'}"
 			/>
@@ -87,7 +87,7 @@
 	<div
 		class="flex justify-between gap-[16px] px-[16px] pb-[56px] max-lg:flex-col lg:gap-[48px] lg:px-[48px] lg:pb-[96px]"
 	>
-		<h2 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">{content.joinUsTitle}</h2>
+		<h2 class="flex-1 max-lg:text-m1 lg:text-medium font-black font-champ tracking-[0.05rem]">{content.joinUsTitle}</h2>
 		<div class="flex flex-1 flex-col">
 			{#each content.joinUsList as job}
 			{#if job.url !== ''}

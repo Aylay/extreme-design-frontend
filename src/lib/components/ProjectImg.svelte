@@ -22,12 +22,12 @@
 			<img
 				src={strapiURL + img.attributes.url}
 				alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
-				class="w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+				class="w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 			/>
 		{/if}
 		{#if img.attributes.mime.includes('video')}
 			<video
-				class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+				class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 				loop
 				muted
 				playsinline

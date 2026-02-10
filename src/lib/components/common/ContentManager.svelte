@@ -95,12 +95,12 @@
 					<img
 						src={strapiURL + column.image.data.attributes.url}
 						alt={column.image.data.attributes.alternativeText ? column.image.data.attributes.alternativeText : ''}
-						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+						class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 					/>
 				{/if}
 				{#if column.image.data.attributes.mime.includes('video')}
           <video
-            class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+            class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
             loop
             muted
             id="video"
@@ -124,12 +124,12 @@
 					<img
 						src={strapiURL + column.image.data.attributes.url}
 						alt={column.image.data.attributes.alternativeText ? column.image.data.attributes.alternativeText : ''}
-						class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+						class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 					/>
 				{/if}
 				{#if column.image.data.attributes.mime.includes('video')}
           <video
-            class="h-auto w-full {isInView ? 'animate-fade' : 'opacity-0'}"
+            class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
             loop
             muted
             id="video"
@@ -154,7 +154,7 @@
     {/if}
   {:else if column.layout === 'texte'}
     {#if column.titre && column.titre !== ''}
-      <h2 class="flex-1 max-lg:text-m1 lg:text-medium lg:font-medium">
+      <h2 class="flex-1 max-lg:text-m1 lg:text-medium font-black font-champ tracking-[0.05rem]">
         {@html column.titre}
       </h2>
     {/if}
@@ -200,7 +200,7 @@
 					<img
 						src={strapiURL + img.attributes.url}
 						alt={img.attributes.alternativeText ? img.attributes.alternativeText : ''}
-						class="h-auto w-full"
+						class="h-auto w-full rounded-[2.2rem] overflow-hidden"
 					/>
           {#if i === 0}
             {#if column.titre && column.titre !== ''}

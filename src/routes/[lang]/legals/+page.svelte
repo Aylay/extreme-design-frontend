@@ -71,7 +71,7 @@
 	>
 		{#each content.texts as text}
 			<h2
-				class="pb-[14px] text-m2 font-medium {isActiveLegalsMobile === text.id
+				class="pb-[14px] text-m2 font-black font-champ tracking-[0.05rem] {isActiveLegalsMobile === text.id
 					? "relative text-shark before:absolute before:inset-x-0 before:bottom-[-1px] before:h-[1px] before:w-full before:bg-shark before:content-['']"
 					: 'text-silver'}"
 				on:click|preventDefault={() =>
@@ -89,7 +89,7 @@
 			<div class="sticky top-[96px]">
 				{#each content.texts as text}
 					<h2
-						class="cursor-pointer text-medium font-medium hover:text-shark lg:w-1/2 {isActiveLegals ===
+						class="cursor-pointer text-medium font-black font-champ tracking-[0.05rem] hover:text-shark lg:w-1/2 {isActiveLegals ===
 						text.id
 							? 'text-shark'
 							: 'text-silver'}"
@@ -105,7 +105,7 @@
 			{#each content.texts as text}
 				<div id={text.id + '-' + text.title.split(' ')[0].toLowerCase()}>
 					<h2
-						class="mb-[32px] text-[24px] font-medium -tracking-[0.03em] max-lg:leading-[32px] lg:text-[32px]"
+						class="mb-[32px] text-[24px] font-black font-champ tracking-[0.05rem] max-lg:leading-[32px] lg:text-[32px]"
 					>
 						{text.title}
 					</h2>
