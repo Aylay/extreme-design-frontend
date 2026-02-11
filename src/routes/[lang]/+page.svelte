@@ -38,7 +38,7 @@
 
 {#if content.newsList && content.newsList.length > 0}
 	<div
-		class="grid grid-cols-1 gap-[56px] px-[16px] pb-[56px] lg:grid-cols-2 lg:gap-x-[48px] lg:gap-y-[96px] lg:px-[48px] lg:pb-[96px]"
+		class="grid grid-cols-1 gap-[56px] px-[16px] pb-[56px] lg:gap-x-[48px] lg:gap-y-[96px] lg:px-[48px] lg:pb-[96px] {content.newsList.length === 2 ? 'lg:grid-cols-2' : 'lg:grid-cols-3'}"
 	>
 		{#each content.newsList as article}
 			<OneArticle {article} />

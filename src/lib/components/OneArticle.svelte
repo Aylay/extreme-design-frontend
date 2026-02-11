@@ -36,7 +36,7 @@
 		const article = articleData && articleData.data && articleData.data.length > 0 ? articleData.data[0].attributes : undefined
 
 		if (article) {
-			actualDate = DateTime.fromISO(article.publishedAt).toFormat('dd LLLL yyyy', { locale: "fr" })
+			actualDate = DateTime.fromISO(article.publishedAt).toFormat('LLL yyyy', { locale: "fr" })
 		}
 	}
 </script>
@@ -45,7 +45,7 @@
 	href={article.slug.includes('http') ? article.slug : '/' + actualLang + article.slug}
 	title={article.title}
 	target={article.slug.includes('http') ? '_blank' : ''}
-	class="flex flex-col gap-[16px]"
+	class="flex flex-col gap-[16px] p-[16px] rounded-[2.2rem] bg-beige"
 	use:inview={options}
 	on:inview_change={handleChange}
 >
@@ -58,9 +58,14 @@
 			class="w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
 		/>
 	{/if}
-	{#if actualDate}
-	<p class="text-[20px] text-silver">{actualDate}</p>
-	{/if}
+	<div class="flex gap-[16px] items-center">
+		{#if article.label}
+		<p class="text-[18px]  text-shark uppercase bg-silver px-3 pt-2 rounded-lg inline-block">{article.label}</p>
+		{/if}
+		{#if actualDate}
+		<p class="text-[18px] pt-1 text-shark first-letter:uppercase">{actualDate}</p>
+		{/if}
+	</div>
 	<h3 class="text-[18px] font-medium leading-[26px] lg:text-[24px] lg:leading-[32px]">
 		{article.title}
 	</h3>

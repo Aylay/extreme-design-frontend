@@ -9,7 +9,8 @@ module.exports = {
 			silver: '#C2C1C1',
 			transparent: 'transparent',
 			punch: '#DE4422',
-			yellow: '#E2F750'
+			yellow: '#E2F750',
+			beige: '#E9E6DF'
 		},
 		fontFamily: {
 			base: 'basis_grotesque_arabic_pro, Arial, sans-serif',
