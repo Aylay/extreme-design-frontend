@@ -1,6 +1,5 @@
 <script lang="ts">
 	import Logo from '../../assets/svg/Logo.svelte';
-	import Hoverable from '../utilities/Hoverable.svelte';
 
 	import { navigating, page } from '$app/stores';
 	import { afterUpdate } from 'svelte';
@@ -45,13 +44,17 @@
 		class="transitions-colors sticky inset-x-0 top-0 z-30 w-full px-[1.6rem] lg:px-[4.8rem]"
 		style="background-color: {bgColor};"
 	>
-		<div class="relative flex items-center max-lg:justify-between">
-			<a class="inline-block" href="/{actualLang}" title="extreme design">
-				<Logo
-					newClass="max-w-[20.5rem] w-full h-auto max-lg:hidden transition-colors fill-shark"
-				/>
-				<Logo newClass="max-w-[15rem] w-full h-auto lg:hidden fill-shark" />
-			</a>
+		<div class="relative flex items-center justify-between">
+			<div class="lg:flex-1">
+				<p class="flex">
+					<a href="/{actualLang}" title="extreme design">
+						<Logo
+							newClass="max-w-[20.5rem] w-full h-auto max-lg:hidden transition-colors fill-shark"
+						/>
+						<Logo newClass="max-w-[15rem] w-full h-auto lg:hidden fill-shark" />
+					</a>
+				</p>
+			</div>
 			<div class="py-9 lg:hidden">
 				<div class="relative h-10 w-10" on:click={() => (menuOpened = !menuOpened)}>
 					<span
@@ -66,27 +69,9 @@
 					/>
 				</div>
 			</div>
-			<div class="flex-1 max-lg:hidden relative">
-				<Hoverable let:hovering={active}>
-					<div
-						class="flex w-full cursor-pointer justify-end py-9 {active
-							? 'animate-unfade animate-duration-100'
-							: 'animate-fade'}"
-					>
-						<div class="relative h-10 w-10">
-							<span
-								class="absolute inset-x-0 top-[6px] h-[3px] w-full transition-colors bg-shark"
-							/>
-							<span
-								class="absolute inset-x-0 bottom-[6px] h-[3px] w-full transition-colors bg-shark"
-							/>
-						</div>
-					</div>
-					<div class="absolute inset-0 h-full w-full {active ? 'z-10' : '-z-10'}">
+			<div class="max-lg:hidden relative py-10 pl-[96px] pr-[48px] lg:flex-1">
 						<div
-							class="absolute inset-y-0 right-[48px] flex h-full w-[calc(50%+24px)] items-center animate-duration-100 justify-between {active
-								? 'animate-fade animate-delay-100'
-								: 'animate-unfade'}"
+							class="flex items-center animate-duration-100 justify-between"
 						>
 							<nav>
 								<ul class="flex gap-6">
@@ -130,13 +115,11 @@
 								{/if}
 							</ul>
 						</div>
-					</div>
-				</Hoverable>
 			</div>
 		</div>
 		{#if menuOpened}
-			<div class="absolute inset-x-0 top-full w-full animate-fade-down bg-white">
-				<div class="px-[16px] pb-[16px] pt-[56px]">
+			<div class="absolute inset-x-0 top-full w-full animate-fade-down" style="background-color: {bgColor};">
+				<div class="px-[16px] py-[56px]">
 					<nav>
 						<ul class="flex flex-col gap-[24px]">
 							{#each layoutContent.headerMenu as item}
@@ -183,7 +166,8 @@
 	</div>
 	{#if menuOpened}
 	<div
-		class="fixed inset-0 z-20 w-full h-screen animate-fade bg-white bg-opacity-75 lg:hidden"
+		class="fixed inset-0 z-20 w-full h-screen animate-fadeMenu lg:hidden"
+		style="background-color: {bgColor};"
 	/>
 	{/if}
 {/if}

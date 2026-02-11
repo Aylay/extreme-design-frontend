@@ -43,15 +43,15 @@ module.exports = {
 		},
 		extend: {
 			animation: {
-				unfade: 'unfade 1s both'
+				fadeMenu: 'fadeMenu 1s both'
 			},
 			keyframes: {
-				unfade: {
+				fadeMenu: {
 					from: {
-						opacity: 100
+						opacity: 0
 					},
 					to: {
-						opacity: 0
+						opacity: .75
 					}
 				}
 			}
