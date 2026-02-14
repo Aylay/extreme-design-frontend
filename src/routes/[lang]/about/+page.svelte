@@ -98,9 +98,10 @@
 
 <TitleText title={content.title} text={content.title2} cta={content.cta2} />
 
+<Numbers numbers={content.numbers} />
+
 <Intro text={content.text2} />
 
-<Numbers numbers={content.numbers} />
 
 {#if content.cities.length > 0}
 	<AboutImgLinks cities={content.cities} />

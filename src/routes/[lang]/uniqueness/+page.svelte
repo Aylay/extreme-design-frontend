@@ -9,8 +9,6 @@
 
 	$: {
 		content = $page.data.content;
-		actualLang = $page.data.actualLang;
-		contentFooter = $page.data.layoutContent;
 	}
 
 	let isInView: boolean;
