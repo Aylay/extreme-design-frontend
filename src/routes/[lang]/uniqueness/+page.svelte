@@ -30,15 +30,35 @@
 			on:inview_change={handleChange}
 		>
 			{#if isInView}
-				<img
-					src={strapiURL + content.img.data.attributes.url}
-					alt={content.img.data.attributes.alternativeText
-						? content.img.data.attributes.alternativeText
-						: content.title}
-					class="w-full rounded-[2.2rem] overflow-hidden h-auto {isInView
-						? 'animate-fade'
-						: 'opacity-0'}"
-				/>
+				{#if content.img.data.attributes.mime.includes('image')}
+					<img
+						src={strapiURL + content.img.data.attributes.url}
+						alt={content.img.data.attributes.alternativeText
+							? content.img.data.attributes.alternativeText
+							: content.title}
+						class="w-full rounded-[2.2rem] overflow-hidden h-auto {isInView
+							? 'animate-fade'
+							: 'opacity-0'}"
+					/>
+				{/if}
+				{#if content.img.data.attributes.mime.includes('video')}
+				<video
+            class="h-auto w-full rounded-[2.2rem] overflow-hidden {isInView ? 'animate-fade' : 'opacity-0'}"
+            loop
+            muted
+            id="video"
+            preload="metadata"
+            playsinline
+            autoplay
+            controls={false}
+            src={strapiURL + content.img.data.attributes.url}
+          >
+            <source
+              src={strapiURL + content.img.data.attributes.url}
+              type="video/mp4"
+            />
+          </video>
+				{/if}
 			{/if}
 		</div>
 	{/if}
