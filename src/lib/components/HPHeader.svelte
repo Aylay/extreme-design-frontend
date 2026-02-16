@@ -30,13 +30,13 @@
 			mediaMobileSrc: project.mediaMobile.data.attributes.url,
 			mediaDesktopAlt: project.mediaDesktop.data.attributes.alternativeText
 				? project.mediaDesktop.data.attributes.alternativeText
-				: project.title,
+				: '',
 			mediaMobileAlt: project.mediaMobile.data.attributes.alternativeText
 				? project.mediaMobile.data.attributes.alternativeText
-				: project.title,
+				: '',
 			mediaDesktopMime: project.mediaDesktop.data.attributes.mime,
 			mediaMobileMime: project.mediaMobile.data.attributes.mime,
-			title: project.title,
+			title: project.title ? project.title : '',
 			slug: project.slug,
 			id: project.id
 		};
@@ -65,7 +65,7 @@
 	>
 		<a
 			href={'/' + actualLang + actualProject.slug}
-			title={actualProject.title}
+			title={actualProject.title ? actualProject.title : ''}
 			class="h-full w-full max-lg:flex-1 lg:absolute lg:inset-0 rounded-[2.2rem] overflow-hidden"
 		>
 			<div
@@ -121,27 +121,29 @@
 			{/if}
 		</a>
 		<ul class="relative z-20 flex flex-col max-lg:px-[16px] max-lg:py-[32px]">
-			{#each projects as project, i}
-				<li class="relative max-lg:pr-[32px]">
-					<p
-						class="cursor-pointer text-[4.8rem] font-champ font-black leading-none tracking-[0.05rem] transition-colors hover:opacity-100 lg:inline-block lg:text-[7.2rem] lg:text-white {project.title ===
-						actualProject.title
-							? 'text-shark lg:opacity-100'
-							: 'text-silver lg:opacity-40'}"
-						on:click|preventDefault={() => setProject(project)}
-					>
-						{project.title}
-					</p>
-					{#if project.title === actualProject.title}
-						<a
-							class="absolute inset-0 z-10 flex h-full w-full items-center justify-end"
-							href={'/' + actualLang + actualProject.slug}
-							title={actualProject.title}
+			{#each projects as project}
+				{#if project.title && project.title !== ''}
+					<li class="relative max-lg:pr-[32px]">
+						<p
+							class="cursor-pointer text-[4.8rem] font-champ font-black leading-none tracking-[0.05rem] transition-colors hover:opacity-100 lg:inline-block lg:text-[7.2rem] lg:text-white {project.title ===
+							actualProject.title
+								? 'text-shark lg:opacity-100'
+								: 'text-silver lg:opacity-40'}"
+							on:click|preventDefault={() => setProject(project)}
 						>
-							<CtaArrow newClass="w-[16px] h-[16px] lg:hidden stroke-shark" />
-						</a>
-					{/if}
-				</li>
+							{project.title}
+						</p>
+						{#if project.title === actualProject.title}
+							<a
+								class="absolute inset-0 z-10 flex h-full w-full items-center justify-end"
+								href={'/' + actualLang + actualProject.slug}
+								title={actualProject.title}
+							>
+								<CtaArrow newClass="w-[16px] h-[16px] lg:hidden stroke-shark" />
+							</a>
+						{/if}
+					</li>
+				{/if}
 			{/each}
 		</ul>
 	</div>
